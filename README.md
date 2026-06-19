@@ -34,19 +34,19 @@ The **AIGIS Subsea Shield** continuously maps optical phase and polarization ano
 ```mermaid
 graph TD
     %% Subsea Ingress
-    subgraph Subsea Subsystem (Fibre-Optic Spine)
+    subgraph Subsea["Subsea Subsystem (Fibre-Optic Spine)"]
         A["Submarine Telecomm Cable"] -->|"Light Phase Fluctuations"| B["Distributed Acoustic Sensing (DAS)"]
         A -->|"Light Polarization (SOP) Shift"| C["State of Polarization Monitor"]
     end
 
     %% Edge Ingress & DSP
-    subgraph Landing Station (AETERNA Core Node)
+    subgraph Landing["Landing Station (AETERNA Core Node)"]
         B & C -->|"Zero-Copy PCIe Stream"| D["Mojo-Accelerated Signal Separator"]
         D -->|"35,000x Real-time DSP Inference"| E["Zero-Drift Signal Classification"]
     end
 
     %% Defense Reflex
-    subgraph Alert & Control (AIGIS Response Plane)
+    subgraph Alert["Alert & Control (AIGIS Response Plane)"]
         E -->|"Class 1: Seismic / Ocean Waves"| F["EU Oceanographic Research Portal"]
         E -->|"Class 2: Kinetic Threat (Anchor / Sub)"| G["AIGIS Landing Terminal Apoptosis"]
         G -->|"Immediate Isolation (<1ms)"| H["Landing Station Data Trunk Shutdown"]
