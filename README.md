@@ -3,6 +3,7 @@
 ### Sovereign Cyber-Physical Security & Coherent Optical Phase Sensing for Submarine Telecommunications
 
 [![CEF Digital: Submitted](https://img.shields.io/badge/CEF_Digital-Smart_Cables_Works_Submitted-blue.svg)](#)
+[![Proposal ID: 101354145](https://img.shields.io/badge/Proposal_ID-101354145-purple.svg)](#)
 [![Lead Applicant: AETERNA](https://img.shields.io/badge/Lead_Applicant-AETERNA-orange.svg)](#)
 [![Funding Rate: 50% Cross-Border](https://img.shields.io/badge/Funding_Rate-50%25_Cross--Border-cyan.svg)](#)
 [![PIC: 865986222](https://img.shields.io/badge/PIC-865986222_Validated-green.svg)](#)
@@ -19,7 +20,7 @@ A cinematic, ultra-high-definition visualization of the **AETERNA Subsea Cyber-P
 
 ## Project Overview
 
-**AETERNA-SCW (AETERNA Smart Cables Works)** is a sovereign, €20,000,000 cyber-physical infrastructure deployment proposal submitted under the Connecting Europe Facility (**CEF Digital 2026**) "Smart Cables Works" call. 
+**AETERNA-SCW (AETERNA Smart Cables Works)** is a sovereign, €20,000,000 cyber-physical infrastructure deployment proposal submitted under the Connecting Europe Facility (**CEF Digital 2026**) "Smart Cables Works" call. (Proposal ID: **101354145**)
 
 The project retrofits critical active trans-oceanic telecommunication trunks in the **Black Sea** and **Eastern Mediterranean** with high-fidelity, non-intrusive coherent optical sensing—the **AIGIS Subsea Shield**—without interrupting high-capacity data traffic. By combining coherent Distributed Acoustic Sensing (DAS) and State of Polarization (SOP) shifts with ultra-low latency, vectorized mathematical classification directly at landing station terminals, the system acts as a real-time defense plane against physical tapping, kinetic sabotage, and environmental hazards.
 
