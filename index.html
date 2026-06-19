@@ -274,6 +274,80 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+
+        .eu-compliance {
+            max-width: 1200px;
+            margin: 0 auto 4rem auto;
+            padding: 2.5rem;
+            background: rgba(17, 24, 39, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            backdrop-filter: blur(12px);
+        }
+
+        .eu-compliance-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .eu-logo {
+            width: 75px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .eu-title {
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .eu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .eu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .eu-disclaimer {
+            font-style: italic;
+            opacity: 0.85;
+        }
+
+        .partner-list {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .partner-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        
+        .partner-list li::before {
+            content: '•';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -346,6 +420,32 @@
             </div>
         </section>
     </main>
+
+    <section class="eu-compliance">
+        <div class="eu-compliance-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg" alt="European Union Flag" class="eu-logo">
+            <div>
+                <div class="eu-title">Co-funded by the European Union</div>
+                <div style="margin-top: 0.4rem; color: #60a5fa;"><strong>Project ID:</strong> 101354145 &nbsp;|&nbsp; <strong>Call:</strong> CEF-DIG-2026-SMART-CABLES-WORKS</div>
+            </div>
+        </div>
+        <div class="eu-grid">
+            <div>
+                <h4 style="color: white; margin-bottom: 1rem; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem;">Consortium Partners</h4>
+                <ul class="partner-list">
+                    <li><strong>AETERNA</strong> (Coordinator) <br><span style="opacity: 0.7; font-size: 0.85rem;">Trapezica 6, Pomorie 8200, Bulgaria</span></li>
+                    <li><strong>Ludwig-Maximilians-Universität München</strong> (Munich Institute of Geophysics) <br><span style="opacity: 0.7; font-size: 0.85rem;">Geschwister Scholl Platz 1, München 80539, Germany</span></li>
+                    <li><strong>Ethniki Epitropi Tilepikoinonion & Tachydromeion</strong> (Hellenic Submarine Telecom Authority) <br><span style="opacity: 0.7; font-size: 0.85rem;">Kifisias 60, Maroussi 151 25, Greece</span></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: white; margin-bottom: 1rem; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem;">Legal Disclaimer</h4>
+                <p class="eu-disclaimer">
+                    Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Health and Digital Executive Agency (HADEA). Neither the European Union nor the granting authority can be held responsible for them.
+                </p>
+            </div>
+        </div>
+    </section>
 
     <div class="footer-text" style="text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 2rem 0; opacity: 0.5;">
         © 2026 AETERNA-SCW // Lead Systems Architect: Dimitar Prodromov // Pomorie, Bulgaria
