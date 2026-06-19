@@ -27,7 +27,7 @@ As a critical stakeholder in European digital sovereignty and infrastructure res
 1. **Infrastructure Integration:** We commit to providing technical access to our trans-oceanic landing terminals and telecommunications trunks for the installation of the optical monitoring equipment (WP1).
 2. **Seismic and Acoustic Calibration:** We will collaborate in calibrating the real-time AI signal separators to map acoustic waves, vessel movements, and physical anomalies along the Mediterranean and Black Sea paths (WP2).
 3. **Emergency Apoptosis Testing:** We agree to validate the AIGIS eBPF Sentinel process-containment loops at our SCADA interfaces to ensure immediate (<1ms) traffic rerouting during simulated physical security breaches (WP3).
-4. **Resources & Funding Match:** We confirm that our allocated budget of **€4,500,000** will be matched in accordance with the 50% co-funding rules of the CEF Digital instrument.
+4. **Resources & Funding Match:** We confirm that our allocated budget of **€6,025,000.00** will be matched in accordance with the 50% co-funding rules of the CEF Digital instrument, representing a co-funding match of **€3,012,500.00**.
 
 We are fully convinced that the expertise of **AETERNA** in sovereign, zero-entropy software architectures, combined with our operational infrastructure, makes AETERNA-SCW an exemplary project that will materially enhance the security and resilience of the European Union's digital backbone.
 
