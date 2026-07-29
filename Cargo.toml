@@ -1,0 +1,12 @@
+[package]
+name = "aeterna_core"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "aeterna_core"
+path = "src/core/sovereign_sentinel.rs"
+
+[dependencies]
+rayon = "1.8"
+libc = "0.2"

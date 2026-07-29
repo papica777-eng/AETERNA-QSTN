@@ -348,6 +348,212 @@
             left: 0;
             font-weight: bold;
         }
+
+        /* Deployment Map Section Styling */
+        .deployment-section {
+            max-width: 1200px;
+            margin: 0 auto 8rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .deployment-title-section {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .deployment-title-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ffffff, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .deployment-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            backdrop-filter: blur(12px);
+        }
+
+        @media (max-width: 1024px) {
+            .deployment-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .map-container {
+            background: rgba(3, 7, 18, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .map-svg {
+            width: 100%;
+            height: auto;
+            max-height: 420px;
+        }
+
+        .map-node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-node-pulse {
+            animation: node-pulse-glow 2s infinite;
+            transform-origin: center;
+        }
+
+        @keyframes node-pulse-glow {
+            0% { r: 6; opacity: 0.8; }
+            100% { r: 20; opacity: 0; }
+        }
+
+        .cable-path {
+            fill: none;
+            stroke-linecap: round;
+            transition: all 0.5s ease;
+        }
+
+        .cable-path-active {
+            stroke-width: 4.5px !important;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+
+        .flow-particles {
+            stroke-dasharray: 6, 15;
+            animation: flow-anim 20s linear infinite;
+        }
+
+        @keyframes flow-anim {
+            to { stroke-dashoffset: -120; }
+        }
+
+        .details-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            min-height: 450px;
+        }
+
+        .node-selectors {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .node-tab {
+            padding: 1.1rem 1.25rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .node-tab:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateX(4px);
+        }
+
+        .node-tab.active-aeterna {
+            background: rgba(59, 130, 246, 0.08);
+            border-color: #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+        }
+
+        .node-tab.active-hellenic {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: #10b981;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+        }
+
+        .node-tab.active-munich {
+            background: rgba(245, 158, 11, 0.08);
+            border-color: #f59e0b;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.15);
+        }
+
+        .node-details-card {
+            background: rgba(3, 7, 18, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 1rem;
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            animation: nodeFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes nodeFadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .details-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .details-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .details-value {
+            color: #f3f4f6;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .tech-pill {
+            display: inline-block;
+            padding: 0.3rem 0.85rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: #f3f4f6;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .tech-pill:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .base-glow-circle {
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
@@ -419,6 +625,133 @@
                 <a href="docs/pdf/CEF_Part_B_Technical_Description.pdf" class="card-link">View Main Proposal PDF &rarr;</a>
             </div>
         </section>
+
+        <!-- Deployment Map Section -->
+        <section class="deployment-section">
+            <div class="deployment-title-section">
+                <h2>Cyber-Physical Deployment & Optimal Routing</h2>
+                <p style="color: var(--text-muted); max-width: 600px; margin: 0.5rem auto 0 auto; font-size: 0.95rem;">
+                    Interactive map displaying secure Central European terrestrial backhaul routes, subsea sensor loops, and strategic monitoring bases.
+                </p>
+            </div>
+            <div class="deployment-grid">
+                <div class="map-container">
+                    <svg viewBox="0 0 800 500" class="map-svg">
+                        <!-- Stylized Map Grid/Dots -->
+                        <defs>
+                            <pattern id="dot-grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <circle cx="2" cy="2" r="1" fill="rgba(255, 255, 255, 0.07)"></circle>
+                            </pattern>
+                            <radialGradient id="munich-glow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.3"></stop>
+                                <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"></stop>
+                            </radialGradient>
+                            <radialGradient id="pomorie-glow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3"></stop>
+                                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"></stop>
+                            </radialGradient>
+                            <radialGradient id="athens-glow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#10b981" stop-opacity="0.3"></stop>
+                                <stop offset="100%" stop-color="#10b981" stop-opacity="0"></stop>
+                            </radialGradient>
+                        </defs>
+
+                        <!-- Background Grid -->
+                        <rect width="800" height="500" fill="url(#dot-grid)"></rect>
+
+                        <!-- Stylized European Coastlines for Geographic Realism -->
+                        <!-- Central Europe / Germany -->
+                        <path d="M 100 100 L 320 80 L 350 160 L 200 180 Z" fill="none" stroke="rgba(255, 255, 255, 0.02)" stroke-width="1.5"></path>
+                        <!-- Italy Boot -->
+                        <path d="M 230 250 L 260 270 Q 300 350 320 380 L 350 370 Q 320 310 290 270 L 280 250" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1.5"></path>
+                        <!-- Balkans & Greece -->
+                        <path d="M 400 220 L 520 230 Q 560 240 600 250 L 610 290 Q 520 340 500 390 L 520 405 L 530 385 L 560 340 L 620 330" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1.5"></path>
+                        <!-- Black Sea Coast -->
+                        <path d="M 600 250 Q 640 210 700 200 Q 750 220 760 250 Q 700 280 610 290" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1.5"></path>
+
+                        <!-- Glowing areas around bases -->
+                        <circle cx="240" cy="140" r="80" fill="url(#munich-glow)" class="base-glow-circle" id="glow-munich"></circle>
+                        <circle cx="580" cy="260" r="80" fill="url(#pomorie-glow)" class="base-glow-circle" id="glow-pomorie"></circle>
+                        <circle cx="500" cy="390" r="80" fill="url(#athens-glow)" class="base-glow-circle" id="glow-athens"></circle>
+
+                        <!-- Fiber Optic Cables / Routes -->
+                        <!-- Terrestrial Backhaul (Munich -> Pomorie) -->
+                        <path d="M 240 140 L 320 170 L 400 180 L 500 270 L 580 260" class="cable-path" id="cable-munich-pomorie" stroke="#f59e0b" stroke-width="2.5" fill="none"></path>
+                        <path d="M 240 140 L 320 170 L 400 180 L 500 270 L 580 260" class="cable-path flow-particles" stroke="#f59e0b" stroke-width="2.5" opacity="0.8" fill="none"></path>
+
+                        <!-- Pomorie -> Athens Terrestrial/Subsea Link -->
+                        <path d="M 580 260 L 500 270 L 485 330 L 500 390" class="cable-path" id="cable-pomorie-athens" stroke="#10b981" stroke-width="2.5" fill="none"></path>
+                        <path d="M 580 260 L 500 270 L 485 330 L 500 390" class="cable-path flow-particles" stroke="#10b981" stroke-width="2.5" opacity="0.8" fill="none"></path>
+
+                        <!-- Black Sea Subsea Loop (Pomorie) -->
+                        <path d="M 580 260 C 660 200, 680 320, 580 260" class="cable-path" id="cable-black-sea" stroke="#3b82f6" stroke-dasharray="5 3" stroke-width="2" fill="none"></path>
+                        <path d="M 580 260 C 660 200, 680 320, 580 260" class="cable-path flow-particles" stroke="#3b82f6" stroke-width="2" opacity="0.8" fill="none"></path>
+
+                        <!-- Aegean Subsea Loop (Athens) -->
+                        <path d="M 500 390 C 560 460, 440 480, 500 390" class="cable-path" id="cable-aegean" stroke="#10b981" stroke-dasharray="5 3" stroke-width="2" fill="none"></path>
+                        <path d="M 500 390 C 560 460, 440 480, 500 390" class="cable-path flow-particles" stroke="#10b981" stroke-width="2" opacity="0.8" fill="none"></path>
+
+                        <!-- Labels for Geographic Reference -->
+                        <text x="240" y="320" fill="rgba(255,255,255,0.15)" font-size="10" font-family="'Space Grotesk', sans-serif" letter-spacing="0.1em">ADRIATIC SEA</text>
+                        <text x="640" y="220" fill="rgba(255,255,255,0.15)" font-size="10" font-family="'Space Grotesk', sans-serif" letter-spacing="0.1em">BLACK SEA</text>
+                        <text x="400" y="460" fill="rgba(255,255,255,0.15)" font-size="10" font-family="'Space Grotesk', sans-serif" letter-spacing="0.1em">MEDITERRANEAN SEA</text>
+
+                        <!-- Munich Node -->
+                        <g class="map-node" id="node-munich">
+                            <circle cx="240" cy="140" r="14" fill="rgba(245, 158, 11, 0.15)"></circle>
+                            <circle cx="240" cy="140" r="6" fill="#f59e0b"></circle>
+                            <circle cx="240" cy="140" r="6" fill="none" stroke="#f59e0b" stroke-width="2" class="map-node-pulse"></circle>
+                            <text x="240" y="115" fill="white" font-size="11" font-weight="bold" font-family="'Space Grotesk', sans-serif" text-anchor="middle">MUNICH BASE</text>
+                        </g>
+
+                        <!-- Pomorie Node -->
+                        <g class="map-node" id="node-pomorie">
+                            <circle cx="580" cy="260" r="14" fill="rgba(59, 130, 246, 0.15)"></circle>
+                            <circle cx="580" cy="260" r="6" fill="#3b82f6"></circle>
+                            <circle cx="580" cy="260" r="6" fill="none" stroke="#3b82f6" stroke-width="2" class="map-node-pulse"></circle>
+                            <text x="580" y="290" fill="white" font-size="11" font-weight="bold" font-family="'Space Grotesk', sans-serif" text-anchor="middle">POMORIE BASE</text>
+                        </g>
+
+                        <!-- Athens Node -->
+                        <g class="map-node" id="node-athens">
+                            <circle cx="500" cy="390" r="14" fill="rgba(16, 185, 129, 0.15)"></circle>
+                            <circle cx="500" cy="390" r="6" fill="#10b981"></circle>
+                            <circle cx="500" cy="390" r="6" fill="none" stroke="#10b981" stroke-width="2" class="map-node-pulse"></circle>
+                            <text x="500" y="415" fill="white" font-size="11" font-weight="bold" font-family="'Space Grotesk', sans-serif" text-anchor="middle">ATHENS BASE</text>
+                        </g>
+                    </svg>
+                </div>
+                <div class="details-container">
+                    <div class="node-selectors">
+                        <div class="node-tab active-aeterna" id="tab-pomorie" data-node="pomorie">
+                            <div>
+                                <span style="font-weight: 700; font-family: 'Space Grotesk', sans-serif;">Bulgaria: Pomorie Base</span>
+                                <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 0.15rem;">AETERNA Coordinator (Black Sea Landing)</div>
+                            </div>
+                            <i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <div class="node-tab" id="tab-athens" data-node="athens">
+                            <div>
+                                <span style="font-weight: 700; font-family: 'Space Grotesk', sans-serif;">Greece: Athens Base</span>
+                                <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 0.15rem;">Hellenic Submarine Authority (Aegean Hub)</div>
+                            </div>
+                            <i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <div class="node-tab" id="tab-munich" data-node="munich">
+                            <div>
+                                <span style="font-weight: 700; font-family: 'Space Grotesk', sans-serif;">Germany: Munich Base</span>
+                                <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 0.15rem;">LMU Geophysics Seismology Hub</div>
+                            </div>
+                            <i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i>
+                        </div>
+                    </div>
+
+                    <div class="node-details-card" id="details-card">
+                        <!-- Content dynamically inserted -->
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <section class="eu-compliance">
@@ -453,6 +786,125 @@
 
     <script>
         lucide.createIcons();
+
+        // Node Data for Interactive Panel
+        const nodeData = {
+            pomorie: {
+                title: "Bulgaria: Pomorie Base (AETERNA Coordinator)",
+                role: "Central Security Operations & Black Sea Landing Station",
+                cables: "Black Sea Subsea Ring & Secure Terrestrial Trunk to Athens and Munich",
+                favorableRoute: "Favorable offshore route running 24km from Pomorie landing site into the Black Sea deep shelf, retrofitted with optical polarimeters to monitor strain, acoustics, and mechanical tampering.",
+                systems: [
+                    "AIGIS Subsea Shield Cluster",
+                    "Dual-wavelength Polarimeter SOP System",
+                    "eBPF Kernel Apoptosis Switch",
+                    "Mojo AI Threat Signal Classifier"
+                ],
+                spec: "TRL 6 validation; signal resolution &lt;10Hz; threat response &lt;1.0ms; NIS2 compliant security architecture."
+            },
+            athens: {
+                title: "Greece: Athens Base (Hellenic Submarine Telecom)",
+                role: "Aegean Network Hub & Southern Seismology Center",
+                cables: "Aegean Subsea loop to Crete & Cross-border Terrestrial backhaul to Pomorie",
+                favorableRoute: "Marine cable route running southwards through the Aegean Sea shelf, landing at Athens and extending to Chania (Crete), utilizing existing telecommunication conduits to bypass complex seafloor geology.",
+                systems: [
+                    "Distributed Acoustic Sensing (DAS) Interrogators",
+                    "High-Availability Optical Transceivers",
+                    "Hardware Security Modules (HSMs)",
+                    "Subsea Seismic Early Warning Array"
+                ],
+                spec: "Interrogation length 50km per laser unit; spatial resolution 1m; SOC 2 Type II certified operations."
+            },
+            munich: {
+                title: "Germany: Munich Base (LMU Institute of Geophysics)",
+                role: "Geophysical Seismology & Advanced Telemetry Analytics",
+                cables: "Sovereign Terrestrial Backhaul (Munich -> Vienna -> Budapest -> Sofia -> Pomorie)",
+                favorableRoute: "Secure redundant terrestrial path routed through Central Europe alongside railway and highway utility corridors, providing clean, low-latency paths for real-time sensor sync.",
+                systems: [
+                    "LMU Geophysics Supercomputer Cluster",
+                    "Distributed Temperature Sensing (DTS) Receivers",
+                    "Waveform Propagation Modeling Servers",
+                    "High-Stability Laser Interrogation Units"
+                ],
+                spec: "Data processing capacity 1.2 PFLOPS; real-time geological strain detection down to micro-strains; 24/7 telemetry synchronization."
+            }
+        };
+
+        function updateDetails(nodeKey) {
+            const data = nodeData[nodeKey];
+            const card = document.getElementById('details-card');
+            
+            const systemPills = data.systems.map(sys => `<span class="tech-pill">${sys}</span>`).join('');
+            
+            card.innerHTML = `
+                <div class="details-row">
+                    <span class="details-label">Base Location & Role</span>
+                    <span class="details-value"><strong>${data.title}</strong><br>${data.role}</span>
+                </div>
+                <div class="details-row">
+                    <span class="details-label">Best Favorable Route & Cables</span>
+                    <span class="details-value"><strong>Cables:</strong> ${data.cables}<br><strong>Optimal Placement:</strong> ${data.favorableRoute}</span>
+                </div>
+                <div class="details-row">
+                    <span class="details-label">Deployed Systems</span>
+                    <div style="margin-top: 0.25rem;">
+                        ${systemPills}
+                    </div>
+                </div>
+                <div class="details-row">
+                    <span class="details-label">Technical Specification</span>
+                    <span class="details-value" style="font-family: 'Space Grotesk', sans-serif; color: #60a5fa; font-weight: 600;">${data.spec}</span>
+                </div>
+            `;
+
+            // Update tab styles
+            document.querySelectorAll('.node-tab').forEach(tab => {
+                tab.classList.remove('active-aeterna', 'active-hellenic', 'active-munich');
+            });
+            const activeTab = document.getElementById(`tab-${nodeKey}`);
+            if (activeTab) {
+                if (nodeKey === 'pomorie') activeTab.classList.add('active-aeterna');
+                else if (nodeKey === 'athens') activeTab.classList.add('active-hellenic');
+                else if (nodeKey === 'munich') activeTab.classList.add('active-munich');
+            }
+
+            // Update map path highlights
+            document.querySelectorAll('.cable-path').forEach(path => {
+                path.classList.remove('cable-path-active');
+            });
+
+            // Update base glow circle opacities
+            document.querySelectorAll('.base-glow-circle').forEach(circle => {
+                circle.style.opacity = '0';
+            });
+            const activeGlow = document.getElementById(`glow-${nodeKey}`);
+            if (activeGlow) activeGlow.style.opacity = '1';
+            
+            // Highlight specific cables based on active node
+            if (nodeKey === 'pomorie') {
+                document.getElementById('cable-black-sea').classList.add('cable-path-active');
+            } else if (nodeKey === 'athens') {
+                document.getElementById('cable-aegean').classList.add('cable-path-active');
+                document.getElementById('cable-pomorie-athens').classList.add('cable-path-active');
+            } else if (nodeKey === 'munich') {
+                document.getElementById('cable-munich-pomorie').classList.add('cable-path-active');
+            }
+        }
+
+        // Add event listeners to tabs
+        document.querySelectorAll('.node-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                updateDetails(tab.dataset.node);
+            });
+        });
+
+        // Add event listeners to SVG nodes
+        document.getElementById('node-pomorie').addEventListener('click', () => updateDetails('pomorie'));
+        document.getElementById('node-athens').addEventListener('click', () => updateDetails('athens'));
+        document.getElementById('node-munich').addEventListener('click', () => updateDetails('munich'));
+
+        // Initialize with Pomorie
+        updateDetails('pomorie');
     </script>
 </body>
 </html>

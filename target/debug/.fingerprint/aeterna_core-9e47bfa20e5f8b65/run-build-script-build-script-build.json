@@ -1,0 +1,1 @@
+{"rustc":1562763049001146449,"features":"","declared_features":"","target":0,"profile":0,"path":0,"deps":[[11926579407665338114,"build_script_build",false,13686010672281897190]],"local":[{"RerunIfChanged":{"output":"debug\\build\\aeterna_core-9e47bfa20e5f8b65\\output","paths":["src/ingress/SOP_STREAM_ACQUISITION.zig","build.rs"]}}],"rustflags":[],"config":0,"compile_kind":0}

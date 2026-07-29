@@ -115,12 +115,12 @@ python scripts/generate_additional_docs.py
 
 ## High-Performance Mojo Signal Classification (TRL 6)
 
-The repository includes the production-grade **`scripts/signal_classifier.mojo`** engine. Built using Mojo's structural typing, SIMD vectorization (AVX-512 aligned), and hardware-level zero-copy vector sweeps, this module achieves sub-0.02ms signal separation and classification.
+The repository includes the production-grade **`scripts/simulation.mojo`** engine. Built using Mojo's structural typing, SIMD vectorization (AVX-512 aligned), and hardware-level zero-copy vector sweeps, this module achieves sub-0.02ms signal separation and classification.
 
 ### Run Mojo Signal Simulator:
 If you have the Mojo compiler installed, you can execute the real-time simulation:
 ```bash
-mojo scripts/signal_classifier.mojo
+mojo scripts/simulation.mojo
 ```
 
 ## Consortium Partners

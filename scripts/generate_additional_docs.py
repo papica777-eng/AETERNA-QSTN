@@ -73,7 +73,7 @@ def create_excel_budget(filepath):
     ws["A1"] = "CONNECTING EUROPE FACILITY (CEF) - DETAILED BUDGET WORKS TABLE"
     ws["A1"].font = Font(name="Segoe UI", size=16, bold=True, color="1A365D")
     
-    ws["A2"] = "Project Acronym: AETERNA-SCW  // Proposal ID: CEF-DIG-2026-SMART-CABLES-101538202"
+    ws["A2"] = "Project Acronym: AETERNA-SCW  // Proposal ID: CEF-DIG-2026-SMART-CABLES-101354145"
     ws["A2"].font = Font(name="Segoe UI", size=11, italic=True, color="4A5568")
     
     # Headers

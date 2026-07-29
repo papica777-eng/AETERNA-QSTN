@@ -2,7 +2,7 @@
 ## CONNECTING EUROPE FACILITY (CEF) DIGITAL // SMART CABLES WORKS
 
 * **Project Acronym:** AETERNA-SCW
-* **Proposal ID:** CEF-DIG-2026-SMART-CABLES-101538202
+* **Proposal ID:** CEF-DIG-2026-SMART-CABLES-101354145
 * **Applicant Lead:** **AETERNA** (POMORIE, BULGARIA)
 * **Participant Identification Code (PIC):** `865986222`
 

@@ -1,0 +1,1 @@
+c:\Users\papic\Desktop\AETERNA-SCW\target\debug\aeterna_core.exe: c:\Users\papic\Desktop\AETERNA-SCW\build.rs c:\Users\papic\Desktop\AETERNA-SCW\src\core\main.rs c:\Users\papic\Desktop\AETERNA-SCW\src/ingress/parser.zig

@@ -1,7 +1,7 @@
 # CONNECTING EUROPE FACILITY (CEF) DIGITAL PROPOSAL: SMART CABLES WORKS
 
 ## Project Acronym: AETERNA-SCW
-* **Proposal ID:** CEF-DIG-2026-SMART-CABLES-101538202
+* **Proposal ID:** CEF-DIG-2026-SMART-CABLES-101354145
 * **Call:** CEF-DIG-2026-SMART-CABLES
 * **Topic:** CEF-DIG-2026-SMART-CABLES-WORKS
 * **Type of Action:** CEF-INFRA (Infrastructure Works Action)
@@ -136,5 +136,5 @@ Given the strategic critical importance of submarine telecommunications backbone
 ---
 
 **Prepared by:** AETERNA Neural QA Nexus  
-**Status:** CEF APPLICATION UNDER DRAFTING  
+**Status:** CEF APPLICATION SUBMITTED / FINAL  
 **Authority:** DIMITAR PRODROMOV (Sovereign Systems Architect)  
