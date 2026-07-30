@@ -6,3 +6,9 @@ __pycache__/
 Thumbs.db
 .vscode/
 .idea/
+target/
+*.exe
+*.pdb
+*.o
+*.obj
+

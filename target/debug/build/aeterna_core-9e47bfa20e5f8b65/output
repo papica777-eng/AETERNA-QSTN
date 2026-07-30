@@ -1,4 +1,0 @@
-cargo:rustc-link-search=native=C:\Users\papic\Desktop\AETERNA-SCW
-cargo:rustc-link-lib=static=parser
-cargo:rerun-if-changed=src/ingress/SOP_STREAM_ACQUISITION.zig
-cargo:rerun-if-changed=build.rs

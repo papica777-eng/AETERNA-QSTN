@@ -1,0 +1,19 @@
+# ==============================================================================
+# WP1: Zig Optical Ingress Engine (SOP_STREAM_ACQUISITION.zig)
+# Zero-Copy PCIe DMA Mapping & 10 kHz DAS/SOP Polarization Sampling
+# ==============================================================================
+FROM alpine:3.19 AS builder
+
+RUN apk add --no-cache zig build-base
+
+WORKDIR /app
+COPY src/ingress/ /app/src/ingress/
+
+# Compile Zig ingress module
+RUN zig build-exe src/ingress/SOP_STREAM_ACQUISITION.zig -O ReleaseFast --name sop_ingress
+
+FROM alpine:3.19
+WORKDIR /app
+COPY --from=builder /app/sop_ingress /app/sop_ingress
+
+CMD ["/app/sop_ingress"]

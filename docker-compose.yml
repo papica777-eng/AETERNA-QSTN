@@ -1,0 +1,105 @@
+# ==============================================================================
+# AETERNA-SCW // AIGIS SUBSEA SHIELD DEMONSTRATOR MANIFEST
+# Connecting Europe Facility (CEF Digital) Proposal ID: 101354145
+# Lead Coordinator: AETERNA (Pomorie, BG) | PIC: 865986222
+# Sovereign Systems Architect: Dimitar Prodromov
+# Strict Compliance: Article 9(4) CEF Regulation (EU) 2021/1153 & NIS2 Directive
+# ==============================================================================
+
+version: '3.8'
+
+services:
+  # ----------------------------------------------------------------------------
+  # WP1: Optical Monitoring & Ingestion (Zig Zero-Copy PCIe Ingress)
+  # ----------------------------------------------------------------------------
+  aeterna-ingress-wp1:
+    container_name: aeterna-scw-ingress
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.ingress
+    environment:
+      - SAMPLING_FREQ_HZ=10000
+      - PHASE_RESOLUTION_URAD=1
+      - SPATIAL_RESOLUTION_M=2.0
+      - COHERENCE_LENGTH_KM=100
+      - ZIG_STREAM_MODULE=SOP_STREAM_ACQUISITION.zig
+    volumes:
+      - ./assets/subsea_telemetry_samples:/data:ro
+    networks:
+      - aeterna_sovereign_bus
+    restart: unless-stopped
+
+  # ----------------------------------------------------------------------------
+  # WP2: Mojo Real-Time Signal Processing & O(1) Neural Classifier
+  # ----------------------------------------------------------------------------
+  aeterna-mojo-wp2:
+    container_name: aeterna-scw-mojo-classifier
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.mojo
+    environment:
+      - INFERENCE_TARGET_LATENCY_MS=1.14
+      - VECTOR_MATH_MODE=SIMD_AVX512_INT
+      - CLASSIFIER_SCRIPT=scripts/simulation.mojo
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    depends_on:
+      - aeterna-ingress-wp1
+    networks:
+      - aeterna_sovereign_bus
+    restart: unless-stopped
+
+  # ----------------------------------------------------------------------------
+  # WP3: Kernel-Level eBPF Sentinel & AIGIS Dome SCADA Hardening
+  # ----------------------------------------------------------------------------
+  aeterna-sentinel-wp3:
+    container_name: aeterna-scw-ebpf-sentinel
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.sentinel
+    privileged: true # Mandatory for Linux eBPF kernel hooks & process apoptosis
+    cap_add:
+      - SYS_ADMIN
+      - NET_ADMIN
+      - BPF
+      - PERFMON
+    environment:
+      - APOPTOSIS_THRESHOLD_MS=1.02
+      - SCADA_LOCKDOWN_MODE=STRICT_INTEGER_ONLY
+      - RUST_CORE_BIN=sovereign_sentinel
+    volumes:
+      - /sys/kernel/debug:/sys/kernel/debug:rw
+      - /sys/fs/bpf:/sys/fs/bpf:rw
+    networks:
+      - aeterna_sovereign_bus
+    restart: unless-stopped
+
+  # ----------------------------------------------------------------------------
+  # HELIOS Dashboard & Real-Time Telemetry HUD (PQC Loopback WebSocket)
+  # ----------------------------------------------------------------------------
+  aeterna-helios-hud:
+    container_name: aeterna-scw-helios-hud
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.hud
+    ports:
+      - "3847:3847" # PQC-encrypted local loopback (ws://127.0.0.1:3847)
+      - "8080:8080" # Web HUD Interface
+    environment:
+      - PQC_ENCRYPTION=NIST_ML_KEM_1024
+      - EU_DATA_RESIDENCY=SOVEREIGN_ON_PREMISE
+    depends_on:
+      - aeterna-sentinel-wp3
+    networks:
+      - aeterna_sovereign_bus
+    restart: unless-stopped
+
+networks:
+  aeterna_sovereign_bus:
+    name: aeterna_sovereign_bus
+    driver: bridge

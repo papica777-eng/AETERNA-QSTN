@@ -1,0 +1,20 @@
+# ==============================================================================
+# WP3: Kernel-Level eBPF Sentinel & AIGIS Dome Hardening (sovereign_sentinel.rs)
+# Linux Kernel Hook, SCADA Trunk Isolation & Apoptosis (<1.02ms)
+# ==============================================================================
+FROM rust:1.75-alpine as builder
+
+RUN apk add --no-cache musl-dev clang llvm
+
+WORKDIR /app
+COPY Cargo.toml Cargo.lock build.rs parser.lib ./
+COPY src/ /app/src/
+
+RUN cargo build --release --bin aeterna_core
+
+FROM alpine:3.19
+RUN apk add --no-cache libgcc libstdc++
+WORKDIR /app
+COPY --from=builder /app/target/release/aeterna_core /app/aeterna_core
+
+CMD ["/app/aeterna_core"]
