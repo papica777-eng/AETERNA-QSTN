@@ -21,6 +21,17 @@ A cinematic, ultra-high-definition visualization of the **AETERNA Subsea Cyber-P
 
 ---
 
+## 🔒 Intellectual Property & Proprietary Core Notice
+
+> **IMPORTANT NOTICE REGARDING REPOSITORY CONTENTS:**  
+> This public demonstration repository contains official project documentation, architectural flowcharts, UI HUD demonstrators, and execution playbooks for evaluation purposes under the **Connecting Europe Facility (CEF Digital 2026)** proposal ID **101354145**.
+> 
+> The native production codebase—including the Mojo SIMD vectorization loops (`simulation.mojo`), zero-copy Zig optical DMA ingress engines (`SOP_STREAM_ACQUISITION.zig`), Rust SCADA dome controllers (`aigis_dome.rs`), and Linux kernel eBPF Sentinel apoptosis modules (`sovereign_sentinel.rs`)—represents proprietary Intellectual Property (IP) owned exclusively by **AETERNA (Pomorie, Bulgaria)** under EU Critical Infrastructure Protection guidelines.
+> 
+> **Access & Code Transfer:** The production mathematical kernels and full air-gapped repositories will be formally transferred and deployed onto dedicated bare-metal compute nodes at designated subsea landing terminals upon Grant Agreement (GA) signing and project kickoff with the **European Health and Digital Executive Agency (HADEA)**.
+
+---
+
 ## Project Overview
 
 **AETERNA-SCW (AETERNA Smart Cables Works)** is a sovereign, €20,000,000 cyber-physical infrastructure deployment proposal submitted under the Connecting Europe Facility (**CEF Digital 2026**) "Smart Cables Works" call. (Proposal ID: **101354145**)
