@@ -40,6 +40,16 @@ The project retrofits critical active trans-oceanic telecommunication trunks in 
 
 ---
 
+## Consortium Partners & Institutional Alignment
+
+The **AETERNA-SCW** consortium unites sovereign software architecture, landing infrastructure, and geophysics research:
+
+1. 🇧🇬 **AETERNA (Pomorie, Bulgaria)** — **Lead Coordinator & Sovereign Systems Architect** (PIC: `865986222`). Architect of the Mojo vectorized AI core, zero-copy Zig optical DMA ingress engines, and Rust/eBPF kernel sentinel loops.
+2. 🇬🇷 **Hellenic Submarine Telecom Authority (Athens, Greece)** — **Landing Terminal & Subsea Infrastructure Partner**. Providing direct access to trans-oceanic landing terminals and active telecommunication trunks across the Mediterranean.
+3. 🇩🇪 **Munich Institute of Geophysics (LMU Munich, Germany)** — **Seismic & Physical Telemetry Calibration Partner**. Leading WP2 seismic signal calibration, acoustic wave classification, and early-warning tsunami alert feeds.
+
+---
+
 ## Cyber-Physical Systems Architecture
 
 The **AIGIS Subsea Shield** continuously maps optical phase and polarization anomalies along the subsea fiber path, using hardware-level mathematical vector sweeps and eBPF kernel isolation to protect landing hubs.
