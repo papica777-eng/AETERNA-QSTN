@@ -118,33 +118,28 @@
             gap: 0.875rem;
         }
 
-        .nav-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, var(--cyan), var(--teal));
-            display: grid;
-            place-items: center;
-            position: relative;
-            overflow: hidden;
+        .aeterna-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4));
+            transition: transform 0.3s ease;
         }
 
-        .nav-icon::after {
-            content: '⬡';
-            font-size: 18px;
-            color: var(--void);
-            font-weight: 900;
+        .aeterna-logo-container:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.7));
         }
 
-        .nav-icon::before {
-            content: '';
-            position: absolute;
-            inset: -50%;
-            background: conic-gradient(from 0deg, transparent 0%, rgba(255,255,255,0.3) 10%, transparent 20%);
-            animation: icon-spin 3s linear infinite;
+        .btn-icon {
+            display: inline-block;
+            vertical-align: middle;
+            transition: transform 0.2s ease;
         }
 
-        @keyframes icon-spin { to { transform: rotate(360deg); } }
+        .sim-btn:hover .btn-icon {
+            transform: scale(1.15);
+        }
 
         .nav-title {
             font-family: var(--mono);
@@ -1160,7 +1155,21 @@
     <nav>
         <div class="nav-inner">
             <div class="nav-brand">
-                <div class="nav-icon"></div>
+                <div class="aeterna-logo-container">
+                    <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="aeterna-svg-logo">
+                        <polygon points="20,2 35.5,11 35.5,29 20,38 4.5,29 4.5,11" fill="url(#logo-grad-bg)" stroke="#22d3ee" stroke-width="1.8" />
+                        <polygon points="20,7 31,14.5 31,25.5 20,33 9,25.5 9,14.5" fill="none" stroke="rgba(45, 212, 191, 0.5)" stroke-width="1" stroke-dasharray="2,2" />
+                        <path d="M20,9 L27,27 H23 L21.5,23 H18.5 L17,27 H13 L20,9 Z M20,14.5 L19.2,20.5 H20.8 L20,14.5 Z" fill="#ffffff" />
+                        <path d="M12,25.5 Q16,23.5 20,25.5 T28,25.5" stroke="#22d3ee" stroke-width="1.8" stroke-linecap="round" fill="none" />
+                        <defs>
+                            <linearGradient id="logo-grad-bg" x1="0" y1="0" x2="40" y2="40">
+                                <stop offset="0%" stop-color="#0f172a" />
+                                <stop offset="50%" stop-color="#062238" />
+                                <stop offset="100%" stop-color="#043247" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
                 <div class="nav-title">AETERNA-<span>QSTN</span></div>
             </div>
             <div class="nav-links">
@@ -1320,25 +1329,32 @@
                             <text y="24" x="-20" fill="#94a3b8" font-size="9" font-family="JetBrains Mono">ATHENS (GR-02)</text>
                         </g>
 
-                        <!-- Threat Icon (Anchor/Cutter) hidden by default -->
+                        <!-- Threat Icon (Anchor/Cutter/Tap) hidden by default -->
                         <g id="sim-threat-icon" transform="translate(250, 60)" style="opacity: 0; transition: all 0.4s ease;">
-                            <text id="threat-emoji" y="0" x="-12" font-size="28">⚓</text>
-                            <line y1="10" x1="0" y2="70" x2="0" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4,2" />
+                            <circle r="18" fill="rgba(244, 63, 94, 0.2)" stroke="#f43f5e" stroke-width="1.5" />
+                            <g id="threat-svg-target" transform="translate(-10, -10)">
+                                <path id="threat-svg-path" d="M10 3a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM10 8v9M4 11H2a8 8 0 0 0 16 0h-2M4 16l-2-2 2-2M16 16l2-2-2-2" stroke="#f43f5e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            </g>
+                            <line y1="18" x1="0" y2="70" x2="0" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4,2" />
                         </g>
                     </svg>
 
                     <div class="sim-controls">
                         <button class="sim-btn sim-btn-danger" onclick="triggerKineticAttack('anchor')">
-                            ⚓ Anchor Drag (KM 142.8)
+                            <svg class="btn-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><line x1="12" y1="9" x2="12" y2="21"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M5 18l-2-2 2-2"/><path d="M19 18l2-2-2-2"/></svg>
+                            Anchor Drag (KM 142.8)
                         </button>
                         <button class="sim-btn sim-btn-danger" onclick="triggerKineticAttack('cut')">
-                            ✂️ Physical Fiber Cut
+                            <svg class="btn-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                            Physical Fiber Cut
                         </button>
                         <button class="sim-btn sim-btn-danger" onclick="triggerKineticAttack('tap')">
-                            ⚡ Submersible Optical Tap
+                            <svg class="btn-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            Submersible Optical Tap
                         </button>
                         <button class="sim-btn sim-btn-reset" onclick="resetSimulator()">
-                            🔄 Reset Subsea Mesh
+                            <svg class="btn-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"/><path d="M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                            Reset Subsea Mesh
                         </button>
                     </div>
                 </div>
@@ -1724,7 +1740,7 @@
 
         const pill = document.getElementById('sim-status-pill');
         const threatIcon = document.getElementById('sim-threat-icon');
-        const threatEmoji = document.getElementById('threat-emoji');
+        const threatPath = document.getElementById('threat-svg-path');
         const fiberLine = document.getElementById('fiber-line');
         const targetCircle = document.getElementById('strike-target-circle');
         const mLatency = document.getElementById('m-latency');
@@ -1732,29 +1748,30 @@
         const mStatus = document.getElementById('m-status');
 
         let typeLabel = '';
-        let emoji = '⚓';
+        let svgPathD = '';
         let attackCode = '';
         let phaseShift = '';
 
         if (attackType === 'anchor') {
             typeLabel = 'KINETIC_ANCHOR_DRAG';
-            emoji = '⚓';
+            svgPathD = 'M10 3a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM10 8v9M4 11H2a8 8 0 0 0 16 0h-2M4 16l-2-2 2-2M16 16l2-2-2-2';
             attackCode = 'ANCHOR_DRAG_SECTOR_4B';
             phaseShift = '3.841 uRad';
         } else if (attackType === 'cut') {
             typeLabel = 'PHYSICAL_FIBER_CUT';
-            emoji = '✂️';
+            svgPathD = 'M6 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 18a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12';
             attackCode = 'CABLE_SEVER_SECTOR_4B';
             phaseShift = '9.999 uRad (ATTENUATION MAX)';
         } else {
             typeLabel = 'SUBMERSIBLE_OPTICAL_TAP';
-            emoji = '⚡';
+            svgPathD = 'M13 2L3 14h9l-1 8 10-12h-9l1-8z';
             attackCode = 'OPTICAL_PHYSICAL_TAP';
             phaseShift = '1.420 uRad';
         }
 
+        if (threatPath) threatPath.setAttribute('d', svgPathD);
+
         // Phase 1: Strike Event (0.000ms)
-        threatEmoji.textContent = emoji;
         threatIcon.style.opacity = '1';
         threatIcon.style.transform = 'translate(250px, 110px)';
         pill.className = 'sim-status-pill status-attack';
