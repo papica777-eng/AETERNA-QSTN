@@ -209,7 +209,8 @@ def html_to_flowables(soup, styles):
                     flowables.append(Paragraph("[Flowchart Visualizing AIGIS Subsea Shield Integration]", styles['CustomBody']))
                 flowables.append(Spacer(1, 12))
             else:
-                clean_code = clean_html_text(node.decode_contents())
+                import html
+                clean_code = html.escape(node.get_text()).replace('\n', '<br/>')
                 code_style = ParagraphStyle(
                     'CodeBlock',
                     parent=styles['CustomBody'],
@@ -223,7 +224,7 @@ def html_to_flowables(soup, styles):
                     borderPadding=8,
                     spaceAfter=8
                 )
-                flowables.append(Paragraph(clean_code.replace('\n', '<br/>'), code_style))
+                flowables.append(Paragraph(clean_code, code_style))
                 
         else:
             for child in node.children:
@@ -324,27 +325,28 @@ def compile_md_to_pdf(md_file_path, pdf_file_path, doc_title, doc_footer):
     print(f"Success! Saved PDF at: {pdf_file_path}")
 
 def main():
-    pdf_dir = "z:\\soul\\docs\\pdf"
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    pdf_dir = os.path.join(base_dir, "docs", "pdf")
     if not os.path.exists(pdf_dir):
         os.makedirs(pdf_dir)
         print(f"Created directory: {pdf_dir}")
         
     tasks = [
         {
-            "md": "z:\\soul\\docs\\CEF_SMART_CABLES_PROPOSAL.md",
-            "pdf": "z:\\soul\\docs\\pdf\\CEF_Part_B_Technical_Description.pdf",
+            "md": os.path.join(base_dir, "docs", "CEF_SMART_CABLES_PROPOSAL.md"),
+            "pdf": os.path.join(pdf_dir, "CEF_Part_B_Technical_Description.pdf"),
             "title": "Part B Technical Description (WORKS)",
             "footer": "CONFIDENTIAL // CEF DIGITAL 2026 // AETERNA-SCW SMART CABLES WORKS"
         },
         {
-            "md": "z:\\soul\\docs\\CEF_SECURITY_COMPLIANCE_DECLARATION.md",
-            "pdf": "z:\\soul\\docs\\pdf\\CEF_Security_Compliance_Declaration.pdf",
+            "md": os.path.join(base_dir, "docs", "CEF_SECURITY_COMPLIANCE_DECLARATION.md"),
+            "pdf": os.path.join(pdf_dir, "CEF_Security_Compliance_Declaration.pdf"),
             "title": "Security Compliance Declaration & Sovereignty Attestation",
             "footer": "EU SOVEREIGN SECURITY ATTESTATION // NIS2 COMPLIANT // PIC 865986222"
         },
         {
-            "md": "z:\\soul\\docs\\CEF_LETTER_OF_SUPPORT_TEMPLATE.md",
-            "pdf": "z:\\soul\\docs\\pdf\\CEF_Letter_of_Support_Template.pdf",
+            "md": os.path.join(base_dir, "docs", "CEF_LETTER_OF_SUPPORT_TEMPLATE.md"),
+            "pdf": os.path.join(pdf_dir, "CEF_Letter_of_Support_Template.pdf"),
             "title": "Consortium Letter of Support Template",
             "footer": "CEF DIGITAL 2026 // AETERNA-SCW // CONSORTIUM PARTICIPATION LETTER"
         }
