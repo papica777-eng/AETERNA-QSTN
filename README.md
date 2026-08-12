@@ -114,9 +114,9 @@ graph TD
 
 The **AETERNA-QSTN** consortium unites sovereign software architecture, landing infrastructure, and geophysics research:
 
-1. 🇧🇬 **AETERNA (Pomorie, Bulgaria)** — **Lead Coordinator & Sovereign Systems Architect** (PIC: `865986222`). Architect of the Mojo vectorized AI core, zero-copy Zig optical DMA ingress engines, and Rust/eBPF kernel sentinel loops.
-2. 🇬🇷 **National Telecommunications and Post Commission / EETT (Athens, Greece)** — **Landing Terminal & Subsea Infrastructure Partner**. Providing direct access to trans-oceanic landing terminals and active telecommunication trunks across the Mediterranean.
-3. 🇩🇪 **LMU Munich (Munich, Germany)** — **Seismic & Physical Telemetry Calibration Partner** (PIC: `999978433`). Leading WP2 seismic signal calibration, acoustic wave classification, and early-warning tsunami alert feeds.
+1. 🇧🇬 **AETERNA (Pomorie, Bulgaria)** — **Lead Coordinator & Sovereign Systems Architect** (PIC: `865986222`). Architect of the Mojo vectorized AI core, zero-copy Zig optical DMA ingress engines, eBPF-based kernel-level apoptosis loops, and the Post-Quantum Cryptographic (PQC) link encryption shield (`quantum_crypt_shield.rs`).
+2. 🇬🇷 **National Telecommunications and Post Commission / EETT (Athens, Greece)** — **Landing Terminal & Subsea Infrastructure Partner**. Providing secure, military-grade landing station infrastructure, SCADA security loops, and QKD hardware links.
+3. 🇩🇪 **LMU Munich (Munich, Germany)** — **Tactical Threat Signature Partner** (PIC: `999978433`). Leading WP2 acoustic signature modeling of submarine kinetic threats (anchors, combat divers, subsea drones) and seismic activity mapping.
 
 ---
 
@@ -143,8 +143,8 @@ graph TD
     %% Defense Reflex
     subgraph Alert["Alert & Control (AIGIS Response Plane)"]
         E -->|"Class 1: Seismic / Ocean Waves"| F["EU Oceanographic Research Portal"]
-        E -->|"Class 2: Kinetic Threat (Anchor / Sub)"| G["AIGIS Landing Terminal Apoptosis"]
-        G -->|"Immediate Isolation (<1ms)"| H["Landing Station Data Trunk Shutdown"]
+        E -->|"Class 2: Kinetic Threat (Anchor / Sub / Diver)"| G["AIGIS Landing Terminal Apoptosis"]
+        G -->|"Immediate Isolation (<1ms)"| H["Landing Station Data Trunk Shutdown & PQC Tunnel Key Revocation"]
     end
 
     %% Styling
@@ -235,9 +235,9 @@ To execute the system verification suite and launch the containerized stack:
 
 ## Consortium Partners
 
-1.  **AETERNA** (Pomorie, Bulgaria) — **Lead Coordinator & Sovereign Systems Architect** (PIC: `865986222`). High-performance vectorized Mojo classification, Zig optical ingress parsing, and kernel-level eBPF isolation systems.
-2.  **National Telecommunications and Post Commission (EETT)** (Athens, Greece) — **Landing Point Partner**. Physical operator and landing interface regulator for active Eastern Mediterranean telecommunication trunks.
-3.  **LMU Munich** (Munich, Germany) — **Research Partner** (PIC: `999978433`). In charge of acoustic and physical telemetry calibration for ocean wave analysis and early-warning seismic/tsunami alert feeds.
+1.  **AETERNA** (Pomorie, Bulgaria) — **Lead Coordinator & Sovereign Systems Architect** (PIC: `865986222`). High-performance vectorized Mojo classification, Zig optical ingress parsing, kernel-level eBPF isolation, and the ML-KEM-1024 Post-Quantum cryptographic shield (`quantum_crypt_shield.rs`).
+2.  **National Telecommunications and Post Commission (EETT)** (Athens, Greece) — **Landing Point Partner**. Physical operator and landing interface regulator for active Eastern Mediterranean telecommunication trunks, managing the tactical QKD optical links and military-grade SCADA gateways.
+3.  **LMU Munich** (Munich, Germany) — **Research Partner** (PIC: `999978433`). Advanced geophysical telemetry, seismic mapping, and acoustic threat signature modeling for subsea security.
 
 ---
 
