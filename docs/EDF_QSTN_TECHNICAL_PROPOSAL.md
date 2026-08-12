@@ -56,6 +56,9 @@ graph TD
     class G1,G2,G3 response;
 ```
 
+### Subsea Seabed Sensing Mechanism & QKD Tactical Mesh Illustration
+![AETERNA-QSTN Subsea Seabed Sensing Mechanism & QKD Mesh](docs/aeterna_qstn_subsea_mechanism_masterpiece.png)
+
 ---
 
 ## 1. Project Summary & Scientific/Technical Excellence

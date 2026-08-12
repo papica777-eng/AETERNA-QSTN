@@ -32,12 +32,12 @@ class NumberedCanvas(canvas.Canvas):
         self.setFillColor(colors.HexColor("#718096"))
         
         # Get custom properties from the canvas or use default
-        doc_title = getattr(self, 'doc_title', "AETERNA-SCW Proposal")
+        doc_title = getattr(self, 'doc_title', "AETERNA-QSTN Proposal")
         footer_text = getattr(self, 'doc_footer', "CONFIDENTIAL")
         
         # Running header (skip on page 1 for a cleaner cover-like look)
         if self._pageNumber > 1:
-            self.drawString(54, 750, f"AETERNA-SCW // {doc_title}")
+            self.drawString(54, 750, f"AETERNA-QSTN // {doc_title}")
             self.setStrokeColor(colors.HexColor("#E2E8F0"))
             self.setLineWidth(0.5)
             self.line(54, 742, 558, 742)
@@ -66,8 +66,9 @@ def clean_html_text(text):
     text = text.replace('<code>', '<font face="Courier" color="#1A202C"><b>').replace('</code>', '</b></font>')
     # Format links
     text = re.sub(r'<a href="([^"]+)">([^<]+)</a>', r'<font color="#2B6CB0"><a href="\1"><u>\2</u></a></font>', text)
-    # Remove any unsupported HTML tags like 🌊, 🌊, 🛡️, etc. or keep them if they are text
-    # Convert some specific emoji unicode to something safe or strip them if needed, but let's keep simple text characters
+    # Strip img tags from paragraph text (handled separately as flowables)
+    text = re.sub(r'<img[^>]*>', '', text)
+    # Remove any unsupported HTML tags like 🌊, 🛡️, etc. or keep them if they are text
     text = text.replace('🌊', '').replace('🛡️', '').replace('🎯', '').replace('📋', '').replace('🖋️', '')
     return text.strip()
 
@@ -99,14 +100,8 @@ def html_to_flowables(soup, styles):
                 
         elif node.name == 'p':
             text = clean_html_text(str(node.decode_contents()))
-            
-            # Check if this paragraph contains the signature or keys to embed signature image
-            if "[AETERNA_SEC_SOVEREIGN_AUTH_KEY" in text:
-                flowables.append(Spacer(1, 15))
-                sig_path = "z:\\soul\\docs\\assets\\dimitar_p_signature.png"
-                if os.path.exists(sig_path):
-                    flowables.append(Image(sig_path, width=120, height=45))
-                    flowables.append(Spacer(1, 5))
+            flowables.append(Paragraph(text, styles['CustomBody']))
+            flowables.append(Spacer(1, 6))
             
             # Check if it has a partner signature block
             if "[Name of Authorized Representative]" in text:
@@ -197,13 +192,23 @@ def html_to_flowables(soup, styles):
             flowables.append(Spacer(1, 5))
             flowables.append(HRFlowable(width="100%", thickness=1, color=colors.HexColor("#E2E8F0"), spaceAfter=10))
             
+        elif node.name == 'img':
+            src = node.get('src', '')
+            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            img_full_path = os.path.join(base_dir, src) if not os.isabs(src) else src
+            if os.path.exists(img_full_path):
+                flowables.append(Spacer(1, 10))
+                flowables.append(Image(img_full_path, width=480, height=270))
+                flowables.append(Spacer(1, 10))
+
         elif node.name == 'pre' or node.name == 'code':
             code_text = node.get_text()
             if "graph TD" in code_text or "mermaid" in code_text:
                 flowables.append(Spacer(1, 10))
                 flowables.append(Paragraph("<b>AIGIS Subsea Shield - Cyber-Physical Flowchart:</b>", styles['CustomH3']))
                 flowables.append(Spacer(1, 6))
-                img_path = "z:\\soul\\docs\\assets\\aigis_subsea_shield_flowchart.png"
+                base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                img_path = os.path.join(base_dir, "docs", "aeterna_qstn_subsea_mechanism_masterpiece.png")
                 if os.path.exists(img_path):
                     flowables.append(Image(img_path, width=480, height=270))
                 else:
@@ -334,23 +339,23 @@ def main():
         
     tasks = [
         {
-            "md": os.path.join(base_dir, "docs", "CEF_SMART_CABLES_PROPOSAL.md"),
-            "pdf": os.path.join(pdf_dir, "CEF_Part_B_Technical_Description.pdf"),
-            "title": "Part B Technical Description (WORKS)",
-            "footer": "CONFIDENTIAL // CEF DIGITAL 2026 // AETERNA-SCW SMART CABLES WORKS",
+            "md": os.path.join(base_dir, "docs", "EDF_QSTN_TECHNICAL_PROPOSAL.md"),
+            "pdf": os.path.join(pdf_dir, "EDF_Part_B_Technical_Description.pdf"),
+            "title": "Part B Technical Description (EDF-RA)",
+            "footer": "CONFIDENTIAL // EDF-2026-RA // AETERNA-QSTN QUANTUM TACTICAL NETWORK",
             "zip": True
         },
         {
-            "md": os.path.join(base_dir, "docs", "CEF_SECURITY_COMPLIANCE_DECLARATION.md"),
-            "pdf": os.path.join(pdf_dir, "CEF_Security_Compliance_Declaration.pdf"),
+            "md": os.path.join(base_dir, "docs", "EDF_SECURITY_COMPLIANCE_DECLARATION.md"),
+            "pdf": os.path.join(pdf_dir, "EDF_Security_Compliance_Declaration.pdf"),
             "title": "Security Compliance Declaration & Sovereignty Attestation",
             "footer": "EU SOVEREIGN SECURITY ATTESTATION // NIS2 COMPLIANT // PIC 865986222"
         },
         {
-            "md": os.path.join(base_dir, "docs", "CEF_LETTER_OF_SUPPORT_TEMPLATE.md"),
-            "pdf": os.path.join(pdf_dir, "CEF_Letter_of_Support_Template.pdf"),
+            "md": os.path.join(base_dir, "docs", "EDF_LETTER_OF_SUPPORT_TEMPLATE.md"),
+            "pdf": os.path.join(pdf_dir, "EDF_Letter_of_Support_Template.pdf"),
             "title": "Consortium Letter of Support Template",
-            "footer": "CEF DIGITAL 2026 // AETERNA-SCW // CONSORTIUM PARTICIPATION LETTER"
+            "footer": "EDF-2026-RA // AETERNA-QSTN // CONSORTIUM PARTICIPATION LETTER"
         }
     ]
     
