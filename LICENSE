@@ -1,0 +1,47 @@
+===============================================================================
+  AETERNA SOVEREIGN INTELLECTUAL PROPERTY & PUBLIC DEMONSTRATOR LICENSE (v1.0)
+===============================================================================
+
+Copyright (c) 2026 AETERNA (Pomorie, Bulgaria). All Rights Reserved.
+Sovereign Architect: Dimitar Prodromov | PIC: 865986222
+
+Proposal ID: 101354145 | Connecting Europe Facility (CEF Digital 2026)
+Call: CEF-DIG-2026-SMART-CABLES-WORKS
+Topic: Submarine Cyber-Physical Infrastructure Protection (AIGIS Subsea Shield)
+
+-------------------------------------------------------------------------------
+1. DEMONSTRATOR & PUBLIC EVALUATION PERMISSION
+-------------------------------------------------------------------------------
+Permission is hereby granted to European Union evaluation panels, designated 
+national authorities (Ministry of Electronic Governance of Bulgaria, Hellenic 
+Submarine Telecom Authority, LMU Munich), and authorized consortium evaluators 
+to inspect, compile, and execute the public demonstration scripts, UI HUDs, 
+and documentation contained within this repository for proposal evaluation 
+and verification purposes under CEF Regulation (EU) 2021/1153.
+
+-------------------------------------------------------------------------------
+2. PROPRIETARY CORE IP RESTRICTION (ARTICLE 9(4) COMPLIANCE)
+-------------------------------------------------------------------------------
+The underlying production mathematical kernels—including but not limited to 
+Mojo SIMD signal classification loops, zero-copy Zig DMA ingress drivers, 
+Rust SCADA controllers, and Linux eBPF kernel apoptosis modules—remain the 
+exclusive, non-transferable Intellectual Property (IP) of AETERNA (Pomorie, BG).
+
+No right is granted to copy, reverse-engineer, modify, distribute, sub-license, 
+or commercially exploit any portion of the production core codebase outside 
+the scope of authorized European Health and Digital Executive Agency (HADEA) 
+Grant Agreements and sovereign EU Member State critical infrastructure nodes.
+
+-------------------------------------------------------------------------------
+3. DATA SOVEREIGNTY & NO THIRD-COUNTRY TRANSFERS
+-------------------------------------------------------------------------------
+In accordance with Article 9(4) of CEF Regulation (EU) 2021/1153, all software, 
+telemetry algorithms, and landing station security modules are strictly bound to 
+European Union / EEA jurisdiction. Third-country transfer, unauthorized data 
+exfiltration, or non-EU entity control is strictly prohibited.
+
+===============================================================================
+THIS SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF 
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+===============================================================================
