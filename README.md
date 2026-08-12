@@ -1,13 +1,13 @@
-# AETERNA-SCW (AETERNA Smart Cables Works)
+# AETERNA-QSTN (AETERNA Sovereign Quantum Tactical Network)
 
-### Sovereign Cyber-Physical Security & Coherent Optical Phase Sensing for Submarine Telecommunications
+### Sovereign Cyber-Physical Security & Coherent Optical Phase Sensing for Submarine Defense Telecommunications
 
-[![CEF Digital: Submitted](https://img.shields.io/badge/CEF_Digital-Smart_Cables_Works_Submitted-blue.svg)](#)
-[![Proposal ID: 101354145](https://img.shields.io/badge/Proposal_ID-101354145-purple.svg)](#)
+[![EDF-2026-RA: Submitted](https://img.shields.io/badge/EDF_2026_RA-Proposal_Submitted-blue.svg)](#)
+[![Proposal ID: 101357872](https://img.shields.io/badge/Proposal_ID-101357872-purple.svg)](#)
 [![Lead Applicant: AETERNA](https://img.shields.io/badge/Lead_Applicant-AETERNA-orange.svg)](#)
 [![Veritas Test Suite: 30/30 PASSED](https://img.shields.io/badge/Veritas_Suite-30%2F30_PASSED-brightgreen.svg)](#)
 [![Execution Latency: O(1) <1.14ms](https://img.shields.io/badge/Latency-O(1)_%3C1.14ms-blue.svg)](#)
-[![Green Deal: 10x Lower Footprint](https://img.shields.io/badge/Green_Deal-10x_Lower_Carbon_Footprint-success.svg)](#)
+[![Funding: 100% EU Grant](https://img.shields.io/badge/Funding-100%25_EU_Sovereign_Grant-success.svg)](#)
 [![eBPF Apoptosis: <1.02ms](https://img.shields.io/badge/eBPF_Apoptosis-%3C1.02ms-red.svg)](#)
 [![PIC: 865986222](https://img.shields.io/badge/PIC-865986222_Validated-green.svg)](#)
 
@@ -16,28 +16,28 @@
 
 ## High-Prestige UHD Masterwork
 
-A cinematic, ultra-high-definition visualization of the **AETERNA Subsea Cyber-Physical Shield** resting on the deep-ocean bed, actively monitoring light telemetry and protected by holographic secure grids. Signed by the Sovereign Systems Architect *Dimitar Prodromov*:
+A cinematic, ultra-high-definition visualization of the **AETERNA Sovereign Quantum Tactical Network (AETERNA-QSTN)** resting on the deep-ocean floor. Active submarine fiber-optic cables emitting glowing quantum light paths (blue and cyan) are protected by holographic secure defense grids guarding the subsea communications landing node from cyber-physical threats. Signed by the Sovereign Systems Architect *Dimitar Prodromov*:
 
-![AETERNA-SCW Subsea Cyber-Physical Shield Signed Masterwork](docs/aeterna_scw_aigis_masterpiece_signed.png)
+![AETERNA-QSTN Sovereign Quantum Tactical Network Masterwork](docs/aeterna_qstn_quantum_shield_masterpiece.png)
 
 ---
 
 ## 🔒 Intellectual Property & Proprietary Core Notice
 
 > **IMPORTANT NOTICE REGARDING REPOSITORY CONTENTS:**  
-> This public demonstration repository contains official project documentation, architectural flowcharts, UI HUD demonstrators, and execution playbooks for evaluation purposes under the **Connecting Europe Facility (CEF Digital 2026)** proposal ID **101354145**.
+> This public demonstration repository contains official project documentation, architectural flowcharts, UI HUD demonstrators, and execution playbooks for evaluation purposes under the **European Defence Fund (EDF-2026-RA)** proposal ID **101357872**.
 > 
 > The native production codebase—including the Mojo SIMD vectorization loops (`simulation.mojo`), zero-copy Zig optical DMA ingress engines (`SOP_STREAM_ACQUISITION.zig`), Rust SCADA dome controllers (`aigis_dome.rs`), and Linux kernel eBPF Sentinel apoptosis modules (`sovereign_sentinel.rs`)—represents proprietary Intellectual Property (IP) owned exclusively by **AETERNA (Pomorie, Bulgaria)** under EU Critical Infrastructure Protection guidelines.
 > 
-> **Access & Code Transfer:** The production mathematical kernels and full air-gapped repositories will be formally transferred and deployed onto dedicated bare-metal compute nodes at designated subsea landing terminals upon Grant Agreement (GA) signing and project kickoff with the **European Health and Digital Executive Agency (HADEA)**.
+> **Access & Code Transfer:** The production mathematical kernels and full air-gapped repositories will be formally transferred and deployed onto dedicated bare-metal compute nodes at designated subsea landing terminals upon Grant Agreement (GA) signing and project kickoff with the European Commission.
 
 ---
 
 ## Project Overview
 
-**AETERNA-SCW (AETERNA Smart Cables Works)** is a sovereign, €20,000,000 cyber-physical infrastructure deployment proposal submitted under the Connecting Europe Facility (**CEF Digital 2026**) "Smart Cables Works" call. (Proposal ID: **101354145**)
+**AETERNA-QSTN (AETERNA Sovereign Quantum Tactical Network)** is a sovereign, €14,000,000 cyber-physical security research and development action submitted under the European Defence Fund (**EDF-2026-RA**) "CYBER-QSTN" call. (Proposal ID: **101357872**)
 
-The project retrofits critical active trans-oceanic telecommunication trunks in the **Black Sea** and **Eastern Mediterranean** with high-fidelity, non-intrusive coherent optical sensing—the **AIGIS Subsea Shield**—without interrupting high-capacity data traffic. By combining coherent Distributed Acoustic Sensing (DAS) and State of Polarization (SOP) shifts with ultra-low latency, vectorized mathematical classification directly at landing station terminals, the system acts as a real-time defense plane against physical tapping, kinetic sabotage, and environmental hazards.
+The project retrofits critical active trans-oceanic and subsea defense telecommunication trunks in the **Black Sea** and **Eastern Mediterranean** with high-fidelity, non-intrusive coherent optical sensing—the **AIGIS Subsea Shield**—without interrupting operational data traffic. By combining coherent Distributed Acoustic Sensing (DAS) and State of Polarization (SOP) shifts with ultra-low latency, vectorized mathematical classification directly at landing station terminals, the system acts as a real-time defense plane against physical tapping, kinetic sabotage, and environmental hazards.
 
 ---
 
@@ -46,7 +46,7 @@ The project retrofits critical active trans-oceanic telecommunication trunks in 
 > **Key Innovation for EU Evaluation Panels:**  
 > *"Постигната същата производителност при 10х по-нисък въглероден отпечатък и хардуерни разходи / Achieved equal or superior real-time inference performance at 10x lower carbon footprint and hardware expenditure."*
 
-By replacing bloated cloud infrastructure and heavy floating-point neural networks with ultra-optimized $O(1)$ SIMD kernels (Mojo) and zero-copy kernel DMA streams (Zig & eBPF), **AETERNA-SCW** drastically reduces compute energy consumption at landing terminals:
+By replacing bloated cloud infrastructure and heavy floating-point neural networks with ultra-optimized $O(1)$ SIMD kernels (Mojo) and zero-copy kernel DMA streams (Zig & eBPF), **AETERNA-QSTN** drastically reduces compute energy consumption at landing terminals:
 * 🔋 **10x Energy Reduction:** Operates full 10kHz subsea acoustic signal classification on low-power edge nodes without requiring massive multi-GPU server farms.
 * 🌿 **Green Deal Alignment:** Direct compliance with European Green Deal directives for sustainable, eco-efficient digital infrastructure.
 * 💶 **10x Cost Savings:** Minimizes hardware Capex and post-grant operational Opex for European telecom operators and consortium partners.
@@ -108,26 +108,15 @@ graph TD
 | 👁️ **Visual EO (Layer 3)** | Flexible 256×192 Micro-LED Matrix + Dorsal Camera | Color Delta-E Deviation | **<1.5** (99.2% match, defeats Sentinel-2) |
 | ⚡ **System Latency** | Mojo SIMD O(1) PID + Render Pipeline | End-to-End Refresh | **<0.8ms** per cycle |
 
-### Regulatory Justification
-* **CER Directive (EU 2022/2557) Article 13:** Mandates physical resilience measures including protection against surveillance, sabotage, and unauthorized reconnaissance for Critical Entity operators.
-* **CEF Regulation (EU 2021/1153) Article 9(4):** Mandates sovereign control and protection of submarine cable landing points against third-country surveillance and intelligence-gathering operations.
-* **EU Dual-Use Policy (June 2026):** Explicitly permits financing of civilian-defense dual-use physical protection technologies under European Commission grants.
-
-### Simulation Script
-```bash
-# Run WP4 Multispectral Thermal PID Simulation
-mojo scripts/multispectral_thermal_pid.mojo
-```
-
 ---
 
 ## Consortium Partners & Institutional Alignment
 
-The **AETERNA-SCW** consortium unites sovereign software architecture, landing infrastructure, and geophysics research:
+The **AETERNA-QSTN** consortium unites sovereign software architecture, landing infrastructure, and geophysics research:
 
 1. 🇧🇬 **AETERNA (Pomorie, Bulgaria)** — **Lead Coordinator & Sovereign Systems Architect** (PIC: `865986222`). Architect of the Mojo vectorized AI core, zero-copy Zig optical DMA ingress engines, and Rust/eBPF kernel sentinel loops.
-2. 🇬🇷 **Hellenic Submarine Telecom Authority (Athens, Greece)** — **Landing Terminal & Subsea Infrastructure Partner**. Providing direct access to trans-oceanic landing terminals and active telecommunication trunks across the Mediterranean.
-3. 🇩🇪 **Munich Institute of Geophysics (LMU Munich, Germany)** — **Seismic & Physical Telemetry Calibration Partner**. Leading WP2 seismic signal calibration, acoustic wave classification, and early-warning tsunami alert feeds.
+2. 🇬🇷 **National Telecommunications and Post Commission / EETT (Athens, Greece)** — **Landing Terminal & Subsea Infrastructure Partner**. Providing direct access to trans-oceanic landing terminals and active telecommunication trunks across the Mediterranean.
+3. 🇩🇪 **LMU Munich (Munich, Germany)** — **Seismic & Physical Telemetry Calibration Partner** (PIC: `999978433`). Leading WP2 seismic signal calibration, acoustic wave classification, and early-warning tsunami alert feeds.
 
 ---
 
@@ -181,16 +170,16 @@ All submission artifacts, including technical proposals, budgets, security decla
 *   [**`Consortium Letter of Support Template`**](docs/pdf/CEF_Letter_of_Support_Template.pdf) — General participation template for consortium members.
 
 ### 2. Financial & Scheduling
-*   [**`CEF Detailed Budget Table (Excel)`**](docs/pdf/CEF_Detailed_Budget_Table.xlsx) — Flawless, multi-sheet financial breakdown representing the €20M budget with 50% matched co-funding.
+*   [**`CEF Detailed Budget Table (Excel)`**](docs/pdf/CEF_Detailed_Budget_Table.xlsx) — Flawless, multi-sheet financial breakdown representing the €14M budget with 100% funding rate.
 *   [**`CEF Detailed Budget Report (PDF)`**](docs/pdf/CEF_Detailed_Budget_Table.pdf) — High-quality PDF rendering of the detailed budget table.
 *   [**`CEF Gantt Chart & Timetable`**](docs/pdf/CEF_Gantt_Chart_Timetable.pdf) — Phase-by-phase timeline covering the 36-month runtime.
 
 ### 3. Declarations & Annexes
-*   [**`Ownership Control Declaration`**](docs/pdf/CEF_Ownership_Control_Declaration.pdf) — Formal attestation under Article 9(4) confirming AETERNA is owned 100% within the EU, with zero foreign equity or decisive influence.
+*   [**`Ownership Control Declaration`**](docs/pdf/CEF_Ownership_Control_Declaration.pdf) — Formal attestation confirming AETERNA is owned 100% within the EU, with zero foreign equity or decisive influence.
 *   [**`Annual Activity Report`**](docs/pdf/CEF_Annual_Activity_Report.pdf) — Official operational summary mapping AETERNA's organizational strength.
 *   [**`List of Previous Projects`**](docs/pdf/CEF_List_of_Previous_Projects.pdf) — List of preceding critical infrastructure deployments.
 *   [**`Technical Specifications Annex (Other Annexes)`**](docs/pdf/CEF_Other_Annex_Technical_Specs.pdf) — Technical breakdown of the DAS hardware interfaces, coherent interrogators, and eBPF kernel isolation scopes.
-*   [**`Letters of Support (Combined)`**](docs/pdf/CEF_Letters_of_Support_Combined.pdf) — Aggregated support letters from the Hellenic Submarine Telecom Authority (Greece) and Munich Institute of Geophysics (Germany) confirming budget matches.
+*   [**`Letters of Support (Combined)`**](docs/pdf/CEF_Letters_of_Support_Combined.pdf) — Aggregated support letters from EETT (Greece) and LMU Munich (Germany) confirming budget matches.
 
 ---
 
@@ -247,8 +236,8 @@ To execute the system verification suite and launch the containerized stack:
 ## Consortium Partners
 
 1.  **AETERNA** (Pomorie, Bulgaria) — **Lead Coordinator & Sovereign Systems Architect** (PIC: `865986222`). High-performance vectorized Mojo classification, Zig optical ingress parsing, and kernel-level eBPF isolation systems.
-2.  **Hellenic Submarine Telecom Authority** (Athens, Greece) — **Landing Point Partner**. Physical operator and landing interface coordinator for active Eastern Mediterranean telecommunication trunks.
-3.  **Munich Institute of Geophysics** (Munich, Germany) — **Research Partner**. In charge of acoustic and physical telemetry calibration for ocean wave analysis and early-warning seismic/tsunami alert feeds.
+2.  **National Telecommunications and Post Commission (EETT)** (Athens, Greece) — **Landing Point Partner**. Physical operator and landing interface regulator for active Eastern Mediterranean telecommunication trunks.
+3.  **LMU Munich** (Munich, Germany) — **Research Partner** (PIC: `999978433`). In charge of acoustic and physical telemetry calibration for ocean wave analysis and early-warning seismic/tsunami alert feeds.
 
 ---
 
@@ -257,4 +246,3 @@ SYSTEM INTEGRITY: LOCKED & SECURE
 NIS2 COMPLIANT STATUS: ACTIVE
 VERITAS DOME: VERIFIED BY SOVEREIGN RUNTIME (TRL 6 // 30/30 PASSED)
 ```
-
