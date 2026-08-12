@@ -160,26 +160,26 @@ graph TD
 
 ---
 
-## Submission Package & Document Registry
+## EDF-2026-RA Submission Package & Document Registry
 
-All submission artifacts, including technical proposals, budgets, security declarations, and administrative templates, are organized and stored within the `docs/pdf/` folder of this repository:
+All submission artifacts, including technical proposals, budgets, security declarations, and administrative templates, are organized and stored within the `docs/` and `docs/pdf/` folders of this repository:
 
 ### 1. Core Proposals & Security
-*   [**`Part B Technical Description (WORKS)`**](docs/pdf/CEF_Part_B_Technical_Description.zip) — Comprehensive 3-year technical implementation description including full architecture details (ZIP format).
-*   [**`Security Compliance Declaration & Sovereignty Attestation`**](docs/pdf/CEF_Security_Compliance_Declaration.pdf) — Attestation of 100% data sovereignty, zero-dependency software layers, and compliance with the NIS2 Directive and EU 5G Toolbox. Signed electronically by Sovereign Systems Architect *Dimitar Prodromov*.
-*   [**`Consortium Letter of Support Template`**](docs/pdf/CEF_Letter_of_Support_Template.pdf) — General participation template for consortium members.
+*   [**`Part B Technical Description (EDF-RA)`**](docs/EDF_Part_B_Technical_Description.zip) — Comprehensive 3-year technical implementation description including full architecture details (ZIP format).
+*   [**`Security Compliance Declaration & Sovereignty Attestation`**](docs/pdf/EDF_Security_Compliance_Declaration.pdf) — Attestation of 100% data sovereignty, zero-dependency software layers, and compliance with the NIS2 Directive and EU 5G Toolbox. Signed electronically by Sovereign Systems Architect *Dimitar Prodromov*.
+*   [**`Consortium Letter of Support Template`**](docs/pdf/EDF_Letter_of_Support_Template.pdf) — General participation template for consortium members.
 
 ### 2. Financial & Scheduling
-*   [**`CEF Detailed Budget Table (Excel)`**](docs/pdf/CEF_Detailed_Budget_Table.xlsx) — Flawless, multi-sheet financial breakdown representing the €14M budget with 100% funding rate.
-*   [**`CEF Detailed Budget Report (PDF)`**](docs/pdf/CEF_Detailed_Budget_Table.pdf) — High-quality PDF rendering of the detailed budget table.
-*   [**`CEF Gantt Chart & Timetable`**](docs/pdf/CEF_Gantt_Chart_Timetable.pdf) — Phase-by-phase timeline covering the 36-month runtime.
+*   [**`EDF Detailed Budget Table (Excel)`**](docs/pdf/EDF_Detailed_Budget_Table.xlsx) — Flawless, multi-sheet financial breakdown representing the €14M budget with 100% funding rate.
+*   [**`EDF Detailed Budget Report (PDF)`**](docs/pdf/EDF_Detailed_Budget_Table.pdf) — High-quality PDF rendering of the detailed budget table.
+*   [**`EDF Gantt Chart & Timetable`**](docs/pdf/EDF_Gantt_Chart_Timetable.pdf) — Phase-by-phase timeline covering the 36-month runtime.
 
 ### 3. Declarations & Annexes
-*   [**`Ownership Control Declaration`**](docs/pdf/CEF_Ownership_Control_Declaration.pdf) — Formal attestation confirming AETERNA is owned 100% within the EU, with zero foreign equity or decisive influence.
-*   [**`Annual Activity Report`**](docs/pdf/CEF_Annual_Activity_Report.pdf) — Official operational summary mapping AETERNA's organizational strength.
-*   [**`List of Previous Projects`**](docs/pdf/CEF_List_of_Previous_Projects.pdf) — List of preceding critical infrastructure deployments.
-*   [**`Technical Specifications Annex (Other Annexes)`**](docs/pdf/CEF_Other_Annex_Technical_Specs.pdf) — Technical breakdown of the DAS hardware interfaces, coherent interrogators, and eBPF kernel isolation scopes.
-*   [**`Letters of Support (Combined)`**](docs/pdf/CEF_Letters_of_Support_Combined.pdf) — Aggregated support letters from EETT (Greece) and LMU Munich (Germany) confirming budget matches.
+*   [**`Ownership Control Declaration`**](docs/pdf/EDF_Ownership_Control_Declaration.pdf) — Formal attestation confirming AETERNA is owned 100% within the EU, with zero foreign equity or decisive influence.
+*   [**`Annual Activity Report`**](docs/pdf/EDF_Annual_Activity_Report.pdf) — Official operational summary mapping AETERNA's organizational strength.
+*   [**`List of Previous Projects`**](docs/pdf/EDF_List_of_Previous_Projects.pdf) — List of preceding critical infrastructure deployments.
+*   [**`Technical Specifications Annex (Other Annexes)`**](docs/pdf/EDF_Other_Annex_Technical_Specs.pdf) — Technical breakdown of the DAS hardware interfaces, coherent interrogators, and eBPF kernel isolation scopes.
+*   [**`Letters of Support (Combined)`**](docs/pdf/EDF_Letters_of_Support_Combined.pdf) — Aggregated support letters from EETT (Greece) and LMU Munich (Germany) confirming budget matches.
 
 ---
 
