@@ -1,6 +1,7 @@
 import os
 import re
 import markdown
+import zipfile
 from bs4 import BeautifulSoup
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image, HRFlowable, PageBreak, KeepTogether
@@ -336,7 +337,8 @@ def main():
             "md": os.path.join(base_dir, "docs", "CEF_SMART_CABLES_PROPOSAL.md"),
             "pdf": os.path.join(pdf_dir, "CEF_Part_B_Technical_Description.pdf"),
             "title": "Part B Technical Description (WORKS)",
-            "footer": "CONFIDENTIAL // CEF DIGITAL 2026 // AETERNA-SCW SMART CABLES WORKS"
+            "footer": "CONFIDENTIAL // CEF DIGITAL 2026 // AETERNA-SCW SMART CABLES WORKS",
+            "zip": True
         },
         {
             "md": os.path.join(base_dir, "docs", "CEF_SECURITY_COMPLIANCE_DECLARATION.md"),
@@ -354,6 +356,14 @@ def main():
     
     for t in tasks:
         compile_md_to_pdf(t["md"], t["pdf"], t["title"], t["footer"])
+        if t.get("zip"):
+            pdf_path = t["pdf"]
+            zip_path = pdf_path.replace(".pdf", ".zip")
+            print(f"Packaging {pdf_path} into {zip_path}...")
+            with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+                zipf.write(pdf_path, arcname=os.path.basename(pdf_path))
+            os.remove(pdf_path)
+            print(f"Success! Saved ZIP at: {zip_path}")
 
 if __name__ == "__main__":
     main()

@@ -176,7 +176,7 @@ graph TD
 All submission artifacts, including technical proposals, budgets, security declarations, and administrative templates, are organized and stored within the `docs/pdf/` folder of this repository:
 
 ### 1. Core Proposals & Security
-*   [**`Part B Technical Description (WORKS)`**](docs/pdf/CEF_Part_B_Technical_Description.pdf) — Comprehensive 3-year technical implementation description including full architecture details.
+*   [**`Part B Technical Description (WORKS)`**](docs/pdf/CEF_Part_B_Technical_Description.zip) — Comprehensive 3-year technical implementation description including full architecture details (ZIP format).
 *   [**`Security Compliance Declaration & Sovereignty Attestation`**](docs/pdf/CEF_Security_Compliance_Declaration.pdf) — Attestation of 100% data sovereignty, zero-dependency software layers, and compliance with the NIS2 Directive and EU 5G Toolbox. Signed electronically by Sovereign Systems Architect *Dimitar Prodromov*.
 *   [**`Consortium Letter of Support Template`**](docs/pdf/CEF_Letter_of_Support_Template.pdf) — General participation template for consortium members.
 
