@@ -3,926 +3,1495 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AETERNA-SCW // Smart Cables Cyber-Physical Security</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>AETERNA-QSTN // Sovereign Quantum Tactical Network</title>
+    <meta name="description" content="AETERNA-QSTN: A €14M European Defence Fund research action for post-quantum cryptographic subsea cable protection and sovereign threat detection.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* ═══════════════════════════════════════════════════════════════
+           AETERNA-QSTN — SOVEREIGN QUANTUM TACTICAL NETWORK
+           Design Language: Military HUD + Glassmorphism + Neon Cyan
+           Color Palette: Deep Navy → Cyan → Electric Teal → Warning Amber
+           Typography: Inter (UI) + JetBrains Mono (Data/Code)
+           ═══════════════════════════════════════════════════════════════ */
+
         :root {
-            --bg-color: #030712;
-            --primary: #3b82f6;
-            --primary-glow: rgba(59, 130, 246, 0.15);
-            --accent: #f97316;
-            --accent-glow: rgba(249, 115, 22, 0.15);
-            --card-bg: rgba(17, 24, 39, 0.7);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
+            --void: #020617;
+            --abyss: #0a0f1e;
+            --deep: #0f172a;
+            --surface: #1e293b;
+            --border: rgba(56, 189, 248, 0.12);
+            --border-active: rgba(56, 189, 248, 0.35);
+            --cyan: #22d3ee;
+            --cyan-glow: rgba(34, 211, 238, 0.15);
+            --teal: #2dd4bf;
+            --teal-glow: rgba(45, 212, 191, 0.12);
+            --amber: #fbbf24;
+            --amber-glow: rgba(251, 191, 36, 0.12);
+            --red: #f43f5e;
+            --red-glow: rgba(244, 63, 94, 0.15);
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+            --text-ghost: #475569;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', system-ui, sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            font-family: var(--sans);
+            background: var(--void);
+            color: var(--text);
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 45%);
-            background-attachment: fixed;
             min-height: 100vh;
         }
 
-        header {
-            max-width: 1200px;
+        /* ── Animated Background Grid ─────────────────────────────── */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% -10%, rgba(34, 211, 238, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 80% 90%, rgba(45, 212, 191, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse 40% 30% at 10% 70%, rgba(251, 191, 36, 0.04) 0%, transparent 50%);
+        }
+
+        /* ── Scanline Overlay ─────────────────────────────────────── */
+        .scanline {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(34, 211, 238, 0.008) 2px,
+                rgba(34, 211, 238, 0.008) 4px
+            );
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ── Navigation ───────────────────────────────────────────── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px) saturate(1.4);
+            background: rgba(2, 6, 23, 0.75);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 0 2rem;
+            height: 64px;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
         }
 
-        .logo-section {
+        .nav-brand {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.875rem;
         }
 
-        .logo-symbol {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 0.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: bold;
-            color: white;
-            font-size: 1.25rem;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        .nav-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--cyan), var(--teal));
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .logo-text {
-            font-family: 'Space Grotesk', sans-serif;
+        .nav-icon::after {
+            content: '⬡';
+            font-size: 18px;
+            color: var(--void);
+            font-weight: 900;
+        }
+
+        .nav-icon::before {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            background: conic-gradient(from 0deg, transparent 0%, rgba(255,255,255,0.3) 10%, transparent 20%);
+            animation: icon-spin 3s linear infinite;
+        }
+
+        @keyframes icon-spin { to { transform: rotate(360deg); } }
+
+        .nav-title {
+            font-family: var(--mono);
             font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: -0.05em;
-            background: linear-gradient(to right, #ffffff, var(--text-muted));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            color: var(--text);
         }
 
-        .hero-section {
-            max-width: 1200px;
-            margin: 5rem auto;
-            padding: 0 1.5rem;
-            text-align: center;
+        .nav-title span {
+            color: var(--cyan);
         }
 
-        .tagline {
-            display: inline-flex;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .nav-links a {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-dim);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+            background: var(--cyan-glow);
+        }
+
+        .nav-status {
+            display: flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(59, 130, 246, 0.05);
-            border: 1px solid rgba(59, 130, 246, 0.25);
-            padding: 0.5rem 1.25rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #60a5fa;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--teal);
+            padding: 0.35rem 0.85rem;
+            background: rgba(45, 212, 191, 0.08);
+            border: 1px solid rgba(45, 212, 191, 0.2);
+            border-radius: 20px;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--teal);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.6); }
+            50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(45, 212, 191, 0); }
+        }
+
+        /* ── Hero Section ─────────────────────────────────────────── */
+        .hero {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--amber);
+            background: var(--amber-glow);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            padding: 0.4rem 1.25rem;
+            border-radius: 999px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 2rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 2.5rem;
+            animation: badge-glow 3s ease-in-out infinite alternate;
         }
 
-        h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #ffffff, #9ca3af);
+        @keyframes badge-glow {
+            from { box-shadow: 0 0 12px rgba(251, 191, 36, 0.05); }
+            to { box-shadow: 0 0 24px rgba(251, 191, 36, 0.15); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.75rem;
+        }
+
+        .hero h1 .line1 {
+            display: block;
+            background: linear-gradient(to right, #e2e8f0, #64748b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        h1 span {
-            background: linear-gradient(to right, #60a5fa, #f97316);
+        .hero h1 .line2 {
+            display: block;
+            background: linear-gradient(135deg, var(--cyan), var(--teal), var(--cyan));
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: gradient-shift 4s ease infinite;
         }
 
-        .hero-desc {
-            max-width: 750px;
-            margin: 0 auto 3rem auto;
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            line-height: 1.6;
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
         }
 
-        .btn-group {
+        .hero-sub {
+            max-width: 680px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        .hero-actions {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
             margin-bottom: 5rem;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 0.85rem 2rem;
-            border-radius: 0.75rem;
+            gap: 0.6rem;
+            padding: 0.8rem 1.75rem;
+            border-radius: 10px;
             font-weight: 600;
+            font-size: 0.875rem;
             text-decoration: none;
-            transition: all 0.2s ease;
-            font-size: 1rem;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 20px var(--primary-glow);
+        .btn-cyan {
+            background: linear-gradient(135deg, var(--cyan), var(--teal));
+            color: var(--void);
+            box-shadow: 0 4px 24px rgba(34, 211, 238, 0.25);
         }
 
-        .btn-primary:hover {
+        .btn-cyan:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 8px 32px rgba(34, 211, 238, 0.4);
         }
 
-        .btn-secondary {
+        .btn-ghost {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
+            color: var(--text);
+            border: 1px solid var(--border);
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--border-active);
             transform: translateY(-2px);
         }
 
-        .grid-section {
-            max-width: 1200px;
-            margin: 0 auto 8rem auto;
-            padding: 0 1.5rem;
+        /* ── Metrics Bar ──────────────────────────────────────────── */
+        .metrics-bar {
+            max-width: 1000px;
+            margin: 0 auto 6rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 1rem;
-            padding: 2.5rem;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-            position: relative;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border-radius: 16px;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            border: 1px solid var(--border);
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        .metric {
+            background: var(--abyss);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: background 0.3s;
         }
 
-        .card-icon-wrapper {
-            width: 3.2rem;
-            height: 3.2rem;
-            border-radius: 0.75rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
+        .metric:hover { background: rgba(34, 211, 238, 0.03); }
 
-        .card:hover .card-icon-wrapper {
-            background: rgba(59, 130, 246, 0.08);
-            border-color: rgba(59, 130, 246, 0.25);
-            transform: scale(1.05);
-        }
-
-        .card-icon-wrapper i {
-            width: 1.6rem;
-            height: 1.6rem;
-        }
-
-        .icon-cyan {
-            color: #00f0ff;
-            filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.3));
-        }
-
-        .icon-gold {
-            color: #ff9f1c;
-            filter: drop-shadow(0 0 8px rgba(255, 159, 28, 0.3));
-        }
-
-        .icon-blue {
-            color: #3b82f6;
-            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
-        }
-
-        .card-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
+        .metric-value {
+            font-family: var(--mono);
+            font-size: 1.75rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            color: white;
+            color: var(--cyan);
+            margin-bottom: 0.35rem;
         }
 
-        .card-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 2rem;
+        .metric-label {
+            font-size: 0.72rem;
+            color: var(--text-ghost);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
         }
 
-        .card-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
+        /* ── Section Titles ───────────────────────────────────────── */
+        .section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem 7rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: color 0.2s ease;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            font-weight: 500;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1rem;
+            padding: 0.3rem 1rem;
+            background: var(--cyan-glow);
+            border: 1px solid rgba(34, 211, 238, 0.15);
+            border-radius: 999px;
         }
 
-        .card-link:hover {
-            color: var(--accent);
+        .section-title {
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 1rem;
         }
 
-        .footer-text {
-            text-align: center;
-            padding: 3rem 1.5rem;
+        .section-desc {
+            max-width: 640px;
+            margin: 0 auto;
+            color: var(--text-dim);
+            font-size: 1rem;
+            line-height: 1.65;
+        }
+
+        /* ── Work Package Cards ───────────────────────────────────── */
+        .wp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .wp-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .wp-card:hover {
+            border-color: var(--border-active);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+        }
+
+        .wp-card:hover::before { opacity: 1; }
+
+        .wp-number {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .wp-number::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--cyan);
+            border-radius: 2px;
+            transform: rotate(45deg);
+        }
+
+        .wp-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .wp-card p {
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            line-height: 1.65;
+            margin-bottom: 1.25rem;
+        }
+
+        .wp-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .wp-tech span {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            padding: 0.25rem 0.65rem;
+            background: rgba(34, 211, 238, 0.06);
+            border: 1px solid rgba(34, 211, 238, 0.12);
+            border-radius: 4px;
+            color: var(--text-dim);
+        }
+
+        /* ── Architecture Diagram ─────────────────────────────────── */
+        .arch-container {
+            background: var(--abyss);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .arch-container::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 180deg, transparent 0%, rgba(34, 211, 238, 0.03) 25%, transparent 50%);
+            animation: arch-rotate 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes arch-rotate { to { transform: rotate(360deg); } }
+
+        .arch-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .arch-layer {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .arch-layer:hover {
+            background: rgba(34, 211, 238, 0.03);
+            border-color: var(--border-active);
+        }
+
+        .arch-layer-name {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .layer-subsea .arch-layer-name { color: var(--cyan); }
+        .layer-edge .arch-layer-name { color: var(--teal); }
+        .layer-pqc .arch-layer-name { color: var(--amber); }
+        .layer-sentinel .arch-layer-name { color: var(--red); }
+
+        .arch-layer-desc {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.2);
-            border-top: 1px solid var(--border-color);
-            max-width: 1200px;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        .arch-layer-desc strong { color: var(--text); }
+
+        .arch-arrow {
+            display: flex;
+            justify-content: center;
+            padding: 0.25rem 0;
+            color: var(--text-ghost);
+            font-size: 1.25rem;
+            animation: arrow-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes arrow-pulse {
+            0%, 100% { opacity: 0.3; transform: translateY(0); }
+            50% { opacity: 0.8; transform: translateY(3px); }
+        }
+
+        /* ── Consortium ───────────────────────────────────────────── */
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .partner-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .partner-card:hover {
+            border-color: var(--border-active);
+            transform: translateY(-3px);
+        }
+
+        .partner-flag {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .partner-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .partner-role {
+            font-size: 0.78rem;
+            color: var(--cyan);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-family: var(--mono);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .partner-desc {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            line-height: 1.55;
+        }
+
+        .partner-budget {
+            margin-top: 1.25rem;
+            font-family: var(--mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .partner-budget-label {
+            font-size: 0.65rem;
+            color: var(--text-ghost);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ── Budget Table ─────────────────────────────────────────── */
+        .budget-table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+
+        .budget-table thead th {
+            background: rgba(34, 211, 238, 0.05);
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .budget-table tbody td {
+            padding: 0.85rem 1.25rem;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            color: var(--text-dim);
+        }
+
+        .budget-table tbody tr:hover td {
+            background: rgba(34, 211, 238, 0.02);
+        }
+
+        .budget-table tbody td:first-child {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .budget-table tfoot td {
+            padding: 1rem 1.25rem;
+            background: rgba(45, 212, 191, 0.05);
+            font-weight: 700;
+            color: var(--teal);
+            font-family: var(--mono);
+            border-top: 2px solid rgba(45, 212, 191, 0.2);
+        }
+
+        /* ── Terminal Block ───────────────────────────────────────── */
+        .terminal {
+            background: var(--abyss);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .terminal-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .terminal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.r { background: #f43f5e; }
+        .terminal-dot.y { background: #fbbf24; }
+        .terminal-dot.g { background: #22c55e; }
+
+        .terminal-title {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--text-ghost);
+            margin-left: 0.5rem;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            line-height: 1.8;
+            color: var(--text-dim);
+            overflow-x: auto;
+        }
+
+        .terminal-body .prompt { color: var(--teal); }
+        .terminal-body .cmd { color: var(--text); }
+        .terminal-body .comment { color: var(--text-ghost); }
+        .terminal-body .success { color: #22c55e; }
+        .terminal-body .warning { color: var(--amber); }
+        .terminal-body .danger { color: var(--red); }
+        .terminal-body .info { color: var(--cyan); }
+
+        /* ── Footer ───────────────────────────────────────────────── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 1280px;
             margin: 0 auto;
         }
 
-        .eu-compliance {
-            max-width: 1200px;
-            margin: 0 auto 4rem auto;
-            padding: 2.5rem;
-            background: rgba(17, 24, 39, 0.4);
-            border: 1px solid var(--border-color);
-            border-radius: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            backdrop-filter: blur(12px);
-        }
-
-        .eu-compliance-header {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1.5rem;
-        }
-
-        .eu-logo {
-            width: 75px;
-            height: auto;
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
-        }
-
-        .eu-title {
-            color: white;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.3rem;
+        .footer-logo {
+            font-family: var(--mono);
             font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-ghost);
+            margin-bottom: 0.75rem;
         }
 
-        .eu-grid {
+        .footer-meta {
+            font-size: 0.75rem;
+            color: var(--text-ghost);
+            line-height: 1.8;
+        }
+
+        .footer-meta a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        .footer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-badge {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+
+        .badge-edf {
+            background: rgba(34, 211, 238, 0.08);
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            color: var(--cyan);
+        }
+
+        .badge-pqc {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            color: var(--amber);
+        }
+
+        .badge-nis2 {
+            background: rgba(45, 212, 191, 0.08);
+            border: 1px solid rgba(45, 212, 191, 0.2);
+            color: var(--teal);
+        }
+
+        .badge-trl {
+            background: rgba(244, 63, 94, 0.08);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            color: var(--red);
+        }
+
+        /* ── Floating HUD Elements ────────────────────────────────── */
+        .hud-corner {
+            position: fixed;
+            font-family: var(--mono);
+            font-size: 0.55rem;
+            color: var(--text-ghost);
+            z-index: 50;
+            pointer-events: none;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .hud-tl { top: 80px; left: 16px; }
+        .hud-tr { top: 80px; right: 16px; text-align: right; }
+        .hud-bl { bottom: 16px; left: 16px; }
+
+        .hud-corner .live {
+            color: var(--teal);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* ── PQC Shield Section (NEW, unique to QSTN) ─────────── */
+        .pqc-visual {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 2rem;
+            align-items: center;
         }
 
-        @media (max-width: 768px) {
-            .eu-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .eu-disclaimer {
-            font-style: italic;
-            opacity: 0.85;
-        }
-
-        .partner-list {
-            list-style: none;
-            margin-top: 0.5rem;
-        }
-
-        .partner-list li {
-            margin-bottom: 0.75rem;
-            padding-left: 1.2rem;
-            position: relative;
-        }
-        
-        .partner-list li::before {
-            content: '•';
-            color: var(--primary);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        /* Deployment Map Section Styling */
-        .deployment-section {
-            max-width: 1200px;
-            margin: 0 auto 8rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .deployment-title-section {
-            text-align: center;
-            margin-bottom: 3.5rem;
-        }
-
-        .deployment-title-section h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.25rem;
-            font-weight: 700;
+        .pqc-info h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(to right, #ffffff, #9ca3af);
+            background: linear-gradient(135deg, var(--amber), #f97316);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .deployment-grid {
-            display: grid;
-            grid-template-columns: 1.25fr 0.75fr;
-            gap: 2.5rem;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-            backdrop-filter: blur(12px);
+        .pqc-info p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
         }
 
-        @media (max-width: 1024px) {
-            .deployment-grid {
-                grid-template-columns: 1fr;
-            }
+        .pqc-algo-list {
+            list-style: none;
         }
 
-        .map-container {
-            background: rgba(3, 7, 18, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            position: relative;
-            min-height: 450px;
+        .pqc-algo-list li {
             display: flex;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .map-svg {
-            width: 100%;
-            height: auto;
-            max-height: 420px;
-        }
-
-        .map-node {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .map-node-pulse {
-            animation: node-pulse-glow 2s infinite;
-            transform-origin: center;
-        }
-
-        @keyframes node-pulse-glow {
-            0% { r: 6; opacity: 0.8; }
-            100% { r: 20; opacity: 0; }
-        }
-
-        .cable-path {
-            fill: none;
-            stroke-linecap: round;
-            transition: all 0.5s ease;
-        }
-
-        .cable-path-active {
-            stroke-width: 4.5px !important;
-            filter: drop-shadow(0 0 10px currentColor);
-        }
-
-        .flow-particles {
-            stroke-dasharray: 6, 15;
-            animation: flow-anim 20s linear infinite;
-        }
-
-        @keyframes flow-anim {
-            to { stroke-dashoffset: -120; }
-        }
-
-        .details-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            min-height: 450px;
-        }
-
-        .node-selectors {
-            display: flex;
-            flex-direction: column;
             gap: 0.75rem;
+            padding: 0.65rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 0.85rem;
+            color: var(--text-dim);
         }
 
-        .node-tab {
-            padding: 1.1rem 1.25rem;
-            border-radius: 0.75rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .pqc-algo-list li .algo-tag {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            padding: 0.2rem 0.5rem;
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            border-radius: 3px;
+            color: var(--amber);
+            white-space: nowrap;
         }
 
-        .node-tab:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateX(4px);
+        .pqc-diagram {
+            position: relative;
+            height: 360px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--abyss);
+            overflow: hidden;
         }
 
-        .node-tab.active-aeterna {
-            background: rgba(59, 130, 246, 0.08);
-            border-color: #3b82f6;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+        .pqc-node {
+            position: absolute;
+            padding: 0.6rem 1rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            text-align: center;
+            z-index: 2;
         }
 
-        .node-tab.active-hellenic {
-            background: rgba(16, 185, 129, 0.08);
-            border-color: #10b981;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+        .pqc-node.node-pomorie {
+            top: 30px; left: 30px;
+            border-color: rgba(34, 211, 238, 0.3);
         }
 
-        .node-tab.active-munich {
-            background: rgba(245, 158, 11, 0.08);
-            border-color: #f59e0b;
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.15);
+        .pqc-node.node-pomorie .node-label { color: var(--cyan); }
+
+        .pqc-node.node-athens {
+            bottom: 30px; right: 30px;
+            border-color: rgba(45, 212, 191, 0.3);
         }
 
-        .node-details-card {
-            background: rgba(3, 7, 18, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 1rem;
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            animation: nodeFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        .pqc-node.node-athens .node-label { color: var(--teal); }
+
+        .pqc-node.node-qkd {
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            border-color: rgba(251, 191, 36, 0.3);
+            background: rgba(251, 191, 36, 0.05);
         }
 
-        @keyframes nodeFadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .pqc-node.node-qkd .node-label { color: var(--amber); }
 
-        .details-row {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .details-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--text-muted);
+        .node-label {
             font-weight: 700;
+            font-size: 0.72rem;
+            margin-bottom: 0.15rem;
         }
 
-        .details-value {
-            color: #f3f4f6;
-            font-size: 0.95rem;
-            line-height: 1.5;
+        .pqc-line {
+            position: absolute;
+            z-index: 1;
         }
 
-        .tech-pill {
-            display: inline-block;
-            padding: 0.3rem 0.85rem;
-            border-radius: 2rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-color);
-            color: #f3f4f6;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            transition: all 0.2s ease;
+        .pqc-line-1 {
+            top: 55px;
+            left: 180px;
+            width: calc(50% - 180px);
+            height: 1px;
+            background: linear-gradient(90deg, rgba(34, 211, 238, 0.4), rgba(251, 191, 36, 0.4));
         }
 
-        .tech-pill:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
+        .pqc-line-2 {
+            bottom: 55px;
+            right: 180px;
+            width: calc(50% - 180px);
+            height: 1px;
+            background: linear-gradient(90deg, rgba(251, 191, 36, 0.4), rgba(45, 212, 191, 0.4));
         }
 
-        .base-glow-circle {
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-            opacity: 0;
+        .pqc-photon {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--amber);
+            box-shadow: 0 0 12px var(--amber);
+            z-index: 3;
+        }
+
+        .photon-1 {
+            top: 52px;
+            animation: photon-fly-1 3s linear infinite;
+        }
+
+        .photon-2 {
+            bottom: 52px;
+            animation: photon-fly-2 3s linear infinite 1.5s;
+        }
+
+        @keyframes photon-fly-1 {
+            0% { left: 180px; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { left: calc(50% - 60px); opacity: 0; }
+        }
+
+        @keyframes photon-fly-2 {
+            0% { right: 180px; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { right: calc(50% - 60px); opacity: 0; }
+        }
+
+        /* ── Responsive ───────────────────────────────────────────── */
+        @media (max-width: 900px) {
+            .metrics-bar { grid-template-columns: repeat(2, 1fr); }
+            .partner-grid { grid-template-columns: 1fr; }
+            .pqc-visual { grid-template-columns: 1fr; }
+            .wp-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .hud-corner { display: none; }
+            .arch-layer { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .metrics-bar { grid-template-columns: 1fr; }
+            .hero { padding: 4rem 1.25rem 3rem; }
+            .section { padding: 0 1.25rem 4rem; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo-section">
-            <div class="logo-symbol">Æ</div>
-            <div class="logo-text">AETERNA-SCW</div>
-        </div>
-        <a href="https://github.com/papica777-eng/AETERNA-QSTN" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">GitHub Repository</a>
-    </header>
 
-    <main>
-        <section class="hero-section">
-            <div class="tagline">
-                <i data-lucide="shield" style="width: 14px; height: 14px;"></i>
-                Connecting Europe Facility (CEF Digital) // Works Proposal
+<div class="bg-grid"></div>
+<div class="bg-gradient"></div>
+<div class="scanline"></div>
+
+<!-- HUD Corner Elements -->
+<div class="hud-corner hud-tl">
+    <div>SYS.ID: QSTN-v1.0</div>
+    <div class="live">■ ENTROPY: 0.0000</div>
+</div>
+<div class="hud-corner hud-tr">
+    <div>EDF-2026-RA</div>
+    <div>PROPOSAL: 101357872</div>
+</div>
+<div class="hud-corner hud-bl">
+    <div>COORD: 42.5584°N 27.6367°E</div>
+    <div>NODE: POMORIE_BG-01</div>
+</div>
+
+<div class="content-wrapper">
+
+    <!-- ═══ NAVIGATION ═══ -->
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <div class="nav-icon"></div>
+                <div class="nav-title">AETERNA-<span>QSTN</span></div>
             </div>
-            <h1>Sovereign Submarine Cybersecurity &<br><span>AIGIS Subsea Shield Integration</span></h1>
-            <p class="hero-desc">
-                An advanced €20,000,000 cyber-physical infrastructure deployment retrofitting submarine telecommunication fiber trunks with real-time optical phase and polarization monitoring, coupled with ultra-low latency Mojo-based neural signal classification.
-            </p>
-            <div class="btn-group">
-                <a href="docs/smart_cables_hud.html" class="btn btn-primary">
-                    <i data-lucide="shield-check" style="width: 18px; height: 18px;"></i> Launch Smart Cables HUD
-                </a>
-                <a href="docs/pdf/CEF_Part_B_Technical_Description.zip" class="btn btn-secondary">
-                    <i data-lucide="file-text" style="width: 18px; height: 18px;"></i> Read Technical Proposal (ZIP)
-                </a>
+            <div class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#pqc">PQC Shield</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#workpackages">Work Packages</a>
+                <a href="#consortium">Consortium</a>
+                <a href="#budget">Budget</a>
             </div>
-        </section>
-
-        <section class="grid-section">
-            <div class="card">
-                <div>
-                    <div class="card-icon-wrapper">
-                        <i data-lucide="waves" class="icon-cyan"></i>
-                    </div>
-                    <h3 class="card-title">Smart Cables HUD</h3>
-                    <p class="card-desc">
-                        Interactive simulated control panel representing Distributed Acoustic Sensing (DAS) and State of Polarization (SOP) light phase monitoring with instant (&lt;1ms) eBPF kernel process apoptosis.
-                    </p>
-                </div>
-                <a href="docs/smart_cables_hud.html" class="card-link">Launch HUD Sim &rarr;</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="card-icon-wrapper">
-                        <i data-lucide="cpu" class="icon-gold"></i>
-                    </div>
-                    <h3 class="card-title">Smart City Grid</h3>
-                    <p class="card-desc">
-                        Comprehensive real-time telemetry dashboard monitoring energy distribution grids, load balancing loops, and autonomous grid healing actions under sovereign control.
-                    </p>
-                </div>
-                <a href="docs/smart_cables_hud.html" class="card-link">Explore SCW Telemetry &rarr;</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="card-icon-wrapper">
-                        <i data-lucide="eye-off" class="icon-gold"></i>
-                    </div>
-                    <h3 class="card-title">WP4: Multispectral Asset Shielding</h3>
-                    <p class="card-desc">
-                        Three-layer adaptive cloaking system (Thermal IR + Radar RAM + Visual EO) protecting landing terminals against satellite surveillance, thermal imaging, and radar detection. CER Directive (EU 2022/2557) compliant.
-                    </p>
-                </div>
-                <a href="#" class="card-link" style="color: #d97706;">MPAS Engine: O(1) PID &lt;0.8ms &rarr;</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="card-icon-wrapper">
-                        <i data-lucide="folder-check" class="icon-blue"></i>
-                    </div>
-                    <h3 class="card-title">Submission Package</h3>
-                    <p class="card-desc">
-                        The fully verified and compiled 13-document package, including cost calculations, Gantt timetables, letters of support, and sovereignty control declarations.
-                    </p>
-                </div>
-                <a href="docs/pdf/CEF_Part_B_Technical_Description.zip" class="card-link">View Main Proposal ZIP &rarr;</a>
-            </div>
-        </section>
-
-        <!-- Deployment Map Section -->
-        <section class="deployment-section">
-            <div class="deployment-title-section">
-                <h2>Cyber-Physical Deployment & Optimal Routing</h2>
-                <p style="color: var(--text-muted); max-width: 600px; margin: 0.5rem auto 0 auto; font-size: 0.95rem;">
-                    Interactive map displaying secure Central European terrestrial backhaul routes, subsea sensor loops, and strategic monitoring bases.
-                </p>
-            </div>
-            <div class="deployment-grid">
-                <div class="map-container">
-                    <svg viewBox="0 0 800 500" class="map-svg">
-                        <!-- Stylized Map Grid/Dots -->
-                        <defs>
-                            <pattern id="dot-grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                                <circle cx="2" cy="2" r="1" fill="rgba(255, 255, 255, 0.07)"></circle>
-                            </pattern>
-                            <radialGradient id="munich-glow" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.3"></stop>
-                                <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"></stop>
-                            </radialGradient>
-                            <radialGradient id="pomorie-glow" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3"></stop>
-                                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"></stop>
-                            </radialGradient>
-                            <radialGradient id="athens-glow" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#10b981" stop-opacity="0.3"></stop>
-                                <stop offset="100%" stop-color="#10b981" stop-opacity="0"></stop>
-                            </radialGradient>
-                        </defs>
-
-                        <!-- Background Grid -->
-                        <rect width="800" height="500" fill="url(#dot-grid)"></rect>
-
-                        <!-- Stylized European Coastlines for Geographic Realism -->
-                        <!-- Central Europe / Germany -->
-                        <path d="M 100 100 L 320 80 L 350 160 L 200 180 Z" fill="none" stroke="rgba(255, 255, 255, 0.02)" stroke-width="1.5"></path>
-                        <!-- Italy Boot -->
-                        <path d="M 230 250 L 260 270 Q 300 350 320 380 L 350 370 Q 320 310 290 270 L 280 250" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1.5"></path>
-                        <!-- Balkans & Greece -->
-                        <path d="M 400 220 L 520 230 Q 560 240 600 250 L 610 290 Q 520 340 500 390 L 520 405 L 530 385 L 560 340 L 620 330" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1.5"></path>
-                        <!-- Black Sea Coast -->
-                        <path d="M 600 250 Q 640 210 700 200 Q 750 220 760 250 Q 700 280 610 290" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1.5"></path>
-
-                        <!-- Glowing areas around bases -->
-                        <circle cx="240" cy="140" r="80" fill="url(#munich-glow)" class="base-glow-circle" id="glow-munich"></circle>
-                        <circle cx="580" cy="260" r="80" fill="url(#pomorie-glow)" class="base-glow-circle" id="glow-pomorie"></circle>
-                        <circle cx="500" cy="390" r="80" fill="url(#athens-glow)" class="base-glow-circle" id="glow-athens"></circle>
-
-                        <!-- Fiber Optic Cables / Routes -->
-                        <!-- Terrestrial Backhaul (Munich -> Pomorie) -->
-                        <path d="M 240 140 L 320 170 L 400 180 L 500 270 L 580 260" class="cable-path" id="cable-munich-pomorie" stroke="#f59e0b" stroke-width="2.5" fill="none"></path>
-                        <path d="M 240 140 L 320 170 L 400 180 L 500 270 L 580 260" class="cable-path flow-particles" stroke="#f59e0b" stroke-width="2.5" opacity="0.8" fill="none"></path>
-
-                        <!-- Pomorie -> Athens Terrestrial/Subsea Link -->
-                        <path d="M 580 260 L 500 270 L 485 330 L 500 390" class="cable-path" id="cable-pomorie-athens" stroke="#10b981" stroke-width="2.5" fill="none"></path>
-                        <path d="M 580 260 L 500 270 L 485 330 L 500 390" class="cable-path flow-particles" stroke="#10b981" stroke-width="2.5" opacity="0.8" fill="none"></path>
-
-                        <!-- Black Sea Subsea Loop (Pomorie) -->
-                        <path d="M 580 260 C 660 200, 680 320, 580 260" class="cable-path" id="cable-black-sea" stroke="#3b82f6" stroke-dasharray="5 3" stroke-width="2" fill="none"></path>
-                        <path d="M 580 260 C 660 200, 680 320, 580 260" class="cable-path flow-particles" stroke="#3b82f6" stroke-width="2" opacity="0.8" fill="none"></path>
-
-                        <!-- Aegean Subsea Loop (Athens) -->
-                        <path d="M 500 390 C 560 460, 440 480, 500 390" class="cable-path" id="cable-aegean" stroke="#10b981" stroke-dasharray="5 3" stroke-width="2" fill="none"></path>
-                        <path d="M 500 390 C 560 460, 440 480, 500 390" class="cable-path flow-particles" stroke="#10b981" stroke-width="2" opacity="0.8" fill="none"></path>
-
-                        <!-- Labels for Geographic Reference -->
-                        <text x="240" y="320" fill="rgba(255,255,255,0.15)" font-size="10" font-family="'Space Grotesk', sans-serif" letter-spacing="0.1em">ADRIATIC SEA</text>
-                        <text x="640" y="220" fill="rgba(255,255,255,0.15)" font-size="10" font-family="'Space Grotesk', sans-serif" letter-spacing="0.1em">BLACK SEA</text>
-                        <text x="400" y="460" fill="rgba(255,255,255,0.15)" font-size="10" font-family="'Space Grotesk', sans-serif" letter-spacing="0.1em">MEDITERRANEAN SEA</text>
-
-                        <!-- Munich Node -->
-                        <g class="map-node" id="node-munich">
-                            <circle cx="240" cy="140" r="14" fill="rgba(245, 158, 11, 0.15)"></circle>
-                            <circle cx="240" cy="140" r="6" fill="#f59e0b"></circle>
-                            <circle cx="240" cy="140" r="6" fill="none" stroke="#f59e0b" stroke-width="2" class="map-node-pulse"></circle>
-                            <text x="240" y="115" fill="white" font-size="11" font-weight="bold" font-family="'Space Grotesk', sans-serif" text-anchor="middle">MUNICH BASE</text>
-                        </g>
-
-                        <!-- Pomorie Node -->
-                        <g class="map-node" id="node-pomorie">
-                            <circle cx="580" cy="260" r="14" fill="rgba(59, 130, 246, 0.15)"></circle>
-                            <circle cx="580" cy="260" r="6" fill="#3b82f6"></circle>
-                            <circle cx="580" cy="260" r="6" fill="none" stroke="#3b82f6" stroke-width="2" class="map-node-pulse"></circle>
-                            <text x="580" y="290" fill="white" font-size="11" font-weight="bold" font-family="'Space Grotesk', sans-serif" text-anchor="middle">POMORIE BASE</text>
-                        </g>
-
-                        <!-- Athens Node -->
-                        <g class="map-node" id="node-athens">
-                            <circle cx="500" cy="390" r="14" fill="rgba(16, 185, 129, 0.15)"></circle>
-                            <circle cx="500" cy="390" r="6" fill="#10b981"></circle>
-                            <circle cx="500" cy="390" r="6" fill="none" stroke="#10b981" stroke-width="2" class="map-node-pulse"></circle>
-                            <text x="500" y="415" fill="white" font-size="11" font-weight="bold" font-family="'Space Grotesk', sans-serif" text-anchor="middle">ATHENS BASE</text>
-                        </g>
-                    </svg>
-                </div>
-                <div class="details-container">
-                    <div class="node-selectors">
-                        <div class="node-tab active-aeterna" id="tab-pomorie" data-node="pomorie">
-                            <div>
-                                <span style="font-weight: 700; font-family: 'Space Grotesk', sans-serif;">Bulgaria: Pomorie Base</span>
-                                <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 0.15rem;">AETERNA Coordinator (Black Sea Landing)</div>
-                            </div>
-                            <i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i>
-                        </div>
-                        <div class="node-tab" id="tab-athens" data-node="athens">
-                            <div>
-                                <span style="font-weight: 700; font-family: 'Space Grotesk', sans-serif;">Greece: Athens Base</span>
-                                <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 0.15rem;">Hellenic Submarine Authority (Aegean Hub)</div>
-                            </div>
-                            <i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i>
-                        </div>
-                        <div class="node-tab" id="tab-munich" data-node="munich">
-                            <div>
-                                <span style="font-weight: 700; font-family: 'Space Grotesk', sans-serif;">Germany: Munich Base</span>
-                                <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 0.15rem;">LMU Geophysics Seismology Hub</div>
-                            </div>
-                            <i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i>
-                        </div>
-                    </div>
-
-                    <div class="node-details-card" id="details-card">
-                        <!-- Content dynamically inserted -->
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <section class="eu-compliance">
-        <div class="eu-compliance-header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg" alt="European Union Flag" class="eu-logo">
-            <div>
-                <div class="eu-title">Co-funded by the European Union</div>
-                <div style="margin-top: 0.4rem; color: #60a5fa;"><strong>Project ID:</strong> 101354145 &nbsp;|&nbsp; <strong>Call:</strong> CEF-DIG-2026-SMART-CABLES-WORKS</div>
+            <div class="nav-status">
+                <div class="pulse-dot"></div>
+                SUBMITTED
             </div>
         </div>
-        <div class="eu-grid">
-            <div>
-                <h4 style="color: white; margin-bottom: 1rem; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem;">Consortium Partners</h4>
-                <ul class="partner-list">
-                    <li><strong>AETERNA</strong> (Coordinator) <br><span style="opacity: 0.7; font-size: 0.85rem;">Trapezica 6, Pomorie 8200, Bulgaria</span></li>
-                    <li><strong>Ludwig-Maximilians-Universität München</strong> (Munich Institute of Geophysics) <br><span style="opacity: 0.7; font-size: 0.85rem;">Geschwister Scholl Platz 1, München 80539, Germany</span></li>
-                    <li><strong>Ethniki Epitropi Tilepikoinonion & Tachydromeion</strong> (Hellenic Submarine Telecom Authority) <br><span style="opacity: 0.7; font-size: 0.85rem;">Kifisias 60, Maroussi 151 25, Greece</span></li>
-                </ul>
+    </nav>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="overview">
+        <div class="hero-badge">⬡ European Defence Fund 2026 — Research Action</div>
+        <h1>
+            <span class="line1">Sovereign Quantum</span>
+            <span class="line2">Tactical Network</span>
+        </h1>
+        <p class="hero-sub">
+            A €14,000,000 post-quantum cyber-physical defence system that protects trans-oceanic subsea telecommunication cables against kinetic sabotage, optical tapping, and cryptographic harvest attacks — with sub-millisecond autonomous response.
+        </p>
+        <div class="hero-actions">
+            <a href="docs/CEF_Part_B_Technical_Description.zip" class="btn btn-cyan">
+                ↓ Part B Technical Description
+            </a>
+            <a href="https://github.com/papica777-eng/AETERNA-QSTN" class="btn btn-ghost" target="_blank">
+                ◈ View Repository
+            </a>
+        </div>
+
+        <!-- Metrics Bar -->
+        <div class="metrics-bar">
+            <div class="metric">
+                <div class="metric-value">€14M</div>
+                <div class="metric-label">Total Budget (100% EU)</div>
             </div>
-            <div>
-                <h4 style="color: white; margin-bottom: 1rem; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem;">Legal Disclaimer</h4>
-                <p class="eu-disclaimer">
-                    Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Health and Digital Executive Agency (HADEA). Neither the European Union nor the granting authority can be held responsible for them.
-                </p>
+            <div class="metric">
+                <div class="metric-value">&lt;1ms</div>
+                <div class="metric-label">Threat Response Latency</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">ML-KEM</div>
+                <div class="metric-label">Post-Quantum Standard</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">TRL 6</div>
+                <div class="metric-label">Target Readiness Level</div>
             </div>
         </div>
     </section>
 
-    <div class="footer-text" style="text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 2rem 0; opacity: 0.5;">
-        © 2026 AETERNA-SCW // Lead Systems Architect: Dimitar Prodromov // Pomorie, Bulgaria
-    </div>
+    <!-- ═══ PQC SHIELD (Unique to QSTN — NOT in SCW) ═══ -->
+    <section class="section" id="pqc">
+        <div class="section-header">
+            <div class="section-tag">◆ New Innovation</div>
+            <h2 class="section-title">Post-Quantum Cryptographic Shield</h2>
+            <p class="section-desc">
+                The first subsea defence system to integrate NIST-standardised lattice-based encryption and hardware Quantum Key Distribution, eliminating all "Store-Now-Decrypt-Later" attack vectors.
+            </p>
+        </div>
 
-    <script>
-        lucide.createIcons();
-
-        // Node Data for Interactive Panel
-        const nodeData = {
-            pomorie: {
-                title: "Bulgaria: Pomorie Base (AETERNA Coordinator)",
-                role: "Central Security Operations & Black Sea Landing Station",
-                cables: "Black Sea Subsea Ring & Secure Terrestrial Trunk to Athens and Munich",
-                favorableRoute: "Favorable offshore route running 24km from Pomorie landing site into the Black Sea deep shelf, retrofitted with optical polarimeters to monitor strain, acoustics, and mechanical tampering.",
-                systems: [
-                    "AIGIS Subsea Shield Cluster",
-                    "Dual-wavelength Polarimeter SOP System",
-                    "eBPF Kernel Apoptosis Switch",
-                    "Mojo AI Threat Signal Classifier",
-                    "WP4: Peltier IR Thermal Cloak (64 Zones)",
-                    "WP4: Radar-Absorbing Metamaterial Shell (-35dB)",
-                    "WP4: EO Micro-LED Adaptive Camouflage (120Hz)"
-                ],
-                spec: "TRL 6 validation; signal resolution &lt;10Hz; threat response &lt;1.0ms; NIS2 compliant; MPAS 3-layer cloaking active (IR + Radar + EO); CER Art.13 physical resilience."
-            },
-            athens: {
-                title: "Greece: Athens Base (Hellenic Submarine Telecom)",
-                role: "Aegean Network Hub & Southern Seismology Center",
-                cables: "Aegean Subsea loop to Crete & Cross-border Terrestrial backhaul to Pomorie",
-                favorableRoute: "Marine cable route running southwards through the Aegean Sea shelf, landing at Athens and extending to Chania (Crete), utilizing existing telecommunication conduits to bypass complex seafloor geology.",
-                systems: [
-                    "Distributed Acoustic Sensing (DAS) Interrogators",
-                    "High-Availability Optical Transceivers",
-                    "Hardware Security Modules (HSMs)",
-                    "Subsea Seismic Early Warning Array",
-                    "WP4: Peltier IR Thermal Cloak (64 Zones)",
-                    "WP4: EO Adaptive Camouflage Panels"
-                ],
-                spec: "Interrogation length 50km per laser unit; spatial resolution 1m; SOC 2 Type II certified; MPAS thermal + visual cloaking active."
-            },
-            munich: {
-                title: "Germany: Munich Base (LMU Institute of Geophysics)",
-                role: "Geophysical Seismology & Advanced Telemetry Analytics",
-                cables: "Sovereign Terrestrial Backhaul (Munich -> Vienna -> Budapest -> Sofia -> Pomorie)",
-                favorableRoute: "Secure redundant terrestrial path routed through Central Europe alongside railway and highway utility corridors, providing clean, low-latency paths for real-time sensor sync.",
-                systems: [
-                    "LMU Geophysics Supercomputer Cluster",
-                    "Distributed Temperature Sensing (DTS) Receivers",
-                    "Waveform Propagation Modeling Servers",
-                    "High-Stability Laser Interrogation Units"
-                ],
-                spec: "Data processing capacity 1.2 PFLOPS; real-time geological strain detection down to micro-strains; 24/7 telemetry synchronization."
-            }
-        };
-
-        function updateDetails(nodeKey) {
-            const data = nodeData[nodeKey];
-            const card = document.getElementById('details-card');
-            
-            const systemPills = data.systems.map(sys => `<span class="tech-pill">${sys}</span>`).join('');
-            
-            card.innerHTML = `
-                <div class="details-row">
-                    <span class="details-label">Base Location & Role</span>
-                    <span class="details-value"><strong>${data.title}</strong><br>${data.role}</span>
+        <div class="pqc-visual">
+            <div class="pqc-info">
+                <h3>Quantum-Resistant by Design</h3>
+                <p>
+                    Every telemetry channel, command signal, and alert payload transmitted between landing terminals is wrapped in a dual-layer encryption envelope — combining classical AES-256-GCM with post-quantum lattice-based key encapsulation — ensuring data sovereignty against both current and future quantum adversaries.
+                </p>
+                <ul class="pqc-algo-list">
+                    <li>
+                        <span class="algo-tag">ML-KEM-1024</span>
+                        Key Encapsulation — CRYSTALS-Kyber (NIST FIPS 203)
+                    </li>
+                    <li>
+                        <span class="algo-tag">ML-DSA-87</span>
+                        Digital Signatures — CRYSTALS-Dilithium (NIST FIPS 204)
+                    </li>
+                    <li>
+                        <span class="algo-tag">SLH-DSA</span>
+                        Hash-Based Signatures — SPHINCS+ (NIST FIPS 205)
+                    </li>
+                    <li>
+                        <span class="algo-tag">QKD BB84</span>
+                        Hardware Quantum Key Distribution over Dark Fibre
+                    </li>
+                </ul>
+            </div>
+            <div class="pqc-diagram">
+                <div class="pqc-node node-pomorie">
+                    <div class="node-label">POMORIE (BG-01)</div>
+                    <div>Landing Terminal</div>
+                    <div>ML-KEM Keypair Gen</div>
                 </div>
-                <div class="details-row">
-                    <span class="details-label">Best Favorable Route & Cables</span>
-                    <span class="details-value"><strong>Cables:</strong> ${data.cables}<br><strong>Optimal Placement:</strong> ${data.favorableRoute}</span>
+                <div class="pqc-line pqc-line-1"></div>
+                <div class="pqc-photon photon-1"></div>
+                <div class="pqc-node node-qkd">
+                    <div class="node-label">QKD LINK</div>
+                    <div>Entangled Photon Channel</div>
+                    <div>QBER &lt; 2%</div>
                 </div>
-                <div class="details-row">
-                    <span class="details-label">Deployed Systems</span>
-                    <div style="margin-top: 0.25rem;">
-                        ${systemPills}
+                <div class="pqc-line pqc-line-2"></div>
+                <div class="pqc-photon photon-2"></div>
+                <div class="pqc-node node-athens">
+                    <div class="node-label">ATHENS (GR-02)</div>
+                    <div>Landing Terminal</div>
+                    <div>ML-KEM Decapsulation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ ARCHITECTURE ═══ -->
+    <section class="section" id="architecture">
+        <div class="section-header">
+            <div class="section-tag">◆ System Architecture</div>
+            <h2 class="section-title">Defence-in-Depth Signal Pipeline</h2>
+            <p class="section-desc">
+                A four-layer sovereign pipeline from subsea fibre to autonomous response, operating entirely on air-gapped edge compute with zero cloud dependencies.
+            </p>
+        </div>
+
+        <div class="arch-container">
+            <div class="arch-layers">
+                <div class="arch-layer layer-subsea">
+                    <div class="arch-layer-name">Layer 1 — Subsea</div>
+                    <div class="arch-layer-desc">
+                        <strong>Coherent Optical Sensing</strong> — Distributed Acoustic Sensing (DAS) at 10 kHz per strand and State-of-Polarization (SOP) monitoring extract raw phase & polarization telemetry from active trans-oceanic trunks without interrupting data traffic.
                     </div>
                 </div>
-                <div class="details-row">
-                    <span class="details-label">Technical Specification</span>
-                    <span class="details-value" style="font-family: 'Space Grotesk', sans-serif; color: #60a5fa; font-weight: 600;">${data.spec}</span>
+                <div class="arch-arrow">▼</div>
+                <div class="arch-layer layer-edge">
+                    <div class="arch-layer-name">Layer 2 — Edge</div>
+                    <div class="arch-layer-desc">
+                        <strong>Zero-Copy SIMD Classification</strong> — Mojo AVX-512 vectorized kernels ingest raw optical streams via Zig PCIe DMA drivers at O(1) complexity, classifying seismic, maritime, and kinetic threat signatures in &lt;0.12ms per frame.
+                    </div>
                 </div>
-            `;
+                <div class="arch-arrow">▼</div>
+                <div class="arch-layer layer-pqc">
+                    <div class="arch-layer-name">Layer 3 — PQC Tunnel</div>
+                    <div class="arch-layer-desc">
+                        <strong>Post-Quantum Encrypted Command Channel</strong> — All inter-terminal telemetry and threat alerts are transmitted through ML-KEM-1024 encrypted tunnels with QKD-derived session keys, defeating harvest-now-decrypt-later adversaries.
+                    </div>
+                </div>
+                <div class="arch-arrow">▼</div>
+                <div class="arch-layer layer-sentinel">
+                    <div class="arch-layer-name">Layer 4 — Sentinel</div>
+                    <div class="arch-layer-desc">
+                        <strong>Autonomous Threat Response</strong> — Rust/eBPF kernel-level apoptosis hooks isolate compromised trunk segments in &lt;1ms, revoke PQC tunnel keys, and reroute traffic to alternate defence paths — fully autonomous, zero human latency.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            // Update tab styles
-            document.querySelectorAll('.node-tab').forEach(tab => {
-                tab.classList.remove('active-aeterna', 'active-hellenic', 'active-munich');
-            });
-            const activeTab = document.getElementById(`tab-${nodeKey}`);
-            if (activeTab) {
-                if (nodeKey === 'pomorie') activeTab.classList.add('active-aeterna');
-                else if (nodeKey === 'athens') activeTab.classList.add('active-hellenic');
-                else if (nodeKey === 'munich') activeTab.classList.add('active-munich');
+    <!-- ═══ WORK PACKAGES ═══ -->
+    <section class="section" id="workpackages">
+        <div class="section-header">
+            <div class="section-tag">◆ Research Programme</div>
+            <h2 class="section-title">Work Packages</h2>
+            <p class="section-desc">
+                Six integrated work packages spanning from subsea optical ingress to post-quantum key management, executed over a 36-month timeline.
+            </p>
+        </div>
+
+        <div class="wp-grid">
+            <div class="wp-card">
+                <div class="wp-number">WP1 — Optical Ingress</div>
+                <h3>Subsea DAS & SOP Sensing Core</h3>
+                <p>Design, deploy, and validate coherent optical interrogators at Black Sea and Eastern Mediterranean landing terminals. Achieve 10 kHz sampling with zero-interruption tap-through architecture.</p>
+                <div class="wp-tech">
+                    <span>Coherent DAS</span>
+                    <span>SOP Monitor</span>
+                    <span>Zig DMA</span>
+                    <span>PCIe 5.0</span>
+                </div>
+            </div>
+
+            <div class="wp-card">
+                <div class="wp-number">WP2 — Threat Classification</div>
+                <h3>Vectorized Signal Classifier</h3>
+                <p>Develop Mojo SIMD AVX-512 kernels for real-time O(1) classification of acoustic and polarization signatures — distinguishing seismic events, maritime traffic, combat divers, and kinetic sabotage.</p>
+                <div class="wp-tech">
+                    <span>Mojo SIMD</span>
+                    <span>AVX-512</span>
+                    <span>O(1) Inference</span>
+                    <span>&lt;0.12ms</span>
+                </div>
+            </div>
+
+            <div class="wp-card">
+                <div class="wp-number">WP3 — Autonomous Defence</div>
+                <h3>eBPF Kernel Sentinel & Apoptosis</h3>
+                <p>Implement Linux kernel eBPF hooks for sub-millisecond trunk isolation, process apoptosis, and automatic traffic rerouting upon confirmed kinetic threat detection.</p>
+                <div class="wp-tech">
+                    <span>Rust</span>
+                    <span>eBPF</span>
+                    <span>Kernel Hooks</span>
+                    <span>&lt;1ms Response</span>
+                </div>
+            </div>
+
+            <div class="wp-card">
+                <div class="wp-number">WP4 — Physical Concealment</div>
+                <h3>Multi-Physics Adaptive Stealth (MPAS)</h3>
+                <p>Design metamaterial cloaking for landing terminal hardware — Peltier thermal tiles, graphene radar absorbers, and micro-LED visual camouflage controlled by Mojo PID loops.</p>
+                <div class="wp-tech">
+                    <span>Peltier Array</span>
+                    <span>Metamaterial</span>
+                    <span>Micro-LED</span>
+                    <span>PID Control</span>
+                </div>
+            </div>
+
+            <div class="wp-card">
+                <div class="wp-number">WP5 — Post-Quantum Shield</div>
+                <h3>PQC & QKD Encryption Layer</h3>
+                <p>Integrate NIST-standard post-quantum algorithms (ML-KEM-1024, ML-DSA-87) with hardware QKD links to create a sovereign, quantum-resistant command & telemetry encryption layer.</p>
+                <div class="wp-tech">
+                    <span>ML-KEM-1024</span>
+                    <span>ML-DSA-87</span>
+                    <span>QKD BB84</span>
+                    <span>AES-256-GCM</span>
+                </div>
+            </div>
+
+            <div class="wp-card">
+                <div class="wp-number">WP6 — Integration & Validation</div>
+                <h3>System Integration & Field Trials</h3>
+                <p>End-to-end integration of all work packages at live landing terminals. TRL 6 validation through controlled threat injection campaigns and 24-month continuous monitoring.</p>
+                <div class="wp-tech">
+                    <span>TRL 6</span>
+                    <span>Field Trial</span>
+                    <span>36 Months</span>
+                    <span>NIS2 Audit</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CONSORTIUM ═══ -->
+    <section class="section" id="consortium">
+        <div class="section-header">
+            <div class="section-tag">◆ Consortium</div>
+            <h2 class="section-title">Defence Research Partners</h2>
+            <p class="section-desc">
+                Three EU Member State institutions combining sovereign software architecture, subsea infrastructure access, and tactical threat intelligence.
+            </p>
+        </div>
+
+        <div class="partner-grid">
+            <div class="partner-card">
+                <div class="partner-flag">🇧🇬</div>
+                <div class="partner-name">AETERNA</div>
+                <div class="partner-role">Lead Coordinator</div>
+                <p class="partner-desc">
+                    Pomorie, Bulgaria. Sovereign Systems Architect — Mojo vectorized AI core, Zig optical DMA ingress, eBPF kernel sentinel, and the ML-KEM-1024 Post-Quantum cryptographic shield.
+                </p>
+                <div class="partner-budget">€6,650,000</div>
+                <div class="partner-budget-label">Allocated Budget</div>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-flag">🇬🇷</div>
+                <div class="partner-name">EETT</div>
+                <div class="partner-role">Infrastructure Partner</div>
+                <p class="partner-desc">
+                    Athens, Greece. National Telecommunications & Post Commission — Providing military-grade landing station infrastructure, SCADA security loops, and tactical QKD hardware links.
+                </p>
+                <div class="partner-budget">€4,200,000</div>
+                <div class="partner-budget-label">Allocated Budget</div>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-flag">🇩🇪</div>
+                <div class="partner-name">LMU Munich</div>
+                <div class="partner-role">Research Partner</div>
+                <p class="partner-desc">
+                    Munich, Germany. Tactical Threat Signature Partner — Acoustic signature modeling of submarine threats (anchors, combat divers, subsea drones) and seismic activity mapping.
+                </p>
+                <div class="partner-budget">€3,150,000</div>
+                <div class="partner-budget-label">Allocated Budget</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ BUDGET ═══ -->
+    <section class="section" id="budget">
+        <div class="section-header">
+            <div class="section-tag">◆ Financial Plan</div>
+            <h2 class="section-title">Budget Allocation</h2>
+            <p class="section-desc">
+                100% EU-funded Research Action under the European Defence Fund (EDF-2026-RA). Total ceiling: €14,000,000 over 36 months.
+            </p>
+        </div>
+
+        <div class="budget-table-wrapper">
+            <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>AETERNA (BG)</th>
+                        <th>EETT (GR)</th>
+                        <th>LMU Munich (DE)</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Personnel</td>
+                        <td>€2,450,000</td>
+                        <td>€1,400,000</td>
+                        <td>€1,540,000</td>
+                        <td>€5,390,000</td>
+                    </tr>
+                    <tr>
+                        <td>Subcontracting</td>
+                        <td>€700,000</td>
+                        <td>€350,000</td>
+                        <td>—</td>
+                        <td>€1,050,000</td>
+                    </tr>
+                    <tr>
+                        <td>Travel & Subsistence</td>
+                        <td>€140,000</td>
+                        <td>€105,000</td>
+                        <td>€70,000</td>
+                        <td>€315,000</td>
+                    </tr>
+                    <tr>
+                        <td>Equipment</td>
+                        <td>€2,660,000</td>
+                        <td>€1,750,000</td>
+                        <td>€1,260,000</td>
+                        <td>€5,670,000</td>
+                    </tr>
+                    <tr>
+                        <td>Other Direct Costs</td>
+                        <td>€310,748</td>
+                        <td>€343,131</td>
+                        <td>€73,925</td>
+                        <td>€727,804</td>
+                    </tr>
+                    <tr>
+                        <td>Indirect Costs (7%)</td>
+                        <td>€389,252</td>
+                        <td>€251,869</td>
+                        <td>€206,075</td>
+                        <td>€847,196</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td>€6,650,000</td>
+                        <td>€4,200,000</td>
+                        <td>€3,150,000</td>
+                        <td>€14,000,000</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <!-- Terminal -->
+        <div class="terminal">
+            <div class="terminal-bar">
+                <div class="terminal-dot r"></div>
+                <div class="terminal-dot y"></div>
+                <div class="terminal-dot g"></div>
+                <span class="terminal-title">qstn-sentinel@pomorie-bg:~$ veritas_check</span>
+            </div>
+            <div class="terminal-body">
+                <div><span class="prompt">$</span> <span class="cmd">./start_demonstrator.ps1 --mode=defense --pqc=enabled</span></div>
+                <div><span class="comment"># ═══════════════════════════════════════════════════════</span></div>
+                <div><span class="info">[INIT]</span> AETERNA-QSTN Sovereign Quantum Tactical Network v1.0</div>
+                <div><span class="info">[INIT]</span> Proposal ID: 101357872 | EDF-2026-RA | PIC: 865986222</div>
+                <div><span class="comment"># ═══════════════════════════════════════════════════════</span></div>
+                <div><span class="info">[WP1]</span> Optical Ingress: DAS 10kHz + SOP Monitor ......... <span class="success">ONLINE</span></div>
+                <div><span class="info">[WP2]</span> Mojo SIMD Classifier (AVX-512, O(1)) ............ <span class="success">ONLINE</span></div>
+                <div><span class="info">[WP3]</span> eBPF Kernel Sentinel (Apoptosis < 1ms) .......... <span class="success">ONLINE</span></div>
+                <div><span class="info">[WP4]</span> MPAS Thermal/Radar/Visual Cloaking .............. <span class="success">ONLINE</span></div>
+                <div><span class="info">[WP5]</span> PQC Shield (ML-KEM-1024 + QKD BB84) ............ <span class="success">ONLINE</span></div>
+                <div><span class="info">[WP6]</span> System Integration & NIS2 Audit ................. <span class="success">ONLINE</span></div>
+                <div><span class="comment"># ───────────────────────────────────────────────────────</span></div>
+                <div><span class="warning">[QKD]</span> Quantum Key Rate: 2.4 kbps | QBER: 1.84% ........ <span class="success">SECURED</span></div>
+                <div><span class="warning">[PQC]</span> ML-KEM-1024 Tunnel BG-01 ↔ GR-02 ............... <span class="success">ENCRYPTED</span></div>
+                <div><span class="danger">[AIGIS]</span> Store-Now-Decrypt-Later Attacks ............... <span class="success">DEFEATED</span></div>
+                <div><span class="comment"># ───────────────────────────────────────────────────────</span></div>
+                <div><span class="success">STATUS: ZERO-ENTROPY QUANTUM SHIELD IS ACTIVE. SYSTEM IS STEEL.</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">AETERNA-QSTN</div>
+            <p class="footer-meta">
+                Sovereign Quantum Tactical Network — European Defence Fund (EDF-2026-RA)<br>
+                Proposal ID: <strong>101357872</strong> | Draft ID: SEP-211375046<br>
+                Lead Coordinator: <strong>AETERNA</strong> (Pomorie, Bulgaria) | PIC: 865986222<br>
+                <a href="https://github.com/papica777-eng/AETERNA-QSTN" target="_blank">github.com/papica777-eng/AETERNA-QSTN</a>
+            </p>
+            <div class="footer-badges">
+                <span class="footer-badge badge-edf">EDF-2026-RA</span>
+                <span class="footer-badge badge-pqc">Post-Quantum</span>
+                <span class="footer-badge badge-nis2">NIS2 Compliant</span>
+                <span class="footer-badge badge-trl">TRL 6 Target</span>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    // Intersection Observer for scroll-reveal animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
-
-            // Update map path highlights
-            document.querySelectorAll('.cable-path').forEach(path => {
-                path.classList.remove('cable-path-active');
-            });
-
-            // Update base glow circle opacities
-            document.querySelectorAll('.base-glow-circle').forEach(circle => {
-                circle.style.opacity = '0';
-            });
-            const activeGlow = document.getElementById(`glow-${nodeKey}`);
-            if (activeGlow) activeGlow.style.opacity = '1';
-            
-            // Highlight specific cables based on active node
-            if (nodeKey === 'pomorie') {
-                document.getElementById('cable-black-sea').classList.add('cable-path-active');
-            } else if (nodeKey === 'athens') {
-                document.getElementById('cable-aegean').classList.add('cable-path-active');
-                document.getElementById('cable-pomorie-athens').classList.add('cable-path-active');
-            } else if (nodeKey === 'munich') {
-                document.getElementById('cable-munich-pomorie').classList.add('cable-path-active');
-            }
-        }
-
-        // Add event listeners to tabs
-        document.querySelectorAll('.node-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                updateDetails(tab.dataset.node);
-            });
         });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        // Add event listeners to SVG nodes
-        document.getElementById('node-pomorie').addEventListener('click', () => updateDetails('pomorie'));
-        document.getElementById('node-athens').addEventListener('click', () => updateDetails('athens'));
-        document.getElementById('node-munich').addEventListener('click', () => updateDetails('munich'));
+    document.querySelectorAll('.wp-card, .partner-card, .arch-layer, .metric').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(24px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
 
-        // Initialize with Pomorie
-        updateDetails('pomorie');
-    </script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-links a').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // Animate metric counters on load
+    const metricValues = document.querySelectorAll('.metric-value');
+    metricValues.forEach(el => {
+        const final = el.textContent;
+        el.textContent = '—';
+        setTimeout(() => { el.textContent = final; }, 800 + Math.random() * 600);
+    });
+</script>
+
 </body>
 </html>
