@@ -5,7 +5,7 @@
 [![EDF-2026-RA: Submitted](https://img.shields.io/badge/EDF_2026_RA-Proposal_Submitted-blue.svg)](#)
 [![Proposal ID: 101357872](https://img.shields.io/badge/Proposal_ID-101357872-purple.svg)](#)
 [![Lead Applicant: AETERNA](https://img.shields.io/badge/Lead_Applicant-AETERNA-orange.svg)](#)
-[![Veritas Test Suite: 30/30 PASSED](https://img.shields.io/badge/Veritas_Suite-30%2F30_PASSED-brightgreen.svg)](#)
+[![Veritas Test Suite: 40/40 PASSED](https://img.shields.io/badge/Veritas_Suite-40%2F40_PASSED-brightgreen.svg)](#)
 [![Execution Latency: O(1) <1.14ms](https://img.shields.io/badge/Latency-O(1)_%3C1.14ms-blue.svg)](#)
 [![Funding: 100% EU Grant](https://img.shields.io/badge/Funding-100%25_EU_Sovereign_Grant-success.svg)](#)
 [![eBPF Apoptosis: <1.02ms](https://img.shields.io/badge/eBPF_Apoptosis-%3C1.02ms-red.svg)](#)
