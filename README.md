@@ -14,11 +14,16 @@
 
 ---
 
-## High-Prestige UHD Masterwork
+## High-Prestige UHD Masterwork & Subsea Seabed Sensing Mechanism
 
-A cinematic, ultra-high-definition visualization of the **AETERNA Sovereign Quantum Tactical Network (AETERNA-QSTN)** resting on the deep-ocean floor. Active submarine fiber-optic cables emitting glowing quantum light paths (blue and cyan) are protected by holographic secure defense grids guarding the subsea communications landing node from cyber-physical threats. Signed by the Sovereign Systems Architect *Dimitar Prodromov*:
+A cinematic, ultra-high-definition visualization of the **AETERNA Sovereign Quantum Tactical Network (AETERNA-QSTN)** resting on the deep-ocean floor (3,000m depth). Active submarine fiber-optic cables emitting glowing quantum light paths (blue and cyan) are protected by holographic secure defense grids guarding the subsea communications landing node from cyber-physical threats. Signed by the Sovereign Systems Architect *Dimitar Prodromov*:
 
 ![AETERNA-QSTN Sovereign Quantum Tactical Network Masterwork](docs/aeterna_qstn_quantum_shield_masterpiece.png)
+
+### Subsea Seabed Sensing Mechanism & QKD Tactical Mesh
+An explicit technical illustration detailing the subsea optical interrogator nodes, Distributed Acoustic Sensing (DAS) phase waves, State of Polarization (SOP) laser pulses, and Post-Quantum Cryptography (PQC / QKD) hardware transceivers attached to the active subsea fiber backbones:
+
+![AETERNA-QSTN Subsea Seabed Sensing Mechanism & QKD Mesh](docs/aeterna_qstn_subsea_mechanism_masterpiece.png)
 
 ---
 
