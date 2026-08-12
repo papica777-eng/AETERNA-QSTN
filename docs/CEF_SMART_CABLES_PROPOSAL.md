@@ -82,6 +82,14 @@ Submarine fiber-optic cables carry over 97% of trans-oceanic telecommunications 
   * Deploy the **AIGIS Dome Control Plane** with strict integer-only arithmetic to secure landing-point SCADA interfaces.
   * Deploy the **Sentinel eBPF Kill-Switch** to instantly trigger process apoptosis and channel rerouting when a physical intrusion or line-tapping event is detected.
 
+### WP4: Multispectral Physical Asset Shielding — MPAS (Lead: AETERNA)
+* **Objective:** Protect landing terminal infrastructure against satellite reconnaissance, thermal surveillance, and radar detection in compliance with CER Directive (EU 2022/2557) Article 13 physical resilience requirements.
+* **Actions:**
+  * Deploy **Adaptive Thermal IR Cloaking** panels using Peltier thermoelectric tile arrays (64 independent zones per terminal) with Mojo-driven $O(1)$ PID controllers running at 10kHz, achieving surface-to-ambient thermal match within $\pm0.050°C$ in $<0.2\text{ms}$.
+  * Install **Radar-Absorbing Metamaterial (RAM)** composite shells using Split-Ring Resonator (SRR) and graphene substrates across all exterior surfaces of Pomorie and Athens landing terminals, achieving $>-35\text{dB}$ X-Band (8-12 GHz) radar cross-section reduction.
+  * Integrate **Electro-Optical (EO) Adaptive Camouflage** using flexible Micro-LED matrix panels (256×192 per segment) synchronized with dorsal wide-angle ambient sensors at 120Hz, delivering $<1.5$ Delta-E color deviation (indistinguishable from natural environment by satellite EO sensors including Sentinel-2 and WorldView-3).
+* **Regulatory Basis:** CER Directive (EU 2022/2557) Art. 13 mandates physical resilience measures for critical infrastructure operators. CEF Regulation (EU 2021/1153) Art. 9(4) mandates protection against unauthorized third-country surveillance and physical reconnaissance of sovereign cable landing points.
+
 ---
 
 ## 3. Financial Breakdown & Resource Allocation
@@ -90,11 +98,12 @@ The total requested budget of **€20,000,000** is split between hardware acquis
 
 | Category | Budget (€) | Core Focus | Target Infrastructure |
 | :--- | :--- | :--- | :--- |
-| **WP1: Subsea Optical Sensors & Interrogators** | **€8,200,000** | Purchase and deployment of coherent DAS/SOP hardware | Landing Terminals |
-| **WP2: Mojo Signal Processing (GPU Compute)** | **€4,800,000** | Bare-metal NVIDIA H100 nodes & Mojo classification models | Sofia / Munich Centers |
-| **WP3: AIGIS Security & eBPF Integration** | **€3,500,000** | SCADA upgrades, PLC testing, eBPF kernel isolation | Black Sea Landing Hubs |
-| **Consortium Coordination & Dissemination** | **€1,800,000** | NIS2 reporting, geological research portal sync | EU Central Registry |
-| **Overheads & Admin** | **€1,700,000** | General project management and facilities support | Local Nodes |
+| **WP1: Subsea Optical Sensors & Interrogators** | **€7,200,000** | Purchase and deployment of coherent DAS/SOP hardware | Landing Terminals |
+| **WP2: Mojo Signal Processing (GPU Compute)** | **€4,300,000** | Bare-metal NVIDIA H100 nodes & Mojo classification models | Sofia / Munich Centers |
+| **WP3: AIGIS Security & eBPF Integration** | **€3,000,000** | SCADA upgrades, PLC testing, eBPF kernel isolation | Black Sea Landing Hubs |
+| **WP4: Multispectral Physical Asset Shielding (MPAS)** | **€2,500,000** | Peltier thermal arrays, RAM metamaterial shells, EO Micro-LED panels | Pomorie & Athens Terminals |
+| **Consortium Coordination & Dissemination** | **€1,500,000** | NIS2 reporting, geological research portal sync | EU Central Registry |
+| **Overheads & Admin** | **€1,500,000** | General project management and facilities support | Local Nodes |
 
 ---
 

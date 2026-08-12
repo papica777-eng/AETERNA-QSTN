@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920, initial-scale=1.0">
+    <title>AETERNA Sovereign World-Class Reel (20s Evidence Edition)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Outfit:wght@500;700;900&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            width: 1080px;
+            height: 1920px;
+            background-color: #030712;
+            color: #f8fafc;
+            font-family: 'Outfit', 'Inter', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Ambient Glowing Flares */
+        .flare-cyan {
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.28) 0%, rgba(139, 92, 246, 0.18) 45%, transparent 70%);
+            filter: blur(85px);
+            z-index: 1;
+        }
+
+        .flare-gold {
+            position: absolute;
+            bottom: -150px;
+            right: -100px;
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, rgba(16, 185, 129, 0.12) 50%, transparent 70%);
+            filter: blur(95px);
+            z-index: 1;
+        }
+
+        /* Background Particle & HUD Canvas */
+        #bgCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1080px;
+            height: 1920px;
+            z-index: 2;
+            opacity: 0.7;
+        }
+
+        /* Live Scrolling Evidence Code Terminal Watermark */
+        .evidence-terminal-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1080px;
+            height: 1920px;
+            z-index: 3;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            color: rgba(6, 182, 212, 0.12);
+            line-height: 1.6;
+            white-space: pre;
+            pointer-events: none;
+            overflow: hidden;
+            padding: 40px;
+        }
+
+        /* Cyber Grid lines */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1080px;
+            height: 1920px;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 70px 70px;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 1080px;
+            height: 1920px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 100px 54px 90px 54px;
+        }
+
+        /* Top Header Badge */
+        .top-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 36px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(6, 182, 212, 0.5);
+            border-radius: 9999px;
+            box-shadow: 0 0 35px rgba(6, 182, 212, 0.35), inset 0 0 15px rgba(6, 182, 212, 0.2);
+            backdrop-filter: blur(20px);
+        }
+
+        .badge-dot {
+            width: 14px;
+            height: 14px;
+            background-color: #06b6d4;
+            border-radius: 50%;
+            box-shadow: 0 0 14px #06b6d4;
+        }
+
+        .badge-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #38bdf8;
+            text-transform: uppercase;
+        }
+
+        /* Scene Stage */
+        .scene-stage {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .scene {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.96) translateY(30px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+            pointer-events: none;
+        }
+
+        .scene.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        /* SCENE 1 */
+        .hero-title {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.08;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 40%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 32px;
+            font-weight: 500;
+            color: #94a3b8;
+            max-width: 900px;
+            line-height: 1.45;
+            margin-bottom: 40px;
+        }
+
+        .slogan-pill {
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #fbbf24;
+            letter-spacing: 2px;
+            background: rgba(245, 158, 11, 0.12);
+            border: 2px solid rgba(245, 158, 11, 0.5);
+            padding: 18px 36px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+            margin-bottom: 36px;
+        }
+
+        /* Evidence Terminal Window Card */
+        .terminal-card {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            border-radius: 28px;
+            padding: 32px 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(24px);
+            text-align: left;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot-red { width: 14px; height: 14px; background: #ef4444; border-radius: 50%; }
+        .dot-yellow { width: 14px; height: 14px; background: #f59e0b; border-radius: 50%; }
+        .dot-green { width: 14px; height: 14px; background: #10b981; border-radius: 50%; }
+
+        .terminal-title {
+            font-size: 20px;
+            color: #38bdf8;
+            font-weight: 700;
+        }
+
+        .terminal-line {
+            font-size: 22px;
+            color: #34d399;
+            margin-bottom: 8px;
+        }
+
+        /* SCENE 2 */
+        .section-tag {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: #34d399;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 68px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 36px;
+            letter-spacing: -1px;
+        }
+
+        .metrics-grid {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .metric-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 34px 44px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 2px solid rgba(56, 189, 248, 0.35);
+            border-radius: 28px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(24px);
+        }
+
+        .metric-card.emerald { border-color: rgba(16, 185, 129, 0.5); box-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
+        .metric-card.purple { border-color: rgba(168, 85, 247, 0.5); box-shadow: 0 0 30px rgba(168, 85, 247, 0.2); }
+        .metric-card.gold { border-color: rgba(245, 158, 11, 0.5); box-shadow: 0 0 30px rgba(245, 158, 11, 0.2); }
+
+        .metric-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 68px;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .metric-value.emerald { color: #34d399; text-shadow: 0 0 25px rgba(52, 211, 153, 0.5); }
+        .metric-value.purple { color: #c084fc; text-shadow: 0 0 25px rgba(192, 132, 252, 0.5); }
+        .metric-value.gold { color: #fbbf24; text-shadow: 0 0 25px rgba(251, 191, 36, 0.5); }
+
+        .metric-info {
+            text-align: right;
+        }
+
+        .metric-label {
+            font-size: 30px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .metric-sub {
+            font-size: 22px;
+            color: #94a3b8;
+        }
+
+        /* SCENE 3 */
+        .feature-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 26px 34px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            text-align: left;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-icon {
+            width: 68px;
+            height: 68px;
+            border-radius: 18px;
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .feature-text-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .feature-text-desc {
+            font-size: 22px;
+            color: #94a3b8;
+        }
+
+        /* SCENE 4: CTA */
+        .cta-box {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.22) 0%, rgba(139, 92, 246, 0.22) 100%);
+            border: 2px solid #06b6d4;
+            border-radius: 36px;
+            padding: 54px 44px;
+            box-shadow: 0 0 60px rgba(6, 182, 212, 0.35);
+            text-align: center;
+        }
+
+        .cta-url {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 64px;
+            font-weight: 900;
+            color: #ffffff;
+            margin: 20px 0;
+            letter-spacing: -1px;
+            text-shadow: 0 0 35px rgba(6, 182, 212, 0.7);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 22px 50px;
+            background: #06b6d4;
+            color: #030712;
+            font-size: 30px;
+            font-weight: 900;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 40px rgba(6, 182, 212, 0.6);
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #06b6d4 0%, #34d399 50%, #fbbf24 100%);
+            box-shadow: 0 0 15px #06b6d4;
+            transition: width 0.1s linear;
+        }
+
+        .footer-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #64748b;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flare-cyan"></div>
+    <div class="flare-gold"></div>
+    <div class="grid-overlay"></div>
+    <div id="evidenceTerminal" class="evidence-terminal-bg"></div>
+    <canvas id="bgCanvas"></canvas>
+
+    <div class="container">
+        <!-- Top Badge -->
+        <div class="top-badge">
+            <div class="badge-dot"></div>
+            <div class="badge-text">🇧🇬 AETERNA // ИСТИНАТА ЗА БЪЛГАРСКАТА НАУКА</div>
+        </div>
+
+        <!-- Scene Stage -->
+        <div class="scene-stage">
+            
+            <!-- SCENE 1 -->
+            <div id="scene1" class="scene active">
+                <h1 class="hero-title">СВЕТОВЕН ПРОБИВ В БОРБАТА С РАКА И КИБЕРСИГУРНОСТТА!</h1>
+                <p class="hero-subtitle">Докато държавата и институциите мълчат, ние постигнахме доказани резултати!</p>
+                <div class="slogan-pill">🔥 РЕЗУЛТАТИТЕ СЕ НАЛАГАТ КАТО СТАНДАРТ!</div>
+                
+                <div class="terminal-card">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <div class="dot-red"></div>
+                            <div class="dot-yellow"></div>
+                            <div class="dot-green"></div>
+                        </div>
+                        <div class="terminal-title">VERITAS_LOGOS_AUDIT.rs</div>
+                    </div>
+                    <div class="terminal-line">[✓] C-INDEX PRECISION: 0.9713 (EU MDR PASSED)</div>
+                    <div class="terminal-line">[✓] AUTOMATED TESTS: 78/78 PASSED (0.0000 ENTROPY)</div>
+                    <div class="terminal-line">[✓] PQC QUANTUM SHIELD: ML-KEM-1024 ACTIVE</div>
+                </div>
+            </div>
+
+            <!-- SCENE 2 -->
+            <div id="scene2" class="scene">
+                <div class="section-tag">🧬 БОРБАТА С РАКА // VHT-ONCOLOGY</div>
+                <h2 class="section-title">97.13% ТОЧНОСТ СРЕЩУ РАКА</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card emerald">
+                        <div class="metric-value emerald">97.13%</div>
+                        <div class="metric-info">
+                            <div class="metric-label">📐 C-Index Прецизност</div>
+                            <div class="metric-sub">Счупи прага на ЕК от C ≥ 0.75</div>
+                        </div>
+                    </div>
+                    <div class="metric-card purple">
+                        <div class="metric-value purple">87 LOINC</div>
+                        <div class="metric-info">
+                            <div class="metric-label">🧬 ONCOPANEL_87 Масив</div>
+                            <div class="metric-sub">KRAS, TP53, EGFR, BRCA1/2</div>
+                        </div>
+                    </div>
+                    <div class="metric-card gold">
+                        <div class="metric-value gold">+91.3%</div>
+                        <div class="metric-info">
+                            <div class="metric-label">🩸 Преживяемост</div>
+                            <div class="metric-sub">Спрямо химиотерапията</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCENE 3 -->
+            <div id="scene3" class="scene">
+                <div class="section-tag">🛡️ ПОДВОДНА КИБЕРСИГУРНОСТ & VHT-SCW</div>
+                <h2 class="section-title">ПОДВОДНА КИБЕРСИГУРНОСТ & СМАРТ ИНФРАСТРУКТУРА</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">🛡️</div>
+                        <div>
+                            <div class="feature-text-title">VHT-SCW Защита</div>
+                            <div class="feature-text-desc">Защита на подводни кабели и мрежи</div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <div>
+                            <div class="feature-text-title">10 kW КПД Монолитен Модул</div>
+                            <div class="feature-text-desc">100kHz MPPT софтуерно управление</div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🇪🇺</div>
+                        <div>
+                            <div class="feature-text-title">Horizon Europe Проект ID: 101347293</div>
+                            <div class="feature-text-desc">Cancer Mission (RIA) научна рамка</div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🚀</div>
+                        <div>
+                            <div class="feature-text-title">EIC Accelerator: €17.35M</div>
+                            <div class="feature-text-desc">Световен мащаб на научния портфейл</div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🧪</div>
+                        <div>
+                            <div class="feature-text-title">78/78 Преминати Теста</div>
+                            <div class="feature-text-desc">0.0000 Ентропия (Детерминистична сигурност)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCENE 4 -->
+            <div id="scene4" class="scene">
+                <div class="section-tag">🏛️ AETERNA SOVEREIGN LABS</div>
+                <h2 class="section-title" style="margin-bottom: 24px;">НАРОДЪТ ЗАСЛУЖАВА ИСТИНАТА! ВЛЕЗ И ТЕСТВАЙ LIVE ДНЕС</h2>
+                <div class="cta-box">
+                    <div style="font-size: 32px; font-weight: 800; color: #34d399;">🌐 aeterna.website</div>
+                    <div class="cta-url">🩺 Doctor Clinical Portal & AI Copilot</div>
+                    <div class="cta-btn">⚡ 0.0000 ЕНТРОПИЯ • НЯМА КОЙ ДА НИ СПРЕ!</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="progress-bar-bg">
+                <div id="progressFill" class="progress-bar-fill"></div>
+            </div>
+            <div class="footer-brand">AETERNA SOVEREIGN LABS // ARCHITECT: DIMITAR PRODROMOV</div>
+        </div>
+    </div>
+
+    <script>
+        // Terminal Evidence Stream Text
+        const evidenceText = `
+// AETERNA CORE EVIDENCE LEDGER // SOVEREIGN ENGINE
+[SYSTEM] BIND: OmniCore/compiler/lwas_core/src/ukame/core.rs::UKAME
+[AUTHORITY] 0x41_45_54_45_52_4e_41_5f_4c_4f_47_4f_53_5f_44_49_4d_49_54_41_52_5f_50_52_4f_44_52_4f_4d_56_21
+[ONCOPANEL_87] LOINC Genomic Drivers: KRAS G12D, TP53 85337-4, EGFR L858R, BRCA1 55207-5, TERT 72391-9
+[C-INDEX] 0.9713 // EU MDR CLASS III PRECISE
+[TEST_SUITE] 78/78 PASSED // ENTROPY: 0.0000
+[PQC_SHIELD] ML-KEM-1024 Lattice Entropic Hash Activated
+[SUBSEA_SCW] 10 kW Seebeck TEG Monolith 100kHz MPPT Active
+[HORIZON_EUROPE] Proposal ID 101347293 Cancer Mission RIA
+[EIC_ACCELERATOR] Proposal ID 101327948 Requested Scale-up €7.5M
+[LIVE_PLATFORM] https://aeterna.website/CLINICAL_DOCTOR_PORTAL.html
+`.repeat(10);
+
+        document.getElementById('evidenceTerminal').textContent = evidenceText;
+
+        // Background Particle Network
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 1080;
+        canvas.height = 1920;
+
+        const particles = [];
+        for (let i = 0; i < 80; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 3 + 1,
+                vx: (Math.random() - 0.5) * 1.6,
+                vy: (Math.random() - 0.5) * 1.6,
+                alpha: Math.random() * 0.5 + 0.2
+            });
+        }
+
+        function drawParticles(t) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#06b6d4';
+            ctx.strokeStyle = 'rgba(6, 182, 212, 0.18)';
+            ctx.lineWidth = 1;
+
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(6, 182, 212, ${p.alpha})`;
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 190) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // Timeline Handler (20.0 Seconds Duration, 5.0s per Scene)
+        window.setSceneTime = function(t) {
+            drawParticles(t);
+            
+            // Scroll evidence watermark
+            const terminal = document.getElementById('evidenceTerminal');
+            terminal.scrollTop = (t * 80) % terminal.scrollHeight;
+
+            const progress = (t / 20.0) * 100;
+            document.getElementById('progressFill').style.width = `${Math.min(100, progress)}%`;
+
+            const s1 = document.getElementById('scene1');
+            const s2 = document.getElementById('scene2');
+            const s3 = document.getElementById('scene3');
+            const s4 = document.getElementById('scene4');
+
+            s1.classList.remove('active');
+            s2.classList.remove('active');
+            s3.classList.remove('active');
+            s4.classList.remove('active');
+
+            if (t < 5.0) {
+                s1.classList.add('active');
+            } else if (t < 10.0) {
+                s2.classList.add('active');
+            } else if (t < 15.0) {
+                s3.classList.add('active');
+            } else {
+                s4.classList.add('active');
+            }
+        };
+
+        window.setSceneTime(0.0);
+    </script>
+</body>
+</html>
