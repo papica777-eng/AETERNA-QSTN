@@ -994,11 +994,133 @@
             100% { right: calc(50% - 60px); opacity: 0; }
         }
 
+        /* ── Kinetic Attack & eBPF Simulator ──────────────────────── */
+        .sim-container {
+            background: var(--abyss);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .sim-canvas-wrapper {
+            position: relative;
+            background: #040914;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            height: 380px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem;
+        }
+
+        .sim-hud-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--text-ghost);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .sim-status-pill {
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .status-normal { background: rgba(45, 212, 191, 0.1); color: var(--teal); border: 1px solid rgba(45, 212, 191, 0.3); }
+        .status-attack { background: rgba(244, 63, 94, 0.15); color: var(--red); border: 1px solid rgba(244, 63, 94, 0.4); animation: pulse 0.8s infinite; }
+        .status-isolated { background: rgba(251, 191, 36, 0.15); color: var(--amber); border: 1px solid rgba(251, 191, 36, 0.4); }
+
+        .sim-controls {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .sim-btn {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            padding: 0.55rem 0.95rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.03);
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .sim-btn:hover { background: rgba(34, 211, 238, 0.1); border-color: var(--cyan); color: var(--cyan); }
+        .sim-btn-danger:hover { background: rgba(244, 63, 94, 0.15); border-color: var(--red); color: var(--red); }
+        .sim-btn-reset:hover { background: rgba(45, 212, 191, 0.15); border-color: var(--teal); color: var(--teal); }
+
+        .sim-log-terminal {
+            background: #020612;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            height: 380px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .sim-log-line {
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateX(-10px);
+            animation: sim-log-in 0.2s ease forwards;
+        }
+
+        @keyframes sim-log-in { to { opacity: 1; transform: translateX(0); } }
+
+        .log-ts { color: var(--text-ghost); }
+        .log-info { color: var(--cyan); }
+        .log-warn { color: var(--amber); }
+        .log-danger { color: var(--red); font-weight: bold; }
+        .log-success { color: var(--teal); font-weight: bold; }
+
+        .sim-metrics-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-family: var(--mono);
+            text-align: center;
+        }
+
+        .sim-m-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem;
+        }
+
+        .sim-m-val { font-size: 1rem; font-weight: 700; color: var(--cyan); }
+        .sim-m-lbl { font-size: 0.6rem; color: var(--text-ghost); text-transform: uppercase; }
+
         /* ── Responsive ───────────────────────────────────────────── */
         @media (max-width: 900px) {
             .metrics-bar { grid-template-columns: repeat(2, 1fr); }
             .partner-grid { grid-template-columns: 1fr; }
             .pqc-visual { grid-template-columns: 1fr; }
+            .sim-container { grid-template-columns: 1fr; }
             .wp-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             .hud-corner { display: none; }
@@ -1044,6 +1166,7 @@
             <div class="nav-links">
                 <a href="#overview">Overview</a>
                 <a href="#pqc">PQC Shield</a>
+                <a href="#simulator">Simulator</a>
                 <a href="#architecture">Architecture</a>
                 <a href="#workpackages">Work Packages</a>
                 <a href="#consortium">Consortium</a>
@@ -1151,6 +1274,96 @@
                     <div>Landing Terminal</div>
                     <div>ML-KEM Decapsulation</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ KINETIC ATTACK & eBPF SIMULATOR ═══ -->
+    <section class="section" id="simulator">
+        <div class="section-header">
+            <div class="section-tag">◆ Live Tactical Demonstration</div>
+            <h2 class="section-title">Subsea Kinetic Attack & eBPF Apoptosis Simulator</h2>
+            <p class="section-desc">
+                Simulate subsea anchor dragging, physical cable cutting, or submersible tapping events in real time. Observe how Mojo SIMD AI classifies the optical anomaly and triggers Linux kernel eBPF apoptosis isolation in &lt;1.02ms.
+            </p>
+        </div>
+
+        <div class="sim-container">
+            <div>
+                <div class="sim-canvas-wrapper">
+                    <div class="sim-hud-header">
+                        <span>LIVE FIBER TELEMETRY // BLACK SEA ↔ MEDITERRANEAN</span>
+                        <span id="sim-status-pill" class="sim-status-pill status-normal">NOMINAL</span>
+                    </div>
+
+                    <svg id="sim-svg" width="100%" height="240" viewBox="0 0 500 240" style="margin-top: 10px;">
+                        <!-- Subsea seabed grid -->
+                        <path d="M 0 200 Q 125 190 250 205 T 500 195" fill="none" stroke="rgba(56, 189, 248, 0.15)" stroke-width="1" />
+                        <path d="M 0 220 Q 150 215 300 225 T 500 210" fill="none" stroke="rgba(56, 189, 248, 0.08)" stroke-width="1" />
+
+                        <!-- Active Subsea Fiber Cable -->
+                        <path id="fiber-line" d="M 50 140 C 150 160, 350 120, 450 140" fill="none" stroke="#22d3ee" stroke-width="3" stroke-dasharray="6,3" />
+                        
+                        <!-- Fiber Nodes -->
+                        <g transform="translate(50, 140)">
+                            <circle r="12" fill="#0f172a" stroke="#22d3ee" stroke-width="2" />
+                            <text y="24" x="-25" fill="#94a3b8" font-size="9" font-family="JetBrains Mono">POMORIE (BG-01)</text>
+                        </g>
+
+                        <g id="sector-4b-node" transform="translate(250, 140)">
+                            <circle id="strike-target-circle" r="16" fill="rgba(34, 211, 238, 0.1)" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="3,2" />
+                            <text y="-22" x="-45" fill="#22d3ee" font-size="9" font-family="JetBrains Mono">SECTOR 4B (KM 142.8)</text>
+                        </g>
+
+                        <g transform="translate(450, 140)">
+                            <circle r="12" fill="#0f172a" stroke="#2dd4bf" stroke-width="2" />
+                            <text y="24" x="-20" fill="#94a3b8" font-size="9" font-family="JetBrains Mono">ATHENS (GR-02)</text>
+                        </g>
+
+                        <!-- Threat Icon (Anchor/Cutter) hidden by default -->
+                        <g id="sim-threat-icon" transform="translate(250, 60)" style="opacity: 0; transition: all 0.4s ease;">
+                            <text id="threat-emoji" y="0" x="-12" font-size="28">⚓</text>
+                            <line y1="10" x1="0" y2="70" x2="0" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4,2" />
+                        </g>
+                    </svg>
+
+                    <div class="sim-controls">
+                        <button class="sim-btn sim-btn-danger" onclick="triggerKineticAttack('anchor')">
+                            ⚓ Anchor Drag (KM 142.8)
+                        </button>
+                        <button class="sim-btn sim-btn-danger" onclick="triggerKineticAttack('cut')">
+                            ✂️ Physical Fiber Cut
+                        </button>
+                        <button class="sim-btn sim-btn-danger" onclick="triggerKineticAttack('tap')">
+                            ⚡ Submersible Optical Tap
+                        </button>
+                        <button class="sim-btn sim-btn-reset" onclick="resetSimulator()">
+                            🔄 Reset Subsea Mesh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sim-metrics-box">
+                    <div class="sim-m-item">
+                        <div id="m-latency" class="sim-m-val">0.00 ms</div>
+                        <div class="sim-m-lbl">Inference Speed</div>
+                    </div>
+                    <div class="sim-m-item">
+                        <div id="m-apop-time" class="sim-m-val">0.00 ms</div>
+                        <div class="sim-m-lbl">eBPF Apoptosis</div>
+                    </div>
+                    <div class="sim-m-item">
+                        <div id="m-status" class="sim-m-val" style="color: var(--teal);">100% SECURE</div>
+                        <div class="sim-m-lbl">Subsea Mesh State</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sim-log-terminal" id="sim-log-terminal">
+                <div class="sim-log-line log-info">[00:00.000ms] [INIT] Sovereign eBPF Sentinel & Mojo AI Ingress Initialized.</div>
+                <div class="sim-log-line log-info">[00:00.040ms] [DAS] Optical phase monitoring 10,000 Hz stream nominal.</div>
+                <div class="sim-log-line log-info">[00:00.080ms] [SOP] State of polarization vector shift delta: +0.001 (Zero-Drift).</div>
+                <div class="sim-log-line log-success">[00:00.120ms] [PQC SHIELD] ML-KEM-1024 Tunnel active. Awaiting user simulation...</div>
             </div>
         </div>
     </section>
@@ -1491,6 +1704,135 @@
         el.textContent = '—';
         setTimeout(() => { el.textContent = final; }, 800 + Math.random() * 600);
     });
+
+    // ── KINETIC ATTACK SIMULATOR JS ──
+    let isSimulating = false;
+
+    function addSimLog(text, type = 'info') {
+        const terminal = document.getElementById('sim-log-terminal');
+        if (!terminal) return;
+        const line = document.createElement('div');
+        line.className = `sim-log-line log-${type}`;
+        line.innerHTML = text;
+        terminal.appendChild(line);
+        terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    function triggerKineticAttack(attackType) {
+        if (isSimulating) return;
+        isSimulating = true;
+
+        const pill = document.getElementById('sim-status-pill');
+        const threatIcon = document.getElementById('sim-threat-icon');
+        const threatEmoji = document.getElementById('threat-emoji');
+        const fiberLine = document.getElementById('fiber-line');
+        const targetCircle = document.getElementById('strike-target-circle');
+        const mLatency = document.getElementById('m-latency');
+        const mApopTime = document.getElementById('m-apop-time');
+        const mStatus = document.getElementById('m-status');
+
+        let typeLabel = '';
+        let emoji = '⚓';
+        let attackCode = '';
+        let phaseShift = '';
+
+        if (attackType === 'anchor') {
+            typeLabel = 'KINETIC_ANCHOR_DRAG';
+            emoji = '⚓';
+            attackCode = 'ANCHOR_DRAG_SECTOR_4B';
+            phaseShift = '3.841 uRad';
+        } else if (attackType === 'cut') {
+            typeLabel = 'PHYSICAL_FIBER_CUT';
+            emoji = '✂️';
+            attackCode = 'CABLE_SEVER_SECTOR_4B';
+            phaseShift = '9.999 uRad (ATTENUATION MAX)';
+        } else {
+            typeLabel = 'SUBMERSIBLE_OPTICAL_TAP';
+            emoji = '⚡';
+            attackCode = 'OPTICAL_PHYSICAL_TAP';
+            phaseShift = '1.420 uRad';
+        }
+
+        // Phase 1: Strike Event (0.000ms)
+        threatEmoji.textContent = emoji;
+        threatIcon.style.opacity = '1';
+        threatIcon.style.transform = 'translate(250px, 110px)';
+        pill.className = 'sim-status-pill status-attack';
+        pill.textContent = 'ATTACK DETECTED';
+        fiberLine.setAttribute('stroke', '#f43f5e');
+        targetCircle.setAttribute('stroke', '#f43f5e');
+        targetCircle.setAttribute('fill', 'rgba(244, 63, 94, 0.3)');
+
+        addSimLog(`[00:00.000ms] <span class="log-danger">[THREAT] Kinetic disturbance registered at KM 142.8 (${attackCode})</span>`, 'danger');
+        addSimLog(`[00:00.040ms] [DAS/SOP] Coherent optical phase shift: ${phaseShift} | Polarimeter delta: +0.941`, 'warn');
+
+        // Phase 2: Mojo SIMD Inference (0.120ms)
+        setTimeout(() => {
+            mLatency.textContent = '0.08 ms';
+            addSimLog(`[00:00.080ms] <span class="log-info">[MOJO AI] AVX-512 SIMD O(1) kernel classified event: ${typeLabel}</span>`, 'info');
+        }, 120);
+
+        // Phase 3: eBPF Ring-0 Apoptosis (0.380ms)
+        setTimeout(() => {
+            addSimLog(`[00:00.380ms] <span class="log-warn">[eBPF SENTINEL] Ring-0 kernel hook invoked (sovereign_sentinel.rs)</span>`, 'warn');
+        }, 380);
+
+        // Phase 4: Landing Apoptosis & Reroute (0.780ms)
+        setTimeout(() => {
+            const finalApop = (0.72 + Math.random() * 0.15).toFixed(2);
+            mApopTime.textContent = `${finalApop} ms`;
+            mStatus.textContent = 'ISOLATED';
+            mStatus.style.color = 'var(--amber)';
+
+            pill.className = 'sim-status-pill status-isolated';
+            pill.textContent = 'PORT ISOLATED';
+
+            fiberLine.setAttribute('stroke', '#fbbf24');
+            fiberLine.setAttribute('stroke-dasharray', '2,4');
+
+            addSimLog(`[00:00.780ms] <span class="log-success">[APOPTOSIS SUCCESS] Landing Port Pomorie-BG-01 ISOLATED in ${finalApop}ms (&lt;1.02ms invariant met)</span>`, 'success');
+            addSimLog(`[00:00.910ms] <span class="log-success">[PQC SHIELD] ML-KEM-1024 Session Key Revoked | Traffic rerouted to Alternate Path</span>`, 'success');
+            addSimLog(`[00:01.050ms] <span class="log-info">[AIGIS MESH] System state zero-entropy locked. Cable isolated safely.</span>`, 'info');
+
+            isSimulating = false;
+        }, 780);
+    }
+
+    function resetSimulator() {
+        isSimulating = false;
+        const pill = document.getElementById('sim-status-pill');
+        const threatIcon = document.getElementById('sim-threat-icon');
+        const fiberLine = document.getElementById('fiber-line');
+        const targetCircle = document.getElementById('strike-target-circle');
+        const mLatency = document.getElementById('m-latency');
+        const mApopTime = document.getElementById('m-apop-time');
+        const mStatus = document.getElementById('m-status');
+        const terminal = document.getElementById('sim-log-terminal');
+
+        threatIcon.style.opacity = '0';
+        threatIcon.style.transform = 'translate(250px, 60px)';
+
+        pill.className = 'sim-status-pill status-normal';
+        pill.textContent = 'NOMINAL';
+
+        fiberLine.setAttribute('stroke', '#22d3ee');
+        fiberLine.setAttribute('stroke-dasharray', '6,3');
+
+        targetCircle.setAttribute('stroke', '#22d3ee');
+        targetCircle.setAttribute('fill', 'rgba(34, 211, 238, 0.1)');
+
+        mLatency.textContent = '0.00 ms';
+        mApopTime.textContent = '0.00 ms';
+        mStatus.textContent = '100% SECURE';
+        mStatus.style.color = 'var(--teal)';
+
+        terminal.innerHTML = `
+            <div class="sim-log-line log-info">[00:00.000ms] [INIT] Sovereign eBPF Sentinel & Mojo AI Ingress Initialized.</div>
+            <div class="sim-log-line log-info">[00:00.040ms] [DAS] Optical phase monitoring 10,000 Hz stream nominal.</div>
+            <div class="sim-log-line log-info">[00:00.080ms] [SOP] State of polarization vector shift delta: +0.001 (Zero-Drift).</div>
+            <div class="sim-log-line log-success">[00:00.120ms] [PQC SHIELD] ML-KEM-1024 Tunnel active. Subsea fiber mesh reset to NOMINAL.</div>
+        `;
+    }
 </script>
 
 </body>
