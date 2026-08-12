@@ -55,7 +55,7 @@ By replacing bloated cloud infrastructure and heavy floating-point neural networ
 
 ## 🛡️ WP4: Multispectral Physical Asset Shielding (MPAS) — Landing Terminal Cloaking
 
-> **CER Directive (EU 2022/2557) Art. 13 Physical Resilience & CEF Art. 9(4) Anti-Surveillance Compliance**  
+> **CER Directive (EU 2022/2557) Art. 13 Physical Resilience & EDF Art. 9(4) Anti-Surveillance Compliance**  
 > *"Landing terminal infrastructure at Pomorie (BG) and Athens (GR) shall be rendered undetectable across the full electromagnetic spectrum—thermal infrared, radar X-band, and visual satellite reconnaissance—using sovereign, Mojo-controlled adaptive shielding."*
 
 The **MPAS subsystem** deploys three synchronized cloaking layers across the exterior surfaces of every AIGIS landing terminal, eliminating the facility's electromagnetic footprint against aerial, orbital, and maritime surveillance:
@@ -231,15 +231,7 @@ To execute the system verification suite and launch the containerized stack:
 * **HELIOS Control Plane HUD:** `docker/Dockerfile.hud` (Local PQC loopback HUD on port `8080`/`3847`).
 
 ### 4. Project Operational Playbook:
-* [**`AETERNA-SCW Project Execution Playbook`**](docs/AETERNA_SCW_PROJECT_EXECUTION_PLAYBOOK.md) — Detailed 36-month operational roadmap, deliverables schedule (D1.1–D3.2), and procurement checklists.
-
----
-
-## Consortium Partners
-
-1.  **AETERNA** (Pomorie, Bulgaria) — **Lead Coordinator & Sovereign Systems Architect** (PIC: `865986222`). High-performance vectorized Mojo classification, Zig optical ingress parsing, kernel-level eBPF isolation, and the ML-KEM-1024 Post-Quantum cryptographic shield (`quantum_crypt_shield.rs`).
-2.  **National Telecommunications and Post Commission (EETT)** (Athens, Greece) — **Landing Point Partner**. Physical operator and landing interface regulator for active Eastern Mediterranean telecommunication trunks, managing the tactical QKD optical links and military-grade SCADA gateways.
-3.  **LMU Munich** (Munich, Germany) — **Research Partner** (PIC: `999978433`). Advanced geophysical telemetry, seismic mapping, and acoustic threat signature modeling for subsea security.
+* [**`AETERNA-QSTN Project Execution Playbook`**](docs/AETERNA_QSTN_PROJECT_EXECUTION_PLAYBOOK.md) — Detailed 36-month operational roadmap, deliverables schedule (D1.1–D3.2), and procurement checklists.
 
 ---
 
