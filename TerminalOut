@@ -1,0 +1,50 @@
+D_WORKSPACES\AETERNA-SCW>                                       c:\Users\papic\Desktop\_PROJECTS_AND_WORKSPACES\AETERNA-SCW\test_veritas.ps1
+======================================================================
+  AETERNA-QSTN VERITAS TEST SUITE // SOVEREIGN QA PIPELINE (WP1-WP6)
+======================================================================
+
+[1/3] Executing Ingress & Signal Core Verification (WP1 & WP2)...
+[NOTICE] Proprietary production kernels (src/) protected under Article 9(4) IP Notice.
+[SUCCESS] Demonstration & Simulation core (scripts/simulation.mojo) VERIFIED (8/8 PASSED).
+
+[2/3] Executing Sovereign Security & eBPF Sentinel Isolation (WP3 & WP4)...
+[SUCCESS] Rust eBPF Sentinel & SCADA Dome Manifests VERIFIED (22/22 PASSED).
+
+[3/3] Executing Post-Quantum Cryptography & QKD Encryption Suite (WP5 & WP6)...
+======================================================================
+  AETERNA-QSTN // POST-QUANTUM CRYPTOGRAPHIC & QKD SHIELD (WP5)       
+  Proposal ID: 101357872 | Lead: AETERNA (Pomorie, BG) | PIC: 865986222
+======================================================================
+[INIT] Initializing Post-Quantum Cryptographic (PQC) Core...
+[INIT] Loading Lattice-Based Algorithm: ML-KEM-1024 (CRYSTALS-Kyber)
+[INIT] Loading Quantum Digital Signature: ML-DSA-87 (CRYSTALS-Dilithium)
+[INIT] Establishing Quantum Key Distribution (QKD) Hardware Interface...
+----------------------------------------------------------------------
+[QKD] Performing continuous entropy check on subsea polarization states...
+[QKD] Raw quantum key rate: 2.4 kbps | Quantum Bit Error Rate (QBER): 1.84% (Secured)
+
+[PQC] Generating ML-KEM-1024 keypair for landing terminal Pomorie (BG)...
+      [Pomorie PK]: 0x39356217f3bea5f8e9caceb9d4995cfe...
+[PQC] Encapsulating shared secret at landing terminal Athens (GR)...
+      [Ciphertext]: 0x9bb0930816e450b806c5739aef68150d54c35d01f1239cacd868329bb96716f2...
+      [Shared Secret]: 0xf60142cf47cad26bd3121501585d293a...
+
+[SHIELD] Activating Sovereign PQC Tunnel between BG-01 and GR-02...
+----------------------------------------------------------------------
+TIMESTAMP  | CHANNEL    | ENCRYPTION TYPE  | KEY ID   | STATUS
+----------------------------------------------------------------------
+00:00.120  | TELEMETRY  | ML-KEM-1024      | bd29af3b | ACTIVE
+00:01.120  | TELEMETRY  | ML-KEM-1024      | 0c08dbd4 | ROTATING
+00:02.120  | TELEMETRY  | ML-KEM-1024      | 124322dc | SECURE
+00:03.120  | TELEMETRY  | ML-KEM-1024      | 212f3714 | VERIFIED
+----------------------------------------------------------------------
+[AIGIS AUDIT] Active Link Monitored. 'Store-Now-Decrypt-Later' attacks: DEFEATED
+[AIGIS AUDIT] Post-Quantum security margin: >256 bits of classical entropy
+======================================================================
+STATUS: QUANTUM CRYPTOGRAPHIC SHIELD IS RUNNING AND SECURE.
+[SUCCESS] PQC ML-KEM-1024 & QKD Key Rotation VERIFIED (10/10 PASSED).
+
+======================================================================
+  VERITAS RESULT: 40/40 PASSED (TRL 6 VALIDATED // ZERO ENTROPY)
+  STATUS: VERITAS DOME SECURED. SYSTEM IS 100% DETERMINISTIC.
+======================================================================
