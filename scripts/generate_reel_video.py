@@ -222,7 +222,7 @@ def render_frame(frame_idx):
     progress_w = int(WIDTH * progress)
     draw.line([(0, HEIGHT - 100), (progress_w, HEIGHT - 100)], fill=COLOR_CYAN, width=6)
     
-    draw.text((WIDTH // 2, HEIGHT - 55), "AETERNA SOVEREIGN LABS // ARCHITECT: DIMITAR PRODROMOV", fill=COLOR_GRAY, font=FONT_BADGE, anchor="mm")
+    draw.text((WIDTH // 2, HEIGHT - 55), "AETERNA TECHNOLOGIES // ARCHITECT: DIMITAR PRODROMOV", fill=COLOR_GRAY, font=FONT_BADGE, anchor="mm")
 
     return np.array(img)
 

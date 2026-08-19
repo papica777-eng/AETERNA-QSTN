@@ -1,11 +1,11 @@
 # ==============================================================================
-# AETERNA-SCW HELIOS Real-Time Telemetry HUD & SCADA Control Plane
+# AETERNA-QSTN HELIOS Real-Time Tactical Telemetry HUD & SCADA Control Plane
 # PQC Encrypted Loopback Server (ws://127.0.0.1:3847)
 # ==============================================================================
 FROM nginx:alpine
 
 COPY index.html /usr/share/nginx/html/index.html
-COPY docs/aeterna_scw_aigis_masterpiece_signed.png /usr/share/nginx/html/docs/aeterna_scw_aigis_masterpiece_signed.png
+COPY docs/aeterna_qstn_quantum_shield_masterpiece.png /usr/share/nginx/html/docs/aeterna_qstn_quantum_shield_masterpiece.png
 
 EXPOSE 8080 3847
 

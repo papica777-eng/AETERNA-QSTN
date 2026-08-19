@@ -1,10 +1,10 @@
 # ==============================================================================
-# AETERNA-SCW // WP4 MULTISPECTRAL PHYSICAL ASSET SHIELDING ENGINE (MPAS)
-# Connecting Europe Facility (CEF Digital 2026) Proposal ID: 101354145
-# Lead Coordinator & Sovereign Systems Architect: Dimitar Prodromov (AETERNA)
+# AETERNA-QSTN // WP4 MULTISPECTRAL PHYSICAL ASSET SHIELDING ENGINE (MPAS)
+# European Defence Fund (EDF-2026-RA) Proposal ID: 101357872
+# Call: EDF-2026-RA-CYBER-QSTN | Sovereign Systems Architect: Dimitar Prodromov
 # ==============================================================================
 # Complexity: O(1) per PID cycle | Target Latency: <0.8ms per thermal zone
-# Compliance: CER Directive (EU 2022/2557) | CEF Art 9(4) Physical Asset Protection
+# Compliance: CER Directive (EU 2022/2557) | EDF Art 9(4) Physical Asset Protection
 # ==============================================================================
 
 # --- CONSTANTS (Fixed-Point Integer Arithmetic — Zero Float Policy) ---
@@ -19,9 +19,9 @@ alias IR_BAND_HIGH_NM: Int = 12000      # LWIR band end: 12.0 µm
 
 fn main():
     print("======================================================================")
-    print("  AETERNA-SCW // WP4: MULTISPECTRAL PHYSICAL ASSET SHIELDING (MPAS)   ")
-    print("  Proposal ID: 101354145 | Lead: AETERNA (Pomorie, BG) | PIC: 865986222")
-    print("  CER Directive (EU 2022/2557) | CEF Art 9(4) Compliant               ")
+    print("  AETERNA-QSTN // WP4: MULTISPECTRAL PHYSICAL ASSET SHIELDING (MPAS)  ")
+    print("  Proposal ID: 101357872 | Lead: AETERNA Technologies | PIC: 865986222")
+    print("  CER Directive (EU 2022/2557) | EDF Art 9(4) Compliant               ")
     print("======================================================================")
     print("")
 

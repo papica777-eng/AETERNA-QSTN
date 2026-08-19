@@ -1,35 +1,36 @@
 # OFFICIAL LETTER OF SUPPORT & CONSORTIUM PARTICIPATION COMMITMENT
-## CONNECTING EUROPE FACILITY (CEF) DIGITAL // SMART CABLES WORKS
+## EUROPEAN DEFENCE FUND (EDF-2026-RA) // CYBER-QSTN
 
-* **Project Acronym:** AETERNA-SCW
-* **Proposal ID:** CEF-DIG-2026-SMART-CABLES-101354145
-* **Applicant Lead:** **AETERNA** (POMORIE, BULGARIA)
+* **Project Acronym:** AETERNA-QSTN
+* **Proposal ID:** 101357872 (Call: EDF-2026-RA-CYBER-QSTN)
+* **Applicant Lead:** **AETERNA Technologies** (Pomorie, Bulgaria)
 * **Participant Identification Code (PIC):** `865986222`
 
 ---
 
-### LETTER OF SUPPORT
+### LETTER OF SUPPORT / COMMITMENT
 
 **To:**  
-European Health and Digital Executive Agency (HADEA)  
-Connecting Europe Facility (CEF Digital) Evaluation Panel  
-European Commission  
+European Commission — Directorate-General for Defence Industry and Space (DG DEFIS)  
+European Defence Fund (EDF-2026-RA) Evaluation Panel  
+Brussels, European Union  
 
-**Subject: Commitment and Institutional Support for AETERNA-SCW Smart Cables Works Proposal**
+**Subject: Institutional Support and Consortium Commitment for AETERNA-QSTN Proposal**
 
-Dear Members of the Evaluation Panel,
+Dear Members of the Evaluation Committee,
 
-We, the undersigned representative organization, hereby express our **unconditional support** and **firm commitment to participate** in the proposal **AETERNA-SCW (Quantum Subsea Security)**, submitted under the CEF-DIG-2026-SMART-CABLES-WORKS call by the coordinating applicant **AETERNA** (PIC: `865986222`).
+We, the undersigned partner organization, hereby express our **unconditional institutional support** and **firm commitment to participate** in the defense research proposal **AETERNA-QSTN (Sovereign Quantum Tactical Network & Cyber-Physical Defense Shield)**, submitted under the `EDF-2026-RA-CYBER-QSTN` call by the coordinating applicant **AETERNA Technologies** (PIC: `865986222`).
 
-As a critical stakeholder in European digital sovereignty and infrastructure resilience, we recognize the urgent necessity of securing submarine fiber-optic trunks from physical sabotage, kinetic tampering, and environmental seismic hazards. The AETERNA-SCW project introduces a highly innovative approach by retrofitting existing communication channels with non-intrusive coherent Distributed Acoustic Sensing (DAS) and State of Polarization (SOP) monitoring, combined with ultra-low latency Mojo-accelerated neural signal classification.
+As a key stakeholder in European defense technological sovereignty and critical infrastructure resilience, we recognize the vital necessity of securing submarine defense communication trunks, tactical command planes, and coastal landing terminals against physical tampering, kinetic sabotage, and post-quantum cryptographic surveillance.
 
-#### Our Commitment to the Project:
-1. **Infrastructure Integration:** We commit to providing technical access to our trans-oceanic landing terminals and telecommunications trunks for the installation of the optical monitoring equipment (WP1).
-2. **Seismic and Acoustic Calibration:** We will collaborate in calibrating the real-time AI signal separators to map acoustic waves, vessel movements, and physical anomalies along the Mediterranean and Black Sea paths (WP2).
-3. **Emergency Apoptosis Testing:** We agree to validate the AIGIS eBPF Sentinel process-containment loops at our SCADA interfaces to ensure immediate (<1ms) traffic rerouting during simulated physical security breaches (WP3).
-4. **Resources & Funding Match:** We confirm that our allocated budget of **€[Insert Partner Budget, e.g., 4,000,000]** will be matched in accordance with the 50% co-funding rules of the CEF Digital instrument.
+#### Our Strategic Commitment to the Project:
+1. **Tactical Mesh Integration (WP1):** We commit to deploying and benchmarking the lattice-based Post-Quantum Cryptographic primitives (NIST ML-KEM-1024 / ML-DSA-87) and QKD interfaces across designated landing nodes.
+2. **Real-Time Signal & Threat Calibration (WP2):** We will provide tactical telemetry, acoustic benchmark datasets, and expertise to train and validate the Mojo SIMD $O(1)$ signal classification core against simulated sabotage vectors.
+3. **eBPF Sentinel & SCADA Hardening (WP3):** We will integrate kernel-level eBPF apoptosis containment hooks into our SCADA operational control planes to enforce $<1.02\text{ms}$ automated isolation upon breach detection.
+4. **Multispectral Cloaking Validation (WP4):** We will participate in field trials for the Multispectral Physical Asset Shielding (MPAS) system, evaluating IR thermal cloaking and radar cross-section reduction.
+5. **Operational Capacity:** We confirm the availability of personnel, classified test facilities, and computing infrastructure required to achieve all milestone targets over the 36-month project lifecycle.
 
-We are fully convinced that the expertise of **AETERNA** in sovereign, zero-entropy software architectures, combined with our operational infrastructure, makes AETERNA-SCW an exemplary project that will materially enhance the security and resilience of the European Union's digital backbone.
+We are fully convinced that the technological leadership of **AETERNA Technologies** in deterministic, zero-entropy sovereign software architectures, combined with our joint operational capabilities, makes AETERNA-QSTN a landmark defense action that will decisively strengthen the European Union's security and sovereignty.
 
 Sincerely,
 

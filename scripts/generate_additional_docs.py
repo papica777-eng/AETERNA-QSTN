@@ -33,12 +33,12 @@ class NumberedCanvas(canvas.Canvas):
         self.setFont("Helvetica", 8)
         self.setFillColor(colors.HexColor("#718096"))
         
-        doc_title = getattr(self, 'doc_title', "AETERNA-SCW Proposal")
+        doc_title = getattr(self, 'doc_title', "AETERNA-QSTN Proposal")
         footer_text = getattr(self, 'doc_footer', "CONFIDENTIAL")
         
         # Running header (skip on page 1 for templates/letters)
         if self._pageNumber > 1 or doc_title == "Part B Technical Description (WORKS)":
-            self.drawString(54, 750, f"AETERNA-SCW // {doc_title}")
+            self.drawString(54, 750, f"AETERNA-QSTN // {doc_title}")
             self.setStrokeColor(colors.HexColor("#E2E8F0"))
             self.setLineWidth(0.5)
             self.line(54, 742, 558, 742)
@@ -73,7 +73,7 @@ def create_excel_budget(filepath):
     ws["A1"] = "CONNECTING EUROPE FACILITY (CEF) - DETAILED BUDGET WORKS TABLE"
     ws["A1"].font = Font(name="Segoe UI", size=16, bold=True, color="1A365D")
     
-    ws["A2"] = "Project Acronym: AETERNA-SCW  // Proposal ID: CEF-DIG-2026-SMART-CABLES-101538202"
+    ws["A2"] = "Project Acronym: AETERNA-QSTN  // Proposal ID: EDF-2026-RA-101357872"
     ws["A2"].font = Font(name="Segoe UI", size=11, italic=True, color="4A5568")
     
     # Headers

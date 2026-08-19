@@ -1,19 +1,19 @@
 # ==============================================================================
-# AETERNA-SCW // AIGIS SUBSEA SHIELD DEMONSTRATOR MANIFEST
-# Connecting Europe Facility (CEF Digital) Proposal ID: 101354145
-# Lead Coordinator: AETERNA (Pomorie, BG) | PIC: 865986222
+# AETERNA-QSTN // SOVEREIGN QUANTUM DEFENSE DEMONSTRATOR MANIFEST
+# European Defence Fund (EDF-2026-RA) Proposal ID: 101357872
+# Lead Coordinator: AETERNA Technologies (Pomorie, BG) | PIC: 865986222
 # Sovereign Systems Architect: Dimitar Prodromov
-# Strict Compliance: Article 9(4) CEF Regulation (EU) 2021/1153 & NIS2 Directive
+# Strict Compliance: Article 9(4) EDF Regulation (EU) 2021/697 & NIS2 Directive
 # ==============================================================================
 
 version: '3.8'
 
 services:
   # ----------------------------------------------------------------------------
-  # WP1: Optical Monitoring & Ingestion (Zig Zero-Copy PCIe Ingress)
+  # WP1: Optical Monitoring & Ingestion (Zig Zero-Copy PCIe Ingress + PQC Shield)
   # ----------------------------------------------------------------------------
   aeterna-ingress-wp1:
-    container_name: aeterna-scw-ingress
+    container_name: aeterna-qstn-ingress
     build:
       context: .
       dockerfile: docker/Dockerfile.ingress
@@ -23,6 +23,7 @@ services:
       - SPATIAL_RESOLUTION_M=2.0
       - COHERENCE_LENGTH_KM=100
       - ZIG_STREAM_MODULE=SOP_STREAM_ACQUISITION.zig
+      - PQC_PRIMITIVES=NIST_ML_KEM_1024_ML_DSA_87
     volumes:
       - ./assets/subsea_telemetry_samples:/data:ro
     networks:
@@ -33,7 +34,7 @@ services:
   # WP2: Mojo Real-Time Signal Processing & O(1) Neural Classifier
   # ----------------------------------------------------------------------------
   aeterna-mojo-wp2:
-    container_name: aeterna-scw-mojo-classifier
+    container_name: aeterna-qstn-mojo-classifier
     build:
       context: .
       dockerfile: docker/Dockerfile.mojo
@@ -58,41 +59,40 @@ services:
   # WP3: Kernel-Level eBPF Sentinel & AIGIS Dome SCADA Hardening
   # ----------------------------------------------------------------------------
   aeterna-sentinel-wp3:
-    container_name: aeterna-scw-ebpf-sentinel
+    container_name: aeterna-qstn-ebpf-sentinel
     build:
       context: .
       dockerfile: docker/Dockerfile.sentinel
-    privileged: true # Mandatory for Linux eBPF kernel hooks & process apoptosis
+    privileged: true
     cap_add:
       - SYS_ADMIN
-      - NET_ADMIN
       - BPF
-      - PERFMON
+      - NET_ADMIN
     environment:
-      - APOPTOSIS_THRESHOLD_MS=1.02
-      - SCADA_LOCKDOWN_MODE=STRICT_INTEGER_ONLY
-      - RUST_CORE_BIN=sovereign_sentinel
-    volumes:
-      - /sys/kernel/debug:/sys/kernel/debug:rw
-      - /sys/fs/bpf:/sys/fs/bpf:rw
+      - APOPTOSIS_TRIGGER_LATENCY_MAX_MS=1.02
+      - SCADA_DOME_PORT=3847
+      - INT_ONLY_MATH=TRUE
+    depends_on:
+      - aeterna-mojo-wp2
     networks:
       - aeterna_sovereign_bus
     restart: unless-stopped
 
   # ----------------------------------------------------------------------------
-  # HELIOS Dashboard & Real-Time Telemetry HUD (PQC Loopback WebSocket)
+  # WP4: HELIOS Sovereign Presentation & Tactical HUD Plane
   # ----------------------------------------------------------------------------
   aeterna-helios-hud:
-    container_name: aeterna-scw-helios-hud
+    container_name: aeterna-qstn-helios-hud
     build:
       context: .
       dockerfile: docker/Dockerfile.hud
     ports:
-      - "3847:3847" # PQC-encrypted local loopback (ws://127.0.0.1:3847)
-      - "8080:8080" # Web HUD Interface
+      - "8080:80"
+      - "3847:3847"
     environment:
-      - PQC_ENCRYPTION=NIST_ML_KEM_1024
-      - EU_DATA_RESIDENCY=SOVEREIGN_ON_PREMISE
+      - HUD_MODE=SOVEREIGN_TACTICAL_DEFENSE
+      - LIVE_TELEMETRY_REFRESH_HZ=60
+      - SHIELD_STATUS=ACTIVE_VERIFIED
     depends_on:
       - aeterna-sentinel-wp3
     networks:
@@ -101,5 +101,9 @@ services:
 
 networks:
   aeterna_sovereign_bus:
-    name: aeterna_sovereign_bus
+    name: aeterna_qstn_internal_mesh
     driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
