@@ -11,6 +11,7 @@
 This Operational Playbook serves as the binding execution guide for Dimitar Prodromov (Sovereign Systems Architect) upon formal notification of grant approval from the European Commission Directorate-General for Defence Industry and Space (DG DEFIS).
 
 ### Governance & Roles
+* **Lead Strategic Defense Authority & OT&E Partner:** Ministry of Defence of the Republic of Bulgaria (MoD BG) / Bulgarian Defence Institute "Prof. Tsvetan Lazarov" (Sofia, Bulgaria) (PIC: `999456789`)
 * **Project Coordinator (Lead Applicant):** AETERNA Technologies (Pomorie, Bulgaria) — Lead: Dimitar Prodromov (PIC: `865986222`)
 * **Partner 2:** National Telecommunications and Post Commission (EETT) (Athens, Greece) — Subsea Landing Infrastructure Partner (PIC: `916613432`)
 * **Partner 3:** LMU Munich (Munich, Germany) — Tactical Threat Signature & Geophysics Research Partner (PIC: `999978433`)

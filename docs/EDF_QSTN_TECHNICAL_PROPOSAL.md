@@ -6,11 +6,12 @@
 * **Call Identifiers:** EDF-2026-RA / EDF-2026-RA-CYBER-QSTN
 * **Type of Action:** EDF Research Action (EDF-RA)
 * **Type of MGA:** EDF Action Grant Budget-Based (EDF-AG, 100% EU Grant)
-* **Lead Applicant:** **AETERNA** (Pomorie, Bulgaria) | **PIC:** `865986222`
+* **Lead Applicant & Coordinator:** **AETERNA** (Pomorie, Bulgaria) | **PIC:** `865986222`
 * **Consortium Partners:** 
-  1. **AETERNA** (Pomorie, Bulgaria) — Lead Coordinator & Sovereign Systems Architect (PIC `865986222`)
+  1. **Ministry of Defence of the Republic of Bulgaria (MoD BG) / Bulgarian Defence Institute "Prof. Tsvetan Lazarov"** (Sofia, Bulgaria) — Lead Military Strategic Authority, Proving Grounds Operator & Operational Test & Evaluation (OT&E) Partner (PIC `876914824`, Legal Name: `MINISTERSTVO NA OTBRANATA`)
   2. **National Telecommunications and Post Commission (EETT)** (Athens, Greece) — Subsea Landing Infrastructure Partner (PIC `916613432`)
   3. **LMU Munich** (Munich, Germany) — Tactical Threat Signature & Geophysics Research Partner (PIC `999978433`)
+  4. **AETERNA** (Pomorie, Bulgaria) — Lead Coordinator & Sovereign Systems Architect (PIC `865986222`)
 * **Project Duration:** 36 Months
 * **Total Estimated Budget:** €14,000,000 (100% EU Funded Research Action)
 * **Official Code Repository:** https://github.com/papica777-eng/AETERNA-QSTN
@@ -41,7 +42,7 @@ graph TD
     subgraph Response ["AIGIS Response Plane & Quantum Defense Mesh"]
         E -->|"Class 1: Seismic / Ocean Waves"| G1["Copernicus & LMU Oceanographic Portal"]
         E -->|"Class 2: Kinetic Threat / Sabotage"| G2["eBPF Sentinel Process Apoptosis (<1.02ms)"]
-        G2 -->|"ML-KEM-1024 / QKD Encrypted Loop"| G3["EU CSIRTs & National Defense Operations Rooms"]
+        G2 -->|"ML-KEM-1024 / QKD Encrypted Loop"| G3["Ministry of Defence (MoD BG) & EU CSIRTs"]
     end
 
     classDef default fill:#09090b,stroke:#27272a,color:#fff;
@@ -136,13 +137,13 @@ Submarine fiber-optic infrastructure carries over 97% of trans-oceanic telecommu
   * `D5.1`: PQC & QKD Hardware Interface Architecture (Month 24)
   * `D5.2`: Post-Quantum Link Encryption Validation Report (Month 32)
 
-### WP6: Integration, Field Demonstration & NIS2 Compliance (Lead: AETERNA / Consortium)
-* **Objective:** Full-system integration, field trial validation, and cybersecurity certification.
-* **Task 6.1:** 36-month live field trial at Pomorie and Athens landing hubs.
-* **Task 6.2:** NIS2 Directive (EU 2022/2555) and CER Directive (EU 2022/2557) compliance audit.
+### WP6: Integration, Military Proving Grounds Demonstration & Operational Field Trials (Lead: Ministry of Defence BG / AETERNA)
+* **Objective:** Full-system integration, military operational test & evaluation (OT&E) at Black Sea naval proving grounds, and cybersecurity certification.
+* **Task 6.1:** 36-month live field trial and naval proving ground tactical exercises conducted under the operational supervision of the **Ministry of Defence of the Republic of Bulgaria (Bulgarian Defence Institute "Prof. Tsvetan Lazarov")** across Black Sea (Pomorie/Burgas) and Mediterranean (Athens) landing corridors.
+* **Task 6.2:** Military-grade operational validation, NATO/EU tactical network interoperability, and NIS2 Directive (EU 2022/2555) / CER Directive (EU 2022/2557) compliance audit.
 * **Deliverables:**
-  * `D6.1`: Final System Integration & Field Trial Report (Month 36)
-  * `D6.2`: NIS2 & CER Compliance Attestation Certificate (Month 36)
+  * `D6.1`: Military Operational Test & Evaluation (OT&E) Field Report (Month 36)
+  * `D6.2`: Tactical Integration, NIS2 & Defense Interoperability Attestation Certificate (Month 36)
 
 ---
 
@@ -164,11 +165,22 @@ Submarine fiber-optic infrastructure carries over 97% of trans-oceanic telecommu
 ### 3.2 Partner Budget Distribution
 
 | Consortium Partner | Role & Jurisdiction | Allocated Budget (€) | Share (%) |
-| :--- | :--- | :--- | :--- |
-| **AETERNA (Pomorie, Bulgaria)** | Lead Coordinator & Sovereign Systems Architect (PIC `865986222`) | **€6,650,000** | 47.5% |
-| **National Telecommunications and Post Commission (EETT)** | Landing Infrastructure Partner (Athens, Greece) (PIC `916613432`) | **€4,200,000** | 30.0% |
-| **LMU Munich** | Tactical Threat Signature & Geophysics Partner (Munich, Germany) (PIC `999978433`) | **€3,150,000** | 22.5% |
-| **Total Project Budget** | **EDF-2026-RA Consortium** | **€14,000,000** | **100.0%** |
+| :--- | :--- | :---: | :---: |
+| **Ministry of Defence of the Republic of Bulgaria (MoD BG)** | Lead Military Operational & Strategic Defence Authority (PIC `876914824`) | **€5,600,000.00** | **40.0%** *(Lead Share)* |
+| **National Telecommunications and Post Commission (EETT)** | Landing Infrastructure Partner (Athens, Greece) (PIC `916613432`) | **€3,500,000.00** | **25.0%** |
+| **LMU Munich** | Tactical Threat Signature & Geophysics Partner (Munich, Germany) (PIC `999978433`) | **€2,800,000.00** | **20.0%** |
+| **AETERNA (Pomorie, Bulgaria)** | Lead Coordinator & Sovereign Systems Architect (PIC `865986222`) | **€2,100,000.00** | **15.0%** *(Smallest Share)* |
+| **Total Project Budget** | **EDF-2026-RA Consortium** | **€14,000,000.00** | **100.0%** |
+
+### 3.3 Detailed Eligible Cost Category Breakdown (EU Submission Portal Format)
+
+| Beneficiary | A. Personnel Costs (€) | C.1a Travel (€) | C.1b Accommodation (€) | Total Direct Costs (€) | E. Indirect Costs 25% (€) | Requested EU Contribution (€) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **1. AETERNA (Coordinator)** | €1,350,000.00 | €30,000.00 | €300,000.00 | €1,680,000.00 | €420,000.00 | **€2,100,000.00** |
+| **2. MINISTRY OF DEFENCE BG** | €3,600,000.00 | €80,000.00 | €800,000.00 | €4,480,000.00 | €1,120,000.00 | **€5,600,000.00** |
+| **3. EETT (Greece)** | €2,300,000.00 | €60,000.00 | €440,000.00 | €2,800,000.00 | €700,000.00 | **€3,500,000.00** |
+| **4. LMU Munich (Germany)** | €1,800,000.00 | €50,000.00 | €390,000.00 | €2,240,000.00 | €560,000.00 | **€2,800,000.00** |
+| **TOTAL CONSORTIUM** | **€9,050,000.00** | **€220,000.00** | **€1,930,000.00** | **€11,200,000.00** | **€2,800,000.00** | **€14,000,000.00** |
 
 ---
 
@@ -176,9 +188,9 @@ Submarine fiber-optic infrastructure carries over 97% of trans-oceanic telecommu
 
 ### 4.1 Governance Structure
 The consortium operates under a strict three-tier governance framework:
-1. **Sovereign Steering Committee (SSC):** Chaired by Sovereign Systems Architect *Dimitar Prodromov* (AETERNA), directing technical execution, budget allocation, and milestone validation.
-2. **Security Screening Board (SSB):** Composed of designated representatives from the Bulgarian Ministry of Electronic Governance, Greek Ministry of Digital Governance, and German BMDV, ensuring continuous 100% compliance with Article 9(4) data sovereignty directives.
-3. **Scientific & Technical Advisory Panel (STAP):** Led by LMU Munich, overseeing acoustic threat signature accuracy and oceanographic data integration.
+1. **Sovereign Steering Committee (SSC):** Co-chaired by the **Ministry of Defence of the Republic of Bulgaria (MoD BG)** and Sovereign Systems Architect *Dimitar Prodromov* (AETERNA), directing strategic defense alignment, technical execution, budget allocation, and milestone validation.
+2. **Security Screening Board (SSB):** Chaired by the **Ministry of Defence of the Republic of Bulgaria (MoD BG)** in coordination with the Bulgarian Ministry of Electronic Governance, Greek Ministry of Digital Governance, and German BMDV, ensuring continuous 100% compliance with Article 9(4) data sovereignty directives and classified defense protocols.
+3. **Scientific & Technical Advisory Panel (STAP):** Led by LMU Munich with participation from EETT and Defence Institute experts, overseeing acoustic threat signature accuracy, subsea infrastructure deployment, and oceanographic data integration.
 
 ---
 
@@ -186,9 +198,9 @@ The consortium operates under a strict three-tier governance framework:
 
 ### 5.1 Post-Grant Infrastructure Ownership
 Upon completion of the 36-month grant period:
-* **Bulgarian Infrastructure:** All physical optical interrogators, GPU bare-metal compute nodes, PQC encryption modules, and MPAS cloaking panels at Pomorie remain **100% the exclusive property of AETERNA**.
-* **Greek Infrastructure:** All sensing assets installed at Mediterranean landing points remain the property of **EETT**.
-* **Software IP:** The production Mojo SIMD kernels, Zig DMA drivers, eBPF apoptosis engines, and `quantum_crypt_shield.rs` modules remain **100% sovereign IP owned by AETERNA**.
+* **Bulgarian Military & Strategic Defense Assets:** All operational tactical command center nodes, military proving ground telemetry stations, and naval testing interfaces deployed under WP6 remain under the operational governance and defense inventory of the **Ministry of Defence of the Republic of Bulgaria (MoD BG)**.
+* **Commercial & Landing Infrastructure:** Commercial optical interrogators, GPU bare-metal compute nodes, PQC encryption modules, and MPAS cloaking panels at Pomorie remain 100% the exclusive property of **AETERNA**; Mediterranean landing point sensing assets remain with **EETT**.
+* **Software IP & Algorithms:** The production Mojo SIMD kernels, Zig DMA drivers, eBPF apoptosis engines, and `quantum_crypt_shield.rs` modules are licensed for perpetual, unrestricted sovereign defense use to the **Ministry of Defence of the Republic of Bulgaria** and the European Union, with underlying technology architecture maintained by **AETERNA**.
 
 ---
 
@@ -196,7 +208,7 @@ Upon completion of the 36-month grant period:
 
 Given the strategic critical importance of submarine telecommunications backbones, **AETERNA-QSTN** strictly enforces all security and sovereignty restrictions under Article 9(4) of EDF Regulation and Security Directives:
 
-* **Bulgaria (AETERNA):** Official security clearance obtained from the **Ministry of Electronic Governance of the Republic of Bulgaria**.
+* **Bulgaria (MoD BG & AETERNA):** Official strategic defense endorsement and military security clearance granted by the **Ministry of Defence of the Republic of Bulgaria (MoD BG)** and the **Ministry of Electronic Governance of the Republic of Bulgaria**.
 * **Greece (EETT):** Official clearance obtained from the **Ministry of Digital Governance of the Hellenic Republic**.
 * **Germany (LMU Munich):** Official security attestation granted under the **Federal Ministry for Digital and Transport (BMDV) of the Federal Republic of Germany**.
 * **Absence of Foreign Control:** 100% of consortium equity, infrastructure, algorithms, and key personnel operate exclusively under EU/EEA jurisdiction, with zero third-country access or control.

@@ -1,4 +1,4 @@
-# Gitignore for AETERNA-SCW
+# Gitignore for AETERNA-QSTN Presentation Repo
 __pycache__/
 *.pyc
 *.pyo
@@ -11,4 +11,5 @@ target/
 *.pdb
 *.o
 *.obj
-
+build_edf_pdf.py
+docs/*.html
