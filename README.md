@@ -28,14 +28,6 @@
 
 ---
 
-## 🖼️ High-Prestige UHD Masterwork
-
-A cinematic visualization of the **AETERNA Sovereign Quantum Tactical Network (AETERNA-QSTN)** deployed across the deep-ocean seabed. Active submarine fiber-optic cables emitting coherent quantum light paths are fortified by holographic defense perimeters guarding subsea telecommunication trunks and landing station nodes:
-
-![AETERNA-QSTN Sovereign Quantum Tactical Network Masterwork](docs/aeterna_qstn_quantum_shield_masterpiece.png)
-
----
-
 ## 🔒 Intellectual Property & Public Presentation Notice
 
 > **OFFICIAL DEMONSTRATION & PRESENTATION REPOSITORY:**  
@@ -95,12 +87,6 @@ graph TD
 
 ---
 
-## 🌊 Subsea Seabed Sensing Mechanism & QKD Tactical Mesh
-
-![Subsea Seabed Sensing Mechanism & QKD Mesh](docs/aeterna_qstn_subsea_mechanism_masterpiece.png)
-
----
-
 ## 🛡️ WP4: Multispectral Physical Asset Shielding (MPAS) — Landing Terminal Cloaking
 
 > **CER Directive (EU 2022/2557) Art. 13 Physical Resilience & EDF Art. 9(4) Anti-Surveillance Compliance**  
@@ -147,12 +133,6 @@ graph TD
     class C1,C2,C3 control;
     class L1,L2,L3 shield;
 ```
-
----
-
-## 🌍 Trilateral Sovereign Defense Alliance (Bulgaria 🇧🇬 | Germany 🇩🇪 | Greece 🇬🇷)
-
-![Trilateral Defense Alliance](docs/aeterna_qstn_3country_sovereignty_poster.png)
 
 ---
 
